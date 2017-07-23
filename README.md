@@ -1,6 +1,16 @@
 # NYC Taxi Trip Duration
 Kaggle web : https://www.kaggle.com/c/nyc-taxi-trip-duration
 
+## File structure 
+
+```
+├── README.md
+├── data
+├── notebook
+│  
+└── script\ 
+```
+
 ## Introduction
 ---
 ## Data & features extraction
