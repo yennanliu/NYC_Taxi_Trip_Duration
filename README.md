@@ -40,7 +40,7 @@ Kaggle web : https://www.kaggle.com/c/nyc-taxi-trip-duration
        * Linear distance (float)
        * **Short Distance from Pickup to subway station** (float), see [CSV](../documents/NYC_Subway_Stations.csv)
      * Passenger count   (int)
-    * **Reference** <br />[List of Manhattan neighborhoods](https://en.wikipedia.org/wiki/List_of_Manhattan_neighborhoods)<br /> [List of Bronx neighborhoods](https://en.wikipedia.org/wiki/List_of_Bronx_neighborhoods)<br />[List of Brooklyn neighborhoods](https://en.wikipedia.org/wiki/List_of_Brooklyn_neighborhoods)<br />[List of Queens neighborhoods](https://en.wikipedia.org/wiki/List_of_Queens_neighborhoods)<br />[List of Staten Island neighborhoods](https://en.wikipedia.org/wiki/List_of_Staten_Island_neighborhoods)<br />[Subway Station coordinates](http://www.poi-factory.com/node/17432)
+    * **Reference** <br />[New York City](https://en.wikipedia.org/wiki/Neighborhoods_in_New_York_City)<br />[List of Manhattan neighborhoods](https://en.wikipedia.org/wiki/List_of_Manhattan_neighborhoods)<br /> [List of Bronx neighborhoods](https://en.wikipedia.org/wiki/List_of_Bronx_neighborhoods)<br />[List of Brooklyn neighborhoods](https://en.wikipedia.org/wiki/List_of_Brooklyn_neighborhoods)<br />[List of Queens neighborhoods](https://en.wikipedia.org/wiki/List_of_Queens_neighborhoods)<br />[List of Staten Island neighborhoods](https://en.wikipedia.org/wiki/List_of_Staten_Island_neighborhoods)<br />[Subway Station coordinates](http://www.poi-factory.com/node/17432)
 2. **Encode & Standardization**
 3. **Feature transformation**
 4. **Dimension reduction**
