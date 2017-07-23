@@ -1,2 +1,29 @@
-# NYC_Taxi_Trip_Duration
-https://www.kaggle.com/c/nyc-taxi-trip-duration
+# NYC Taxi Trip Duration
+Kaggle web : https://www.kaggle.com/c/nyc-taxi-trip-duration
+
+## Introduction
+---
+## Data & features extraction
+### Train, validation & test data splitting
+### Features
+1. Overview
+   * Time & date dependency?
+   * Region/zone dependency?    
+2. Encode & Standardization
+3. (Feature transformation)
+4. (Dimension reduction)
+---
+## Pre-test
+Input all standardized features to all models.
+### Model pre-performance
+1. K-NN
+2. SVM
+3. Radom-forest
+4. ....
+---
+## Optimization
+### Feature optimization
+### Super-parameters tuning  
+### Aggregation
+---
+## Results  
