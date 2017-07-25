@@ -6,9 +6,8 @@
 import pandas as pd, numpy as np
 import calendar
 
-
 #  modeling help function 
-from sklearn.model_selection import cross_val_score, train_test_split
+from sklearn.model_selection import cross_val_score, train_test_split,ShuffleSplit
 from sklearn.metrics import mean_squared_error, r2_score, explained_variance_score, mean_absolute_error
 
 def sample_split(df):
@@ -19,11 +18,17 @@ def sample_split(df):
     X = data[:,1:]
     test_size = .3
     X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=test_size, random_state = 3)
-    return X_train, X_test, y_train, y_test
+    return X_train, X_test, y_train, y_test,X,Y
 
-def reg_analysis(model, X_train, X_test, y_train, y_test):
+def reg_analysis(model, df):
+    # get train, test set amd X,y here (for cross-validation) 
+    X_train, X_test, y_train, y_test,X,Y = sample_split(df)
     model.fit(X_train, y_train)
     prediction = model.predict(X_test)
+    # Cross-validation score
+    cv = ShuffleSplit(n_splits=4, test_size=0.3, random_state=0)
+    print ('cv model score = ',cross_val_score(model, X, Y, cv=cv))
+    # Model score
     print ('Model score = ',model.score(X_test,y_test))
     # RMSLE score
     sum=0.0
