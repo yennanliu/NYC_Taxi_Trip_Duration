@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# train model with train data 
+# script for model training 
 
 # basic library 
 import pandas as pd, numpy as np
