@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# this script is for data preparation 
+
 # basic library 
 import pandas as pd, numpy as np
 import calendar
