@@ -25,7 +25,7 @@ def basic_feature_extract(df):
     df_["dropoff_weekday"] = df_.dropoff_datetime.apply(lambda x :pd.to_datetime(x.split(" ")[0]).weekday())
     # get weekday
     list(calendar.day_name)
-    df_['pickup_week_'] = pd.to_datetime(df_train.pickup_datetime,coerce=True).dt.weekday
+    df_['pickup_week_'] = pd.to_datetime(df_.pickup_datetime,coerce=True).dt.weekday
     df_['pickup_weekday_'] = df_['pickup_week_'].apply(lambda x: calendar.day_name[x])
     return df_
 
@@ -62,7 +62,12 @@ def load_data():
 	sampleSubmission = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/sample_submission.csv')
 	return df_train, df_test, sampleSubmission
 
+
+
+
+
 ### ================================================ ###
+
 
 """
 df_train, df_test, sampleSubmission = load_data()

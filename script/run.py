@@ -17,6 +17,8 @@ from train import *
 #run the process 
 
 df_train, df_test, sampleSubmission = load_data()
+print (df_train)
+
 # only take 100 data points  here 
 df_train_ = basic_feature_extract(df_train.head(100))
 df_train_.loc[:, 'distance_haversine'] = get_haversine_distance(
