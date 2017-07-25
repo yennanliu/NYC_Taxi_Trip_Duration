@@ -7,9 +7,10 @@ Kaggle web : https://www.kaggle.com/c/nyc-taxi-trip-duration
 ```
 ├── README.md
 ├── data
+├── documents
 ├── notebook
-│  
 └── script
+
 ```
 
 ## Introduction
