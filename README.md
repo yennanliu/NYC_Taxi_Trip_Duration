@@ -1,6 +1,6 @@
 # NYC Taxi Trip Duration
 Kaggle web : https://www.kaggle.com/c/nyc-taxi-trip-duration
-<br >Discussion Folum [:point_right::door:](https://hackmd.io/AzBsE4EYBMCZYLQFYDGAWUCMA5gPAKYDMAhgirAQOzwBm4toSJQA?view)
+<br >Discussion Folum [:point_right::door:](https://hackmd.io/s/BkScUQ4IW)
 
 ## File structure
 
@@ -27,17 +27,17 @@ Kaggle web : https://www.kaggle.com/c/nyc-taxi-trip-duration
      * Id (label, 0x2)
      * Date-time: (28)
        * Pickup weekday  (Label, 0x7)
-       * Pickup season   (label, 0x4)
-       * Pickup month    (label, 0x3)
-       * Pickup pm/am    (label, 0x2)  
-       * Pickup hrs      (label, 0x12)
+       * ~~Pickup season   (label, 0x4)~~
+       * Pickup month    (label, 0x12)
+       * ~~Pickup pm/am    (label, 0x2)~~  
+       * Pickup hrs      (label, 0x24)
      * Location (?+1)
-       * Pickup  zone    (label, 0x?)
-       * Dropoff zone    (label, 0x?)
-       * Pickup cb       (label, 0x?)
-       * Dropoff cb      (label, 0x?)
-       * Pickup neighborhoods (label, 0x?)
-       * Dropoff neighborhoods (label, 0x?)
+       * ~~Pickup  zone    (label, 0x?)~~
+       * ~~Dropoff zone    (label, 0x?)~~
+       * ~~Pickup cb       (label, 0x?)~~
+       * ~~Dropoff cb      (label, 0x?)~~
+       * ~~Pickup neighborhoods (label, 0x?)~~
+       * ~~Dropoff neighborhoods (label, 0x?)~~
        * Linear distance (float)
        * **Short Distance from Pickup to subway station** (float), see [CSV](../documents/NYC_Subway_Stations.csv)  
        * **Short Distance from Dropoff to subway station** (float), see [CSV](../documents/NYC_Subway_Stations.csv)
