@@ -1,6 +1,6 @@
 # NYC Taxi Trip Duration
 Kaggle web : https://www.kaggle.com/c/nyc-taxi-trip-duration
-<br >Discussion Folum [:point_right::door:](https://hackmd.io/s/BkScUQ4IW)
+<br >Discussion Folum :point_right: <https://hackmd.io/s/BkScUQ4IW>
 
 ## File structure
 
