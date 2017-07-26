@@ -9,9 +9,8 @@ import calendar
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.metrics import mean_squared_error, r2_score, explained_variance_score, mean_absolute_error
 # import user defined library
-from prepare import *
-from train import * 
-
+from script.prepare import *
+from script.train import *  
 
 ### ================================================ ###
 #run the process 
