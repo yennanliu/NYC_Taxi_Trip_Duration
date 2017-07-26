@@ -18,6 +18,6 @@ def save_model(model):
 
 # load model 
 def load_model():       
-    with open('~/NYC_Taxi_Trip_Duration/model/model_0726.pkl', 'rb') as fid:        
+    with open('../model/model_0726.pkl', 'rb') as fid:        
         loaded_model = pickle.load(fid)     
         return loaded_model
