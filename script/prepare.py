@@ -9,6 +9,7 @@ import calendar
 
 
 # basic feature extract 
+
 def basic_feature_extract(df):
     df_= df.copy()
     # pickup
@@ -17,14 +18,23 @@ def basic_feature_extract(df):
     df_["pickup_year"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[0].split("-")[0])
     df_["pickup_month"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[0].split("-")[1])
     df_["pickup_weekday"] = df_.pickup_datetime.apply(lambda x :pd.to_datetime(x.split(" ")[0]).weekday())
-    # dropoff 
-    df_["dropoff_date"] = pd.to_datetime(df_.dropoff_datetime.apply(lambda x : x.split(" ")[0]))
-    df_["dropoff_hour"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[1].split(":")[0])
-    df_["dropoff_year"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[0].split("-")[0])
-    df_["dropoff_month"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[0].split("-")[1])
-    df_["dropoff_weekday"] = df_.dropoff_datetime.apply(lambda x :pd.to_datetime(x.split(" ")[0]).weekday())
-    # get weekday
+    # dropoff
+    # in case test data dont have dropoff_datetime feature
+    try:
+        df_["dropoff_date"] = pd.to_datetime(df_.dropoff_datetime.apply(lambda x : x.split(" ")[0]))
+        df_["dropoff_hour"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[1].split(":")[0])
+        df_["dropoff_year"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[0].split("-")[0])
+        df_["dropoff_month"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[0].split("-")[1])
+        df_["dropoff_weekday"] = df_.dropoff_datetime.apply(lambda x :pd.to_datetime(x.split(" ")[0]).weekday())
+    except:
+        pass 
+    return df_
+
+# get weekday
+import calendar
+def get_weekday(df):
     list(calendar.day_name)
+    df_=df.copy()
     df_['pickup_week_'] = pd.to_datetime(df_.pickup_datetime,coerce=True).dt.weekday
     df_['pickup_weekday_'] = df_['pickup_week_'].apply(lambda x: calendar.day_name[x])
     return df_
@@ -61,7 +71,6 @@ def load_data():
 	df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
 	sampleSubmission = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/sample_submission.csv')
 	return df_train, df_test, sampleSubmission
-
 
 
 
