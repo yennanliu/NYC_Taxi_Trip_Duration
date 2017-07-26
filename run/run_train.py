@@ -36,4 +36,25 @@ df_train_ = clean_data(df_train_)
 print (df_train_.head())
 print ('Train Data Ready  ! ')
 
+#### fitting test dataset  ####
+df_train_tree_ = clean_data(df_train_)
+tree_feature = ['trip_duration', 'vendor_id', 
+                'passenger_count', 'pickup_longitude', 
+                'pickup_latitude','dropoff_longitude',
+                'dropoff_latitude','pickup_hour','pickup_month',  
+                'distance_haversine','pickup_weekday',
+                'distance_manhattan']
+from sklearn.tree import DecisionTreeRegressor
+tree_model = DecisionTreeRegressor()
+model_tree = reg_analysis(tree_model,df_train_tree_[tree_feature])
+print (model_tree)
+
+
+
+
+
+
+
+
+
 

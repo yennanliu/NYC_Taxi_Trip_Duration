@@ -37,7 +37,7 @@ def reg_analysis(model, df):
         r = np.log(y_test[x]+1)
         sum = sum + (p - r)**2
     print ('RMSLE score =  ',(sum/len(prediction))**0.5)
-    #return model
+    return model
     
 
 def rmsle(predicted,real):
