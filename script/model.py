@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 
 # script for model I/O 
+import pickle 
 
 
 
 # save model 
 def save_model(model):
     try:
-        with open('~/NYC_Taxi_Trip_Duration/model/model_0726.pkl', 'wb') as fid:
+        with open('../model/model_0726.pkl', 'wb') as fid:
             pickle.dump(model, fid)
             print ('model save success')
     except:
         print ('saving fail')
+
 
 
 # load model 

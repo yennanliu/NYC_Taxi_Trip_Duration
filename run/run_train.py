@@ -8,9 +8,13 @@ import pandas as pd, numpy as np
 import calendar
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.metrics import mean_squared_error, r2_score, explained_variance_score, mean_absolute_error
+import pickle 
+
 # import user defined library
 from script.prepare import *
 from script.train import *  
+from script.model import *  
+
 
 ### ================================================ ###
 #run the process 
@@ -48,6 +52,9 @@ from sklearn.tree import DecisionTreeRegressor
 tree_model = DecisionTreeRegressor()
 model_tree = reg_analysis(tree_model,df_train_tree_[tree_feature])
 print (model_tree)
+
+# save model 
+save_model(model_tree)
 
 
 
