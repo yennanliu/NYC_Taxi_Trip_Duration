@@ -6,10 +6,20 @@ Kaggle web : https://www.kaggle.com/c/nyc-taxi-trip-duration
 
 ```
 ├── README.md
-├── data
+├── data  
 ├── documents
+├── model   
 ├── notebook
+├── output
+├── run
 └── script
+
+
+script : utility script for data prepare / modeling 
+run    : fire the fitting process 
+model  : save the tuned model
+output : prediction outcome
+notebook : main analysis
 
 ```
 
