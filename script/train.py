@@ -6,7 +6,7 @@
 import pandas as pd, numpy as np
 import calendar
 
-#  modeling help function 
+#  model  score 
 from sklearn.model_selection import cross_val_score, train_test_split,ShuffleSplit
 from sklearn.metrics import mean_squared_error, r2_score, explained_variance_score, mean_absolute_error
 
@@ -49,6 +49,23 @@ def rmsle(predicted,real):
     return (sum/len(predicted))**0.5
 
 
+
+# models 
+class XgbWrapper(object):
+    def __init__(self, seed=2017, params=None):
+        self.param = params
+        self.param['seed'] = seed
+        self.nrounds = params.pop('nrounds', 400)
+
+    def train(self, xtra, ytra, xte, yte):
+        dtrain = xgb.DMatrix(xtra, label=ytra)
+        dvalid = xgb.DMatrix(xte, label=yte)
+        watchlist = [(dtrain, 'train'), (dvalid, 'eval')]
+        self.gbdt = xgb.train(self.param, dtrain, self.nrounds,
+            watchlist, early_stopping_rounds=10)
+
+    def predict(self, x):
+        return self.gbdt.predict(xgb.DMatrix(x))
 
 ### ================================================ ###
 
