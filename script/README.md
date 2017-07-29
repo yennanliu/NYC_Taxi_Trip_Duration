@@ -16,10 +16,12 @@ model.py   :  model IO
 ## Quick start 
 
 ```
-$python run_train.py
+$export PYTHONPATH=/Users/yennanliu/NYC_Taxi_Trip_Duration/
+# add script route to PYTHONPATH
+$python run/run_train.py
 # fitting model with train data, save model as pickle file 
 # model/model_0726.pkl
-$python run_test.py
+$python run/run_test.py
 # predict test data with saved model, save prediction csv
 # output/submit0726.csv
 
