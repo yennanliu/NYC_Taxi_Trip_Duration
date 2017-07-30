@@ -132,10 +132,15 @@ def get_features(df):
     # Get Average driving speed 
     # km/hr
     # (km/sec = 3600 * (km/hr))
-    df_.loc[:, 'avg_speed_h'] = 3600 * df_['distance_haversine'] / df_['trip_duration']
-    df_.loc[:, 'avg_speed_m'] = 3600 * df_['distance_manhattan'] / df_['trip_duration']
+    # in case trip duration is not available in test dataset 
+    try:
+        df_.loc[:, 'avg_speed_h'] = 3600 * df_['distance_haversine'] / df_['trip_duration']
+        df_.loc[:, 'avg_speed_m'] = 3600 * df_['distance_manhattan'] / df_['trip_duration']
+    except:
+        pass
     
     return df_
+
 
 
 
@@ -159,16 +164,21 @@ def clean_data(df):
          (df_['distance_manhattan'] > df_['distance_manhattan'].quantile(0.05))]
     # remove potential  trip duration outlier 
     # trip duration should less then 0.5 day and > 10 sec normally
-    df_ = df_[(df_['trip_duration']  < 12*3600) & (df_['trip_duration'] > 10)]
-    df_ = df_[(df_['trip_duration'] < df_['trip_duration'].quantile(0.95))&
-         (df_['trip_duration'] > df_['trip_duration'].quantile(0.05))]
+    # in case test data has no trip duration 
+    try:
+        df_ = df_[(df_['trip_duration']  < 12*3600) & (df_['trip_duration'] > 10)]
+        df_ = df_[(df_['trip_duration'] < df_['trip_duration'].quantile(0.95))&
+             (df_['trip_duration'] > df_['trip_duration'].quantile(0.05))]
     # remove potential speed outlier  
-    df_ = df_[(df_['avg_speed_h']  < 100) & (df_['trip_duration'] > 0)]
-    df_ = df_[(df_['avg_speed_m']  < 100) & (df_['avg_speed_m'] > 0)]
-    df_ = df_[(df_['avg_speed_h'] < df_['avg_speed_h'].quantile(0.95))&
+        df_ = df_[(df_['avg_speed_h']  < 100) & (df_['avg_speed_h'] > 0)]
+        df_ = df_[(df_['avg_speed_m']  < 100) & (df_['avg_speed_m'] > 0)]
+        df_ = df_[(df_['avg_speed_h'] < df_['avg_speed_h'].quantile(0.95))&
          (df_['avg_speed_h'] > df_['avg_speed_h'].quantile(0.05))]
-    df_ = df_[(df_['avg_speed_m'] < df_['avg_speed_m'].quantile(0.95))&
+        df_ = df_[(df_['avg_speed_m'] < df_['avg_speed_m'].quantile(0.95))&
          (df_['avg_speed_m'] > df_['avg_speed_m'].quantile(0.05))]
+    except:
+        pass
+ 
     # potential passenger_count outlier 
     df_ = df_[(df_['passenger_count']  <= 6) & (df_['passenger_count'] > 0)]
     
