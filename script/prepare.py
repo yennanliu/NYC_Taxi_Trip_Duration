@@ -142,15 +142,41 @@ def get_features(df):
 ### ================================================ ###
 # data cleaning
 
+
+
+# data cleaning help function
+
+
+# just simple remove too big /small data points in features, will do further after
+# data cleaning analysis
+
 def clean_data(df):
     df_ = df.copy()
-    # remove possible outlier in haversine distance 
+    # remove potential distance outlier 
     df_ = df_[(df_['distance_haversine'] < df_['distance_haversine'].quantile(0.95))&
          (df_['distance_haversine'] > df_['distance_haversine'].quantile(0.05))]
-    # remove possible outlier in trip duration 
+    df_ = df_[(df_['distance_manhattan'] < df_['distance_manhattan'].quantile(0.95))&
+         (df_['distance_manhattan'] > df_['distance_manhattan'].quantile(0.05))]
+    # remove potential  trip duration outlier 
+    # trip duration should less then 0.5 day and > 10 sec normally
+    df_ = df_[(df_['trip_duration']  < 12*3600) & (df_['trip_duration'] > 10)]
     df_ = df_[(df_['trip_duration'] < df_['trip_duration'].quantile(0.95))&
          (df_['trip_duration'] > df_['trip_duration'].quantile(0.05))]
+    # remove potential speed outlier  
+    df_ = df_[(df_['avg_speed_h']  < 100) & (df_['trip_duration'] > 0)]
+    df_ = df_[(df_['avg_speed_m']  < 100) & (df_['avg_speed_m'] > 0)]
+    df_ = df_[(df_['avg_speed_h'] < df_['avg_speed_h'].quantile(0.95))&
+         (df_['avg_speed_h'] > df_['avg_speed_h'].quantile(0.05))]
+    df_ = df_[(df_['avg_speed_m'] < df_['avg_speed_m'].quantile(0.95))&
+         (df_['avg_speed_m'] > df_['avg_speed_m'].quantile(0.05))]
+    # potential passenger_count outlier 
+    df_ = df_[(df_['passenger_count']  <= 6) & (df_['passenger_count'] > 0)]
+    
     return df_
+       
+   
+
+
 
 ### ================================================ ###
 # load data
