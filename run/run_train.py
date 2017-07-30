@@ -23,6 +23,8 @@ df_train, df_test, sampleSubmission = load_data()
 print (df_train)
 
 # only take 100 data points  here 
+
+"""
 df_train_ = basic_feature_extract(df_train.head(100))
 df_train_.loc[:, 'distance_haversine'] = get_haversine_distance(
                       df_train_['pickup_latitude'].values,
@@ -34,7 +36,12 @@ df_train_.loc[:, 'distance_manhattan'] = get_manhattan_distance(
                       df_train_['pickup_longitude'].values,
                       df_train_['dropoff_latitude'].values,
                       df_train_['dropoff_longitude'].values)
+"""
 
+df_train_ = basic_feature_extract(df_train.head(100))
+df_train_ = get_features(df_train_)
+df_train_,df_test_ = pca_lon_lat(df_train_,df_test)
+df_train_ = avg_speed(df_train_)
 df_train_ = clean_data(df_train_)
 
 print (df_train_.head())
