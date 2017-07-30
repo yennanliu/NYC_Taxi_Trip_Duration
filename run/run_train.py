@@ -20,7 +20,7 @@ from script.model import *
 #run the process 
 
 df_train, df_test, sampleSubmission = load_data()
-print (df_train)
+#print (df_train.head())
 
 # only take 100 data points  here 
 
