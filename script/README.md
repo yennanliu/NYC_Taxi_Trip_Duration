@@ -2,12 +2,12 @@
 
 
 ## Tech
-- python 3, sklearn
+- Python 3, Sklearn, Pandas, Numpy, Xgboost
 
 ## Scripts 
 
 ```
-prepare.py :  preparing data (feature extract / data cleaning...) 
+prepare.py :  preparing data (feature extract / engineering /data cleaning...) 
 train.py   :  training model 
 model.py   :  model IO 
 
@@ -16,14 +16,17 @@ model.py   :  model IO
 ## Quick start 
 
 ```
-$export PYTHONPATH=/Users/yennanliu/NYC_Taxi_Trip_Duration/
 # add script route to PYTHONPATH
-$python run/run_train.py
+$export PYTHONPATH=/Users/yennanliu/NYC_Taxi_Trip_Duration/
+
+# to the project 
+$cd NYC_Taxi_Trip_Duration
+
 # fitting model with train data, save model as pickle file 
-# model/model_0726.pkl
-$python run/run_test.py
+$python run/run_train.py
+
 # predict test data with saved model, save prediction csv
-# output/submit0726.csv
+$python run/run_test.py
 
 ```
 
