@@ -11,7 +11,8 @@ print (today_)
 # save model 
 def save_model(model):
     try:
-        with open('../model/model_{}.pkl'.format(today_), 'wb') as fid:
+        #with open('../model/model_{}.pkl'.format(today_), 'wb') as fid:
+        with open('model/model_{}.pkl'.format(today_), 'wb') as fid:
             pickle.dump(model, fid)
             print ('model save success')
     except:
@@ -23,7 +24,7 @@ def save_model(model):
 def load_model():
 	try:       
 		#with open('../model/model_0730.pkl', 'rb') as fid:  
-		with open('../model/model_{}.pkl'.format(today_), 'rb') as fid:      
+		with open('model/model_{}.pkl'.format(today_), 'rb') as fid:      
 			loaded_model = pickle.load(fid)     
 			return loaded_model
 	except:
