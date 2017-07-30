@@ -9,6 +9,7 @@ import calendar
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.metrics import mean_squared_error, r2_score, explained_variance_score, mean_absolute_error
 import pickle 
+from datetime import datetime
 
 
 # import user defined library
@@ -49,9 +50,10 @@ print ('predict finish !')
 submit= submit.set_index('id')
 
 print (submit.head())
-#print (shape(submit))
+
 # save output 
-submit.to_csv('~/NYC_Taxi_Trip_Duration/output/submit0726.csv')
+today_ = datetime.now().strftime("%m%d")
+submit.to_csv('~/NYC_Taxi_Trip_Duration/output/submit_{}.csv'.format(today_))
 print ('predict data saved !')
 
 
