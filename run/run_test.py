@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# script fitting test dataset 
+# script predict with  test dataset 
 
 
 # basic library 
@@ -21,22 +21,14 @@ from script.model import *
 #run the process 
 
 df_train, df_test, sampleSubmission = load_data()
-print (df_test.head())
 df_test_ = basic_feature_extract(df_test)
-df_test_ = get_weekday(df_test_)
-# get haversine distance 
-df_test_.loc[:, 'distance_haversine'] = get_haversine_distance(
-                      df_test_['pickup_latitude'].values,
-                      df_test_['pickup_longitude'].values,
-                      df_test_['dropoff_latitude'].values,
-                      df_test_['dropoff_longitude'].values)
+df_test_ = get_features(df_test_)
+#df_train_,df_test_ = pca_lon_lat(df_train_,df_test_)
+#df_train_ = avg_speed(df_train_)
+df_test_ = clean_data(df_test_)
+print (df_test.head())
 
-# get manhattan distance 
-df_test_.loc[:, 'distance_manhattan'] = get_manhattan_distance(
-                      df_test_['pickup_latitude'].values,
-                      df_test_['pickup_longitude'].values,
-                      df_test_['dropoff_latitude'].values,
-                      df_test_['dropoff_longitude'].values)
+
 # prepare submit data 
 submit = pd.DataFrame()
 submit['id'] = df_test_['id']
