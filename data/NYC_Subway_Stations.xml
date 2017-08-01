@@ -1,430 +1,430 @@
 <markers>
-    <marker lat="40.799494" lng="-73.968308" stop="103rd St" sublines="1" substopid="22"/>
-    <marker lat="40.790697" lng="-73.947472" stop="103rd St" sublines="6" substopid="120"/>
-    <marker lat="40.749804" lng="-73.862436" stop="103rd St" sublines="7" substopid="173"/>
-    <marker lat="40.796185" lng="-73.961448" stop="103rd St" sublines="B,C" substopid="191"/>
-    <marker lat="40.694955" lng="-73.844727" stop="104-102nd Sts" sublines="J,Z" substopid="327"/>
-    <marker lat="40.681701" lng="-73.838032" stop="104th St" sublines="A" substopid="238"/>
-    <marker lat="40.795213" lng="-73.944126" stop="110th St" sublines="6" substopid="121"/>
-    <marker lat="40.799098" lng="-73.951899" stop="110th St-Central Park N" sublines="2,3" substopid="39"/>
-    <marker lat="40.751610" lng="-73.855211" stop="111st St" sublines="7" substopid="174"/>
-    <marker lat="40.684071" lng="-73.832541" stop="111st St" sublines="A" substopid="239"/>
-    <marker lat="40.697250" lng="-73.836895" stop="111st St" sublines="J" substopid="328"/>
-    <marker lat="40.802443" lng="-73.949470" stop="116th St" sublines="2,3" substopid="40"/>
-    <marker lat="40.798721" lng="-73.941619" stop="116th St" sublines="6" substopid="122"/>
-    <marker lat="40.805088" lng="-73.954872" stop="116th St" sublines="B,C" substopid="193"/>
-    <marker lat="40.807928" lng="-73.963919" stop="116th St-Columbia Univ" sublines="1,9" substopid="24"/>
-    <marker lat="40.700342" lng="-73.828714" stop="121st St" sublines="J,Z" substopid="329"/>
-    <marker lat="40.815636" lng="-73.958296" stop="125th St" sublines="1" substopid="25"/>
-    <marker lat="40.807885" lng="-73.945450" stop="125th St" sublines="2,3" substopid="41"/>
-    <marker lat="40.804402" lng="-73.937492" stop="125th St" sublines="4,5,6" substopid="123"/>
-    <marker lat="40.811296" lng="-73.952200" stop="125th St" sublines="A,B,C,D" substopid="194"/>
-    <marker lat="40.814148" lng="-73.940877" stop="135th St" sublines="2,3" substopid="42"/>
-    <marker lat="40.817941" lng="-73.947618" stop="135th St" sublines="B,C" substopid="195"/>
-    <marker lat="40.821459" lng="-73.954062" stop="137th St" sublines="1" substopid="26"/>
-    <marker lat="40.813367" lng="-73.930042" stop="138th St-Grand Concourse" sublines="4,5" substopid="124"/>
-    <marker lat="40.826606" lng="-73.950331" stop="145th St" sublines="1" substopid="27"/>
-    <marker lat="40.820501" lng="-73.936284" stop="145th St" sublines="3" substopid="43"/>
-    <marker lat="40.824980" lng="-73.944056" stop="145th St" sublines="A,B,C,D" substopid="196"/>
-    <marker lat="40.823832" lng="-73.936207" stop="148th St" sublines="3" substopid="44"/>
-    <marker lat="40.818433" lng="-73.927439" stop="149th St-Grand Concourse" sublines="2,4,5" substopid="125"/>
-    <marker lat="40.818484" lng="-73.926989" stop="149th St-Grand Concourse" sublines="2,4,5" substopid="45"/>
-    <marker lat="40.738650" lng="-73.995862" stop="14th St-6-7th Aves" sublines="1,2,3,F,L,V" substopid="293"/>
-    <marker lat="40.745360" lng="-73.998488" stop="14th St-8th Ave" sublines="C,E" substopid="182"/>
-    <marker lat="40.830335" lng="-73.937979" stop="155th St" sublines="B,D" substopid="205"/>
-    <marker lat="40.830874" lng="-73.941342" stop="155th St" sublines="C" substopid="197"/>
-    <marker lat="40.834143" lng="-73.944819" stop="157th St" sublines="1" substopid="28"/>
-    <marker lat="40.660786" lng="-73.980044" stop="15th St" sublines="F" substopid="342"/>
-    <marker lat="40.828127" lng="-73.925904" stop="161st St-Yankee Stadium" sublines="4,B,D" substopid="126"/>
-    <marker lat="40.836164" lng="-73.939974" stop="163rd St" sublines="C" substopid="198"/>
-    <marker lat="40.835704" lng="-73.921244" stop="167th St" sublines="4" substopid="127"/>
-    <marker lat="40.834004" lng="-73.918225" stop="167th St" sublines="B,D" substopid="207"/>
-    <marker lat="40.840926" lng="-73.939507" stop="168th St-Broadway" sublines="1,A,C" substopid="199"/>
-    <marker lat="40.710468" lng="-73.793563" stop="169th St" sublines="F" substopid="276"/>
-    <marker lat="40.840153" lng="-73.917655" stop="170th St" sublines="4" substopid="128"/>
-    <marker lat="40.839435" lng="-73.913304" stop="170th St" sublines="B,D" substopid="208"/>
-    <marker lat="40.845689" lng="-73.910383" stop="174-175th Sts" sublines="B,D" substopid="209"/>
-    <marker lat="40.837393" lng="-73.887711" stop="174th St-Southern Blvd" sublines="2,5" substopid="52"/>
-    <marker lat="40.847652" lng="-73.939612" stop="175th St" sublines="A" substopid="200"/>
-    <marker lat="40.848570" lng="-73.911638" stop="176th St" sublines="4" substopid="130"/>
-    <marker lat="40.712598" lng="-73.783972" stop="179th St" sublines="F" substopid="277"/>
-    <marker lat="40.849884" lng="-73.933276" stop="181st St" sublines="1" substopid="30"/>
-    <marker lat="40.852128" lng="-73.937812" stop="181st St" sublines="A" substopid="201"/>
-    <marker lat="40.856355" lng="-73.900565" stop="182-183rd Sts" sublines="B,D" substopid="211"/>
-    <marker lat="40.858698" lng="-73.903700" stop="183rd St" sublines="4" substopid="132"/>
-    <marker lat="40.629751" lng="-73.977035" stop="18th Ave" sublines="F" substopid="346"/>
-    <marker lat="40.608011" lng="-74.001721" stop="18th Ave" sublines="M,W" substopid="419"/>
-    <marker lat="40.620709" lng="-73.990533" stop="18th Ave" sublines="N" substopid="427"/>
-    <marker lat="40.741029" lng="-73.997814" stop="18th St-7th Ave" sublines="1,2" substopid="10"/>
-    <marker lat="40.858841" lng="-73.934339" stop="190th St" sublines="A" substopid="202"/>
-    <marker lat="40.855574" lng="-73.929116" stop="191st St" sublines="1" substopid="31"/>
-    <marker lat="40.731336" lng="-73.982536" stop="1st Ave-14th St" sublines="L" substopid="441"/>
-    <marker lat="40.875014" lng="-73.879430" stop="205th St" sublines="D" substopid="215"/>
-    <marker lat="40.865070" lng="-73.918415" stop="207th St" sublines="1" substopid="33"/>
-    <marker lat="40.868108" lng="-73.919736" stop="207th St-Washington Hts" sublines="A" substopid="204"/>
-    <marker lat="40.604688" lng="-73.998422" stop="20th Ave" sublines="M,W" substopid="420"/>
-    <marker lat="40.617441" lng="-73.985014" stop="20th Ave" sublines="N" substopid="428"/>
-    <marker lat="40.869555" lng="-73.915163" stop="215th St" sublines="1" substopid="34"/>
-    <marker lat="40.883528" lng="-73.862756" stop="219th St" sublines="2,5" substopid="60"/>
-    <marker lat="40.743741" lng="-73.949454" stop="21st St (Van Alst)" sublines="G" substopid="288"/>
-    <marker lat="40.753621" lng="-73.942198" stop="21st St-Queensbridge" sublines="F" substopid="466"/>
-    <marker lat="40.874634" lng="-73.909629" stop="225th St" sublines="1" substopid="35"/>
-    <marker lat="40.888227" lng="-73.860216" stop="225th St" sublines="2,5" substopid="61"/>
-    <marker lat="40.878977" lng="-73.904760" stop="231st St" sublines="1" substopid="36"/>
-    <marker lat="40.893302" lng="-73.857375" stop="233rd St" sublines="2,5" substopid="62"/>
-    <marker lat="40.885019" lng="-73.900690" stop="238th St" sublines="2,5" substopid="37"/>
-    <marker lat="40.898417" lng="-73.854239" stop="238th St" sublines="2,5" substopid="63"/>
-    <marker lat="40.742939" lng="-73.992810" stop="23rd St-6th Ave" sublines="F,V" substopid="294"/>
-    <marker lat="40.744118" lng="-73.995590" stop="23rd St-7th Ave" sublines="1,2" substopid="11"/>
-    <marker lat="40.741065" lng="-74.001525" stop="23rd St-8th Ave" sublines="A,C,E,L" substopid="181"/>
-    <marker lat="40.741399" lng="-73.989253" stop="23rd St-Broadway" sublines="N,R" substopid="368"/>
-    <marker lat="40.746635" lng="-73.945156" stop="23rd St-Ely Ave-Court Sq" sublines="7" substopid="161"/>
-    <marker lat="40.747467" lng="-73.945571" stop="23rd St-Ely Ave-Court Sq" sublines="E,G,V" substopid="257"/>
-    <marker lat="40.740185" lng="-73.986365" stop="23rd St-Park Ave S" sublines="6" substopid="110"/>
-    <marker lat="40.903401" lng="-73.850398" stop="241st St" sublines="2" substopid="64"/>
-    <marker lat="40.889438" lng="-73.898408" stop="242nd St" sublines="1" substopid="38"/>
-    <marker lat="40.597869" lng="-73.986911" stop="25th Ave" sublines="W" substopid="422"/>
-    <marker lat="40.660282" lng="-73.998106" stop="25th St" sublines="M,N,R" substopid="403"/>
-    <marker lat="40.747181" lng="-73.993321" stop="28th St-7th Ave" sublines="1,2" substopid="12"/>
-    <marker lat="40.745380" lng="-73.988663" stop="28th St-Broadway" sublines="N,R" substopid="367"/>
-    <marker lat="40.743335" lng="-73.984055" stop="28th St-Park Ave S" sublines="6" substopid="111"/>
-    <marker lat="40.723418" lng="-73.990255" stop="2nd Ave-Houston St" sublines="F,V" substopid="299"/>
-    <marker lat="40.766503" lng="-73.921395" stop="30th Ave" sublines="N,W" substopid="358"/>
-    <marker lat="40.744368" lng="-73.930814" stop="33rd St" sublines="7" substopid="163"/>
-    <marker lat="40.746415" lng="-73.981829" stop="33rd St-Park Ave" sublines="6" substopid="112"/>
-    <marker lat="40.749824" lng="-73.987770" stop="34th St-6th Ave" sublines="B,D,F,N,Q,R,V,W" substopid="295"/>
-    <marker lat="40.750868" lng="-73.990645" stop="34th St-7th Ave" sublines="1,2,3" substopid="13"/>
-    <marker lat="40.752195" lng="-73.993472" stop="34th St-8th Ave" sublines="A,C,E" substopid="183"/>
-    <marker lat="40.756616" lng="-73.929445" stop="36th Ave" sublines="N,W" substopid="356"/>
-    <marker lat="40.751834" lng="-73.928692" stop="36th St" sublines="G,R,V" substopid="259"/>
-    <marker lat="40.655104" lng="-74.003580" stop="36th St" sublines="M,N,R,W" substopid="404"/>
-    <marker lat="40.752571" lng="-73.932712" stop="39 Ave" sublines="N,W" substopid="355"/>
-    <marker lat="40.810529" lng="-73.926275" stop="3rd Ave-138th St" sublines="6" substopid="138"/>
-    <marker lat="40.816144" lng="-73.917895" stop="3rd Ave-149th St" sublines="2,5" substopid="46"/>
-    <marker lat="40.733312" lng="-73.987154" stop="3rd Ave-14th St" sublines="L" substopid="440"/>
-    <marker lat="40.743629" lng="-73.923925" stop="40th St" sublines="7" substopid="164"/>
-    <marker lat="40.753944" lng="-73.982109" stop="42nd St-5th Ave-6th Ave" sublines="7,B,D,F,V" substopid="157"/>
-    <marker lat="40.754227" lng="-73.984614" stop="42nd St-5th Ave-6th Ave" sublines="7,B,D,F,V" substopid="296"/>
-    <marker lat="40.648870" lng="-74.010136" stop="45th St" sublines="N,R" substopid="405"/>
-    <marker lat="40.742952" lng="-73.918321" stop="46th St" sublines="7" substopid="165"/>
-    <marker lat="40.756250" lng="-73.913036" stop="46th St" sublines="G,R,V" substopid="261"/>
-    <marker lat="40.758629" lng="-73.981273" stop="47-50th Sts-Rockefeller Center" sublines="B,D,F,V" substopid="297"/>
-    <marker lat="40.759812" lng="-73.984143" stop="49th St-7th Ave" sublines="N,R,W" substopid="364"/>
-    <marker lat="40.636174" lng="-73.994781" stop="50th St" sublines="M,W" substopid="414"/>
-    <marker lat="40.762597" lng="-73.985815" stop="50th St-8th Ave" sublines="C,E" substopid="185"/>
-    <marker lat="40.761783" lng="-73.983822" stop="50th St-Broadway" sublines="1,2" substopid="15"/>
-    <marker lat="40.743977" lng="-73.912347" stop="52nd St" sublines="7" substopid="166"/>
-    <marker lat="40.645101" lng="-74.014100" stop="53rd St" sublines="N,R" substopid="406"/>
-    <marker lat="40.631579" lng="-73.995423" stop="55th St" sublines="M,W" substopid="415"/>
-    <marker lat="40.764026" lng="-73.977391" stop="57th St-6th Ave" sublines="F" substopid="298"/>
-    <marker lat="40.764632" lng="-73.980660" stop="57th St-7th Ave" sublines="N,Q,R,W" substopid="363"/>
-    <marker lat="40.641269" lng="-74.018086" stop="59th St" sublines="N,R" substopid="407"/>
-    <marker lat="40.768044" lng="-73.981955" stop="59th St-Columbus Circle" sublines="1,2,A,B,C,D" substopid="16"/>
-    <marker lat="40.762573" lng="-73.967905" stop="59th St-Lexington Ave" sublines="4,5,6,N,R,W" substopid="115"/>
-    <marker lat="40.762783" lng="-73.967530" stop="59th St-Lexington Ave" sublines="F" substopid="361"/>
-    <marker lat="40.760425" lng="-73.975806" stop="5th Ave-53rd St" sublines="E,V" substopid="255"/>
-    <marker lat="40.764955" lng="-73.973535" stop="5th Ave-60th St" sublines="N,R,W" substopid="362"/>
-    <marker lat="40.745402" lng="-73.903138" stop="61st St" sublines="7" substopid="167"/>
-    <marker lat="40.729829" lng="-73.861657" stop="63rd Dr" sublines="G,R,V" substopid="268"/>
-    <marker lat="40.749479" lng="-73.898244" stop="65th St" sublines="G,R,V" substopid="263"/>
-    <marker lat="40.773463" lng="-73.982193" stop="66th St" sublines="1,2" substopid="17"/>
-    <marker lat="40.726479" lng="-73.852616" stop="67th Ave" sublines="G,R,V" substopid="269"/>
-    <marker lat="40.768185" lng="-73.963767" stop="68th St" sublines="6" substopid="116"/>
-    <marker lat="40.746177" lng="-73.896183" stop="69th St" sublines="7" substopid="168"/>
-    <marker lat="40.721609" lng="-73.844778" stop="71-Continental Aves" sublines="E,F,G,R,V" substopid="270"/>
-    <marker lat="40.619721" lng="-73.998813" stop="71st St" sublines="M,W" substopid="417"/>
-    <marker lat="40.778666" lng="-73.981876" stop="72nd St" sublines="1,2,3" substopid="18"/>
-    <marker lat="40.776213" lng="-73.975972" stop="72nd St" sublines="B,C" substopid="187"/>
-    <marker lat="40.746686" lng="-73.891274" stop="74th St-Roosevelt Ave" sublines="7,E,F,G,R,V" substopid="169"/>
-    <marker lat="40.718357" lng="-73.837370" stop="75th Ave" sublines="E,F" substopid="271"/>
-    <marker lat="40.773671" lng="-73.959876" stop="77th St" sublines="6" substopid="117"/>
-    <marker lat="40.629647" lng="-74.025652" stop="77th St" sublines="R" substopid="409"/>
-    <marker lat="40.783831" lng="-73.980098" stop="79th St" sublines="1,2" substopid="19"/>
-    <marker lat="40.613394" lng="-74.000626" stop="79th St" sublines="M,W" substopid="418"/>
-    <marker lat="40.666149" lng="-73.980021" stop="7th Ave" sublines="F" substopid="341"/>
-    <marker lat="40.677142" lng="-73.972585" stop="7th Ave" sublines="Q" substopid="381"/>
-    <marker lat="40.762953" lng="-73.981892" stop="7th Ave-53rd St" sublines="B,D,E" substopid="254"/>
-    <marker lat="40.679152" lng="-73.859205" stop="80th St" sublines="A" substopid="235"/>
-    <marker lat="40.781504" lng="-73.972250" stop="81st St" sublines="B,C" substopid="188"/>
-    <marker lat="40.747419" lng="-73.883573" stop="82nd St-Jackson Hts" sublines="7" substopid="170"/>
-    <marker lat="40.788606" lng="-73.976203" stop="86th St" sublines="1,2" substopid="20"/>
-    <marker lat="40.779526" lng="-73.955514" stop="86th St" sublines="4,5,6" substopid="118"/>
-    <marker lat="40.785936" lng="-73.968978" stop="86th St" sublines="B,C" substopid="189"/>
-    <marker lat="40.592795" lng="-73.978246" stop="86th St" sublines="N" substopid="432"/>
-    <marker lat="40.622467" lng="-74.028550" stop="86th St" sublines="R" substopid="410"/>
-    <marker lat="40.679662" lng="-73.851705" stop="88th St" sublines="A" substopid="236"/>
-    <marker lat="40.634999" lng="-74.011586" stop="8th Ave" sublines="N" substopid="424"/>
-    <marker lat="40.730611" lng="-73.992404" stop="8th St-Broadway" sublines="N,R" substopid="370"/>
-    <marker lat="40.646092" lng="-73.994779" stop="9 Ave" sublines="M,W" substopid="412"/>
-    <marker lat="40.748383" lng="-73.876395" stop="90th St-Elmhurst Ave" sublines="7" substopid="171"/>
-    <marker lat="40.616621" lng="-74.030851" stop="95th St" sublines="R" substopid="411"/>
-    <marker lat="40.793966" lng="-73.972240" stop="96th St" sublines="1,2,3" substopid="21"/>
-    <marker lat="40.785867" lng="-73.950910" stop="96th St" sublines="6" substopid="119"/>
-    <marker lat="40.791715" lng="-73.964717" stop="96th St" sublines="B,C" substopid="190"/>
-    <marker lat="40.670931" lng="-73.988213" stop="9th St-4 Ave" sublines="F,M,N,R" substopid="401"/>
-    <marker lat="40.676974" lng="-73.898995" stop="Alabama Ave" sublines="J" substopid="319"/>
-    <marker lat="40.865437" lng="-73.867379" stop="Allerton Ave" sublines="2,5" substopid="57"/>
-    <marker lat="40.667763" lng="-73.834175" stop="Aqueduct-North Conduit Ave" sublines="A" substopid="241"/>
-    <marker lat="40.730634" lng="-73.990565" stop="Astor Place" sublines="6" substopid="108"/>
-    <marker lat="40.769964" lng="-73.917363" stop="Astoria Blvd" sublines="N,W" substopid="359"/>
-    <marker lat="40.675356" lng="-73.903277" stop="Atlantic Ave" sublines="L" substopid="455"/>
-    <marker lat="40.684495" lng="-73.976840" stop="Atlantic Ave-Pacific St" sublines="1,2,4,5,M,N,Q,R,W" substopid="380"/>
-    <marker lat="40.629256" lng="-73.961779" stop="Ave H" sublines="Q" substopid="388"/>
-    <marker lat="40.625373" lng="-73.976192" stop="Ave I" sublines="F" substopid="347"/>
-    <marker lat="40.624723" lng="-73.960863" stop="Ave J" sublines="Q" substopid="389"/>
-    <marker lat="40.617638" lng="-73.959544" stop="Ave M" sublines="Q" substopid="390"/>
-    <marker lat="40.614662" lng="-73.974168" stop="Ave N" sublines="F" substopid="349"/>
-    <marker lat="40.608892" lng="-73.973102" stop="Ave P" sublines="F" substopid="350"/>
-    <marker lat="40.596256" lng="-73.973299" stop="Ave U" sublines="F" substopid="352"/>
-    <marker lat="40.597635" lng="-73.979258" stop="Ave U" sublines="N" substopid="431"/>
-    <marker lat="40.599619" lng="-73.956077" stop="Ave U" sublines="Q" substopid="392"/>
-    <marker lat="40.589402" lng="-73.974170" stop="Ave X" sublines="F" substopid="353"/>
-    <marker lat="40.588922" lng="-73.983610" stop="Bay 50th St" sublines="W" substopid="423"/>
-    <marker lat="40.601967" lng="-73.993859" stop="Bay Pkwy" sublines="M,W" substopid="421"/>
-    <marker lat="40.611826" lng="-73.982077" stop="Bay Pkwy" sublines="N" substopid="429"/>
-    <marker lat="40.620983" lng="-73.975315" stop="Bay Pkwy-22nd Ave" sublines="F" substopid="348"/>
-    <marker lat="40.634878" lng="-74.023489" stop="Bay Ridge Ave" sublines="R" substopid="408"/>
-    <marker lat="40.878721" lng="-73.838557" stop="Baychester Ave" sublines="5" substopid="67"/>
-    <marker lat="40.583238" lng="-73.827484" stop="Beach 105th St" sublines="A,S" substopid="252"/>
-    <marker lat="40.599934" lng="-73.761451" stop="Beach 25th St" sublines="A" substopid="248"/>
-    <marker lat="40.595360" lng="-73.768139" stop="Beach 36th St" sublines="A" substopid="247"/>
-    <marker lat="40.593003" lng="-73.775843" stop="Beach 44th St" sublines="A" substopid="246"/>
-    <marker lat="40.592447" lng="-73.788457" stop="Beach 60th St" sublines="A" substopid="245"/>
-    <marker lat="40.590899" lng="-73.796610" stop="Beach 67th St" sublines="A" substopid="244"/>
-    <marker lat="40.588064" lng="-73.813436" stop="Beach 90th St" sublines="A,S" substopid="250"/>
-    <marker lat="40.585250" lng="-73.820323" stop="Beach 98th St" sublines="A,S" substopid="251"/>
-    <marker lat="40.717247" lng="-73.956738" stop="Bedford Ave" sublines="L" substopid="442"/>
-    <marker lat="40.873311" lng="-73.890693" stop="Bedford Park Blvd" sublines="4" substopid="135"/>
-    <marker lat="40.872964" lng="-73.887288" stop="Bedford Park Blvd" sublines="B,D" substopid="214"/>
-    <marker lat="40.689616" lng="-73.953507" stop="Bedford-Nostrand Aves" sublines="G" substopid="281"/>
-    <marker lat="40.680800" lng="-73.975069" stop="Bergen St" sublines="1,2" substopid="77"/>
-    <marker lat="40.686025" lng="-73.990721" stop="Bergen St" sublines="F,G" substopid="337"/>
-    <marker lat="40.645297" lng="-73.948861" stop="Beverley Rd" sublines="2,5" substopid="95"/>
-    <marker lat="40.644163" lng="-73.964444" stop="Beverley Rd" sublines="Q" substopid="385"/>
-    <marker lat="40.669879" lng="-73.959352" stop="Botanic Garden" sublines="" substopid="433"/>
-    <marker lat="40.720312" lng="-73.994024" stop="Bowery" sublines="J,M" substopid="307"/>
-    <marker lat="40.705078" lng="-74.013934" stop="Bowling Green" sublines="4,5" substopid="101"/>
-    <marker lat="40.577717" lng="-73.960939" stop="Brighton Beach" sublines="Q" substopid="395"/>
-    <marker lat="40.608085" lng="-73.815542" stop="Broad Channel" sublines="A,S" substopid="243"/>
-    <marker lat="40.707147" lng="-74.010716" stop="Broad St" sublines="J,M,Z" substopid="303"/>
-    <marker lat="40.706182" lng="-73.950257" stop="Broadway" sublines="G" substopid="284"/>
-    <marker lat="40.761397" lng="-73.925439" stop="Broadway" sublines="N,W" substopid="357"/>
-    <marker lat="40.849322" lng="-73.868832" stop="Bronx Park East" sublines="2,5" substopid="55"/>
-    <marker lat="40.807540" lng="-73.919257" stop="Brook Ave" sublines="6" substopid="139"/>
-    <marker lat="40.846756" lng="-73.832613" stop="Buhre Ave" sublines="6" substopid="154"/>
-    <marker lat="40.871413" lng="-73.867147" stop="Burke Ave" sublines="2,5" substopid="58"/>
-    <marker lat="40.853836" lng="-73.907312" stop="Burnside Ave" sublines="4" substopid="131"/>
-    <marker lat="40.682968" lng="-73.905283" stop="Bushwick Ave" sublines="L" substopid="453"/>
-    <marker lat="40.725913" lng="-73.996357" stop="Bway-Lafayette St-Bleecker St" sublines="6,F,S,V" substopid="291"/>
-    <marker lat="40.726310" lng="-73.994350" stop="Bway-Lafayette St-Bleecker St" sublines="6,F,S,V" substopid="107"/>
-    <marker lat="40.721342" lng="-74.005294" stop="Canal-Church Sts" sublines="A,C,E" substopid="178"/>
-    <marker lat="40.723170" lng="-74.006179" stop="Canal-Varick Sts" sublines="1,2" substopid="6"/>
-    <marker lat="40.680186" lng="-73.994907" stop="Carroll St" sublines="F,G" substopid="338"/>
-    <marker lat="40.834203" lng="-73.851501" stop="Castle Hill Ave" sublines="6" substopid="150"/>
-    <marker lat="40.804109" lng="-73.966742" stop="Cathedral Pkwy" sublines="1" substopid="23"/>
-    <marker lat="40.800591" lng="-73.958153" stop="Cathedral Pkwy" sublines="B,C" substopid="192"/>
-    <marker lat="40.697873" lng="-73.927706" stop="Central Ave" sublines="M" substopid="330"/>
-    <marker lat="40.716005" lng="-74.008796" stop="Chambers St-W Broadway" sublines="1,2" substopid="4"/>
-    <marker lat="40.713556" lng="-74.004153" stop="Chambers-Brooklyn Bridge" sublines="4,5,6,J,M,Z" substopid="104"/>
-    <marker lat="40.713888" lng="-74.003384" stop="Chambers-Brooklyn Bridge" sublines="4,5,6,J,M,Z" substopid="305"/>
-    <marker lat="40.714629" lng="-74.008150" stop="Chambers-World Trade Ctr-Park Pl" sublines="1,2,A,C,E" substopid="216"/>
-    <marker lat="40.682905" lng="-73.910456" stop="Chauncey St" sublines="J,Z" substopid="317"/>
-    <marker lat="40.734074" lng="-74.002529" stop="Christopher St" sublines="1,2" substopid="8"/>
-    <marker lat="40.650817" lng="-73.949581" stop="Church Ave" sublines="2,5" substopid="94"/>
-    <marker lat="40.644355" lng="-73.979696" stop="Church Ave" sublines="F" substopid="344"/>
-    <marker lat="40.650511" lng="-73.962888" stop="Church Ave" sublines="Q" substopid="384"/>
-    <marker lat="40.713610" lng="-74.006724" stop="City Hall-Broadway" sublines="N,R" substopid="373"/>
-    <marker lat="40.697450" lng="-73.992984" stop="Clark St" sublines="1,2" substopid="72"/>
-    <marker lat="40.688865" lng="-73.959987" stop="Classon Ave" sublines="G" substopid="280"/>
-    <marker lat="40.679814" lng="-73.884930" stop="Cleveland St" sublines="J" substopid="320"/>
-    <marker lat="40.683335" lng="-73.964704" stop="Clinton-Washington Aves" sublines="C" substopid="222"/>
-    <marker lat="40.688080" lng="-73.966855" stop="Clinton-Washington Aves" sublines="G" substopid="279"/>
-    <marker lat="40.640853" lng="-73.963821" stop="Cortelyou Rd" sublines="Q" substopid="386"/>
-    <marker lat="40.712165" lng="-74.012134" stop="Cortlandt St-Greenwich St" sublines="1,9" substopid="3"/>
-    <marker lat="40.711018" lng="-74.010770" stop="Cortlandt St-Trinity Pl" sublines="N,R" substopid="374"/>
-    <marker lat="40.693781" lng="-73.990580" stop="Court St-Borough Hall" sublines="1,2,4,5,M,R" substopid="377"/>
-    <marker lat="40.692300" lng="-73.989485" stop="Court St-Borough Hall" sublines="4,5" substopid="100"/>
-    <marker lat="40.683120" lng="-73.873928" stop="Crescent St" sublines="J,Z" substopid="322"/>
-    <marker lat="40.805481" lng="-73.914272" stop="Cypress Ave" sublines="6" substopid="140"/>
-    <marker lat="40.689806" lng="-73.873170" stop="Cypress Hills" sublines="J" substopid="323"/>
-    <marker lat="40.703864" lng="-73.918439" stop="DeKalb Ave" sublines="L" substopid="449"/>
-    <marker lat="40.689850" lng="-73.981266" stop="DeKalb Ave" sublines="M,N,Q,R" substopid="379"/>
-    <marker lat="40.718542" lng="-73.988197" stop="Delancey-Essex Sts" sublines="F,J,M,Z" substopid="300"/>
-    <marker lat="40.774874" lng="-73.911427" stop="Ditmars Blvd" sublines="N,W" substopid="360"/>
-    <marker lat="40.636090" lng="-73.978245" stop="Ditmas Ave" sublines="F" substopid="345"/>
-    <marker lat="40.861564" lng="-73.924766" stop="Dyckman St" sublines="1" substopid="32"/>
-    <marker lat="40.865502" lng="-73.927262" stop="Dyckman St-200th St" sublines="A" substopid="203"/>
-    <marker lat="40.888595" lng="-73.831306" stop="Dyre Ave-233rd St" sublines="5" substopid="68"/>
-    <marker lat="40.650841" lng="-73.899865" stop="E 105th St" sublines="L" substopid="459"/>
-    <marker lat="40.808695" lng="-73.907658" stop="E 143rd St" sublines="6" substopid="141"/>
-    <marker lat="40.812192" lng="-73.904059" stop="E 149th St" sublines="6" substopid="142"/>
-    <marker lat="40.833073" lng="-73.861530" stop="E 177th St-Parkchester" sublines="6" substopid="149"/>
-    <marker lat="40.841876" lng="-73.873761" stop="E 180th St" sublines="2,5" substopid="54"/>
-    <marker lat="40.677992" lng="-73.905935" stop="E New York-Eastern Pkwy" sublines="A,C,J,L,Z" substopid="229"/>
-    <marker lat="40.840579" lng="-73.879751" stop="E Tremont Ave" sublines="2,5" substopid="53"/>
-    <marker lat="40.714409" lng="-73.990219" stop="East Broadway" sublines="F" substopid="301"/>
-    <marker lat="40.672148" lng="-73.964659" stop="Eastern Pkwy" sublines="1,2" substopid="79"/>
-    <marker lat="40.828576" lng="-73.879497" stop="Elder Ave" sublines="6" substopid="146"/>
-    <marker lat="40.691321" lng="-73.867226" stop="Elderts Lane" sublines="J,Z" substopid="324"/>
-    <marker lat="40.742328" lng="-73.881804" stop="Elmhurst Ave" sublines="G,R,V" substopid="265"/>
-    <marker lat="40.675275" lng="-73.872409" stop="Euclid Ave" sublines="A,C" substopid="233"/>
-    <marker lat="40.603992" lng="-73.755358" stop="Far Rockaway-Mott Ave" sublines="A" substopid="249"/>
-    <marker lat="40.632918" lng="-73.947595" stop="Flatbush Ave" sublines="2,5" substopid="97"/>
-    <marker lat="40.700582" lng="-73.950288" stop="Flushing Ave" sublines="G" substopid="283"/>
-    <marker lat="40.700267" lng="-73.941009" stop="Flushing Ave" sublines="J,M" substopid="312"/>
-    <marker lat="40.862742" lng="-73.901089" stop="Fordham Rd" sublines="4" substopid="133"/>
-    <marker lat="40.861326" lng="-73.897692" stop="Fordham Rd" sublines="B,D" substopid="212"/>
-    <marker lat="40.704341" lng="-73.903111" stop="Forest Ave" sublines="M" substopid="334"/>
-    <marker lat="40.692293" lng="-73.860423" stop="Forest Pkwy" sublines="J" substopid="325"/>
-    <marker lat="40.681496" lng="-73.957209" stop="Franklin Ave" sublines="C,S" substopid="223"/>
-    <marker lat="40.719775" lng="-74.006824" stop="Franklin St" sublines="1,2" substopid="5"/>
-    <marker lat="40.830485" lng="-73.891822" stop="Freeman St" sublines="2,5" substopid="51"/>
-    <marker lat="40.706193" lng="-73.896089" stop="Fresh Pond Rd" sublines="M" substopid="335"/>
-    <marker lat="40.650862" lng="-73.975569" stop="Ft Hamilton Pkwy" sublines="F" substopid="343"/>
-    <marker lat="40.640935" lng="-73.994327" stop="Ft Hamilton Pkwy" sublines="M,W" substopid="413"/>
-    <marker lat="40.631482" lng="-74.005379" stop="Ft Hamilton Pkwy" sublines="N" substopid="425"/>
-    <marker lat="40.687289" lng="-73.974837" stop="Fulton St" sublines="G" substopid="278"/>
-    <marker lat="40.710582" lng="-74.007387" stop="Fulton St-Broadway-Nassau" sublines="1,2,4,5,A,C,J,M,Z" substopid="304"/>
-    <marker lat="40.689449" lng="-73.922059" stop="Gates Ave" sublines="J,Z" substopid="315"/>
-    <marker lat="40.714581" lng="-73.943744" stop="Graham Ave" sublines="L" substopid="444"/>
-    <marker lat="40.675307" lng="-73.971028" stop="Grand Army Plaza" sublines="1,2" substopid="78"/>
-    <marker lat="40.737252" lng="-73.877179" stop="Grand Ave" sublines="G,R,V" substopid="266"/>
-    <marker lat="40.752956" lng="-73.979218" stop="Grand Central" sublines="4,5,6,7,S" substopid="99"/>
-    <marker lat="40.711971" lng="-73.940670" stop="Grand St" sublines="L" substopid="445"/>
-    <marker lat="40.719105" lng="-73.993342" stop="Grand St" sublines="S" substopid="290"/>
-    <marker lat="40.676879" lng="-73.865460" stop="Grant Ave" sublines="A" substopid="234"/>
-    <marker lat="40.731553" lng="-73.954470" stop="Greenpoint Ave" sublines="G" substopid="287"/>
-    <marker lat="40.877868" lng="-73.865919" stop="Gun Hill Rd" sublines="2,5" substopid="59"/>
-    <marker lat="40.869162" lng="-73.846463" stop="Gun Hill Rd" sublines="5" substopid="66"/>
-    <marker lat="40.686396" lng="-73.916644" stop="Halsey St" sublines="J" substopid="316"/>
-    <marker lat="40.695699" lng="-73.904262" stop="Halsey St" sublines="L" substopid="451"/>
-    <marker lat="40.706804" lng="-73.953200" stop="Hewes St" sublines="J,M" substopid="310"/>
-    <marker lat="40.699094" lng="-73.990383" stop="High St" sublines="A,C" substopid="218"/>
-    <marker lat="40.728602" lng="-74.005329" stop="Houston St" sublines="1,2" substopid="7"/>
-    <marker lat="40.660403" lng="-73.830446" stop="Howard Beach" sublines="A" substopid="242"/>
-    <marker lat="40.690358" lng="-73.984572" stop="Hoyt St" sublines="1,2" substopid="74"/>
-    <marker lat="40.688488" lng="-73.984831" stop="Hoyt-Schermerhorn Sts" sublines="A,C,G" substopid="220"/>
-    <marker lat="40.742068" lng="-73.948928" stop="Hunters Pt Ave" sublines="7" substopid="160"/>
-    <marker lat="40.820957" lng="-73.891288" stop="Hunts Pt Ave" sublines="6" substopid="144"/>
-    <marker lat="40.822130" lng="-73.896834" stop="Intervale Ave" sublines="2,5" substopid="49"/>
-    <marker lat="40.816525" lng="-73.907731" stop="Jackson Ave" sublines="2,5" substopid="47"/>
-    <marker lat="40.702263" lng="-73.801037" stop="Jamaica Center" sublines="E,J,Z" substopid="463"/>
-    <marker lat="40.702465" lng="-73.817079" stop="Jamaica-Van Wyck" sublines="E" substopid="461"/>
-    <marker lat="40.692700" lng="-73.987270" stop="Jay St" sublines="A,C,F" substopid="219"/>
-    <marker lat="40.706559" lng="-73.922537" stop="Jefferson St" sublines="L" substopid="448"/>
-    <marker lat="40.749087" lng="-73.869446" stop="Junction Blvd" sublines="7" substopid="172"/>
-    <marker lat="40.663394" lng="-73.902654" stop="Junius St" sublines="1" substopid="87"/>
-    <marker lat="40.603439" lng="-73.972369" stop="Kings Highway" sublines="F" substopid="351"/>
-    <marker lat="40.604358" lng="-73.980581" stop="Kings Highway" sublines="N" substopid="430"/>
-    <marker lat="40.608755" lng="-73.957795" stop="Kings Highway" sublines="Q" substopid="391"/>
-    <marker lat="40.868047" lng="-73.896916" stop="Kingsbridge Rd" sublines="4" substopid="134"/>
-    <marker lat="40.867177" lng="-73.893565" stop="Kingsbridge Rd" sublines="B,D" substopid="213"/>
-    <marker lat="40.669321" lng="-73.942045" stop="Kingston Ave" sublines="1" substopid="82"/>
-    <marker lat="40.679807" lng="-73.940584" stop="Kingston-Throop Aves" sublines="C" substopid="225"/>
-    <marker lat="40.698755" lng="-73.918852" stop="Knickerbocker Ave" sublines="M" substopid="331"/>
-    <marker lat="40.693280" lng="-73.928643" stop="Kosciusko St" sublines="J" substopid="314"/>
-    <marker lat="40.686045" lng="-73.973800" stop="Lafayette Ave" sublines="C" substopid="221"/>
-    <marker lat="40.692191" lng="-73.986201" stop="Lawrence St" sublines="M,R" substopid="378"/>
-    <marker lat="40.685701" lng="-73.826148" stop="Lefferts Blvd" sublines="A" substopid="240"/>
-    <marker lat="40.757130" lng="-73.971903" stop="Lexington-3rd Aves-51st St" sublines="6,E,V" substopid="114"/>
-    <marker lat="40.757661" lng="-73.969345" stop="Lexington-3rd Aves-51st St" sublines="6,E,V" substopid="256"/>
-    <marker lat="40.674639" lng="-73.896906" stop="Liberty Ave" sublines="C" substopid="230"/>
-    <marker lat="40.663777" lng="-73.900841" stop="Livonia Ave" sublines="L" substopid="457"/>
-    <marker lat="40.816320" lng="-73.896191" stop="Longwood Ave" sublines="6" substopid="143"/>
-    <marker lat="40.703835" lng="-73.947257" stop="Lorimer St" sublines="J,M" substopid="311"/>
-    <marker lat="40.759429" lng="-73.829937" stop="Main St" sublines="7" substopid="176"/>
-    <marker lat="40.708476" lng="-73.957754" stop="Marcy Ave" sublines="J,M,Z" substopid="309"/>
-    <marker lat="40.711741" lng="-73.889023" stop="Metropolitan Ave" sublines="M" substopid="336"/>
-    <marker lat="40.712932" lng="-73.951451" stop="Metropolitan Ave-Lorimer St" sublines="G,L" substopid="285"/>
-    <marker lat="40.714086" lng="-73.949923" stop="Metropolitan Ave-Lorimer St" sublines="G,L" substopid="443"/>
-    <marker lat="40.843945" lng="-73.836230" stop="Middletown Rd" sublines="6" substopid="153"/>
-    <marker lat="40.707670" lng="-73.939817" stop="Montrose Ave" sublines="L" substopid="446"/>
-    <marker lat="40.706151" lng="-73.932799" stop="Morgan Ave" sublines="L" substopid="447"/>
-    <marker lat="40.854456" lng="-73.860542" stop="Morris Park" sublines="5" substopid="65"/>
-    <marker lat="40.829520" lng="-73.874589" stop="Morrison-Soundview Aves" sublines="6" substopid="147"/>
-    <marker lat="40.879704" lng="-73.884703" stop="Mosholu Pkwy" sublines="4" substopid="136"/>
-    <marker lat="40.844318" lng="-73.914715" stop="Mt Eden Ave" sublines="4" substopid="129"/>
-    <marker lat="40.697203" lng="-73.935504" stop="Myrtle Ave" sublines="J,M,Z" substopid="313"/>
-    <marker lat="40.694649" lng="-73.949041" stop="Myrtle-Willoughby Aves" sublines="G" substopid="282"/>
-    <marker lat="40.699550" lng="-73.911056" stop="Myrtle-Wyckoff Aves" sublines="L,M" substopid="450"/>
-    <marker lat="40.724555" lng="-73.951219" stop="Nassau Ave" sublines="G" substopid="286"/>
-    <marker lat="40.595545" lng="-73.955274" stop="Neck Rd" sublines="Q" substopid="393"/>
-    <marker lat="40.579977" lng="-73.974625" stop="Neptune Ave-Van Sicklen" sublines="F" substopid="354"/>
-    <marker lat="40.688192" lng="-73.980456" stop="Nevins St" sublines="1,2,4,5" substopid="75"/>
-    <marker lat="40.666178" lng="-73.884332" stop="New Lots Ave" sublines="1" substopid="90"/>
-    <marker lat="40.658934" lng="-73.899611" stop="New Lots Ave" sublines="L" substopid="458"/>
-    <marker lat="40.625085" lng="-73.996753" stop="New Utrecht Ave-62nd St" sublines="M,N,W" substopid="426"/>
-    <marker lat="40.639992" lng="-73.948419" stop="Newkirk Ave" sublines="2,5" substopid="96"/>
-    <marker lat="40.635299" lng="-73.962818" stop="Newkirk Ave" sublines="Q" substopid="387"/>
-    <marker lat="40.752664" lng="-73.905683" stop="Northern Blvd" sublines="G,R,V" substopid="262"/>
-    <marker lat="40.681323" lng="-73.880213" stop="Norwood Ave" sublines="J,Z" substopid="321"/>
-    <marker lat="40.669797" lng="-73.950356" stop="Nostrand Ave" sublines="1" substopid="81"/>
-    <marker lat="40.680497" lng="-73.955769" stop="Nostrand Ave" sublines="1,2,4,5,S" substopid="436"/>
-    <marker lat="40.680385" lng="-73.949605" stop="Nostrand Ave" sublines="A,C" substopid="224"/>
-    <marker lat="40.576349" lng="-73.968089" stop="Ocean Pkwy" sublines="Q" substopid="396"/>
-    <marker lat="40.674835" lng="-73.957520" stop="Park Place" sublines="S" substopid="434"/>
-    <marker lat="40.655116" lng="-73.961465" stop="Parkside Ave" sublines="Q" substopid="383"/>
-    <marker lat="40.707567" lng="-73.803322" stop="Parsons Blvd" sublines="F" substopid="275"/>
-    <marker lat="40.852745" lng="-73.827398" stop="Pelham Bay Park" sublines="6" substopid="155"/>
-    <marker lat="40.857194" lng="-73.867581" stop="Pelham Pkwy" sublines="2,5" substopid="56"/>
-    <marker lat="40.664503" lng="-73.895360" stop="Pennsylvania Ave" sublines="1" substopid="88"/>
-    <marker lat="40.667862" lng="-73.950662" stop="President St" sublines="2,5" substopid="91"/>
-    <marker lat="40.724854" lng="-73.997275" stop="Prince St" sublines="N,R" substopid="371"/>
-    <marker lat="40.819697" lng="-73.901612" stop="Prospect Ave" sublines="2,5" substopid="48"/>
-    <marker lat="40.665343" lng="-73.992715" stop="Prospect Ave" sublines="M,N,R" substopid="402"/>
-    <marker lat="40.661342" lng="-73.962030" stop="Prospect Park" sublines="Q,S" substopid="382"/>
-    <marker lat="40.748741" lng="-73.936990" stop="Queens Plaza" sublines="E,G,R,V" substopid="258"/>
-    <marker lat="40.750486" lng="-73.940117" stop="Queensboro Plaza" sublines="7,N,W" substopid="162"/>
-    <marker lat="40.678784" lng="-73.920833" stop="Ralph Ave" sublines="C" substopid="227"/>
-    <marker lat="40.707964" lng="-74.013562" stop="Rector St-Greenwich St" sublines="1,9" substopid="2"/>
-    <marker lat="40.707795" lng="-74.012894" stop="Rector St-Trinity Pl" sublines="N,R" substopid="375"/>
-    <marker lat="40.662408" lng="-73.909201" stop="Rockaway Ave" sublines="1" substopid="86"/>
-    <marker lat="40.678273" lng="-73.912056" stop="Rockaway Ave" sublines="C" substopid="228"/>
-    <marker lat="40.680266" lng="-73.844235" stop="Rockaway Blvd" sublines="A" substopid="237"/>
-    <marker lat="40.580745" lng="-73.835479" stop="Rockaway Park-Beach 116th St" sublines="A,S" substopid="253"/>
-    <marker lat="40.646827" lng="-73.902293" stop="Rockaway Pkwy" sublines="L" substopid="460"/>
-    <marker lat="40.759198" lng="-73.953033" stop="Roosevelt Island" sublines="F" substopid="465"/>
-    <marker lat="40.661348" lng="-73.916655" stop="Saratoga Ave" sublines="1" substopid="85"/>
-    <marker lat="40.702817" lng="-73.907675" stop="Seneca Ave" sublines="M" substopid="333"/>
-    <marker lat="40.587130" lng="-73.953779" stop="Sheepshead Bay" sublines="Q" substopid="394"/>
-    <marker lat="40.674037" lng="-73.881158" stop="Shepherd Ave" sublines="C" substopid="232"/>
-    <marker lat="40.824157" lng="-73.892888" stop="Simpson St" sublines="2,5" substopid="50"/>
-    <marker lat="40.674000" lng="-73.997251" stop="Smith-9th Sts" sublines="F,G" substopid="339"/>
-    <marker lat="40.701322" lng="-74.013882" stop="South Ferry" sublines="1,9" substopid="1"/>
-    <marker lat="40.726820" lng="-74.003563" stop="Spring St-6th Ave" sublines="C,E" substopid="179"/>
-    <marker lat="40.722318" lng="-73.997117" stop="Spring St-Lafayette St" sublines="6" substopid="106"/>
-    <marker lat="40.831373" lng="-73.868101" stop="St Lawrence Ave" sublines="6" substopid="148"/>
-    <marker lat="40.756736" lng="-73.920160" stop="Steinway St" sublines="G,R,V" substopid="260"/>
-    <marker lat="40.662713" lng="-73.950677" stop="Sterling St" sublines="2,5" substopid="92"/>
-    <marker lat="40.576940" lng="-73.980594" stop="Stillwell Ave" sublines="F,Q,W" substopid="398"/>
-    <marker lat="40.705321" lng="-73.810955" stop="Sutphin Blvd" sublines="F" substopid="274"/>
-    <marker lat="40.700565" lng="-73.808100" stop="Sutphin Blvd-Archer Ave" sublines="E,J,Z" substopid="462"/>
-    <marker lat="40.664696" lng="-73.922528" stop="Sutter Ave" sublines="1" substopid="84"/>
-    <marker lat="40.669155" lng="-73.902258" stop="Sutter Ave" sublines="L" substopid="456"/>
-    <marker lat="40.757191" lng="-73.989801" stop="Times Square-42nd St-8th Ave" sublines="1,2,3,7,A,C,E,N,Q,R" substopid="184"/>
-    <marker lat="40.850568" lng="-73.905022" stop="Tremont Ave" sublines="B,D" substopid="210"/>
-    <marker lat="40.735301" lng="-73.989929" stop="Union Square" sublines="4,5,6,L,N,Q,R,W" substopid="109"/>
-    <marker lat="40.677406" lng="-73.983042" stop="Union St" sublines="M,N,R" substopid="400"/>
-    <marker lat="40.714207" lng="-73.830912" stop="Union Turnpike" sublines="E,F" substopid="272"/>
-    <marker lat="40.668846" lng="-73.932368" stop="Utica Ave" sublines="1,4" substopid="83"/>
-    <marker lat="40.679301" lng="-73.930073" stop="Utica Ave" sublines="A,C" substopid="226"/>
-    <marker lat="40.665326" lng="-73.889659" stop="Van Siclen Ave" sublines="1" substopid="89"/>
-    <marker lat="40.672596" lng="-73.890631" stop="Van Siclen Ave" sublines="C" substopid="231"/>
-    <marker lat="40.709329" lng="-73.821015" stop="Van Wyck Blvd" sublines="E,F" substopid="273"/>
-    <marker lat="40.742470" lng="-73.952763" stop="Vernon-Jackson Aves" sublines="7" substopid="159"/>
-    <marker lat="40.732920" lng="-74.000075" stop="W 4th St" sublines="A,C,E,F,S,V" substopid="180"/>
-    <marker lat="40.575926" lng="-73.975439" stop="W 8th St" sublines="F,Q" substopid="397"/>
-    <marker lat="40.708307" lng="-74.011243" stop="Wall St-Broadway" sublines="4,5" substopid="102"/>
-    <marker lat="40.707011" lng="-74.008961" stop="Wall St-William St" sublines="1,2" substopid="71"/>
-    <marker lat="40.839805" lng="-73.843058" stop="Westchester Square" sublines="6" substopid="152"/>
-    <marker lat="40.703153" lng="-74.012999" stop="Whitehall St" sublines="N,R" substopid="376"/>
-    <marker lat="40.826797" lng="-73.886009" stop="Whitlock Rd" sublines="6" substopid="145"/>
-    <marker lat="40.754388" lng="-73.845860" stop="Willets Pt" sublines="7" substopid="175"/>
-    <marker lat="40.689013" lng="-73.904283" stop="Wilson Ave" sublines="L" substopid="452"/>
-    <marker lat="40.656712" lng="-73.950210" stop="Winthrop St" sublines="2,5" substopid="93"/>
-    <marker lat="40.733127" lng="-73.869568" stop="Woodhaven Blvd" sublines="G,R,V" substopid="267"/>
-    <marker lat="40.693641" lng="-73.852072" stop="Woodhaven Blvd" sublines="J,Z" substopid="326"/>
-    <marker lat="40.886345" lng="-73.878444" stop="Woodlawn" sublines="4" substopid="137"/>
-    <marker lat="40.700059" lng="-73.986667" stop="York St" sublines="F" substopid="302"/>
-    <marker lat="40.836381" lng="-73.847072" stop="Zerega Ave" sublines="6" substopid="151"/>
+    <marker latitude="40.799494" longitude="-73.968308" stop="103rd St" sublines="1" substopid="22"/>
+    <marker latitude="40.790697" longitude="-73.947472" stop="103rd St" sublines="6" substopid="120"/>
+    <marker latitude="40.749804" longitude="-73.862436" stop="103rd St" sublines="7" substopid="173"/>
+    <marker latitude="40.796185" longitude="-73.961448" stop="103rd St" sublines="B,C" substopid="191"/>
+    <marker latitude="40.694955" longitude="-73.844727" stop="104-102nd Sts" sublines="J,Z" substopid="327"/>
+    <marker latitude="40.681701" longitude="-73.838032" stop="104th St" sublines="A" substopid="238"/>
+    <marker latitude="40.795213" longitude="-73.944126" stop="110th St" sublines="6" substopid="121"/>
+    <marker latitude="40.799098" longitude="-73.951899" stop="110th St-Central Park N" sublines="2,3" substopid="39"/>
+    <marker latitude="40.751610" longitude="-73.855211" stop="111st St" sublines="7" substopid="174"/>
+    <marker latitude="40.684071" longitude="-73.832541" stop="111st St" sublines="A" substopid="239"/>
+    <marker latitude="40.697250" longitude="-73.836895" stop="111st St" sublines="J" substopid="328"/>
+    <marker latitude="40.802443" longitude="-73.949470" stop="116th St" sublines="2,3" substopid="40"/>
+    <marker latitude="40.798721" longitude="-73.941619" stop="116th St" sublines="6" substopid="122"/>
+    <marker latitude="40.805088" longitude="-73.954872" stop="116th St" sublines="B,C" substopid="193"/>
+    <marker latitude="40.807928" longitude="-73.963919" stop="116th St-Columbia Univ" sublines="1,9" substopid="24"/>
+    <marker latitude="40.700342" longitude="-73.828714" stop="121st St" sublines="J,Z" substopid="329"/>
+    <marker latitude="40.815636" longitude="-73.958296" stop="125th St" sublines="1" substopid="25"/>
+    <marker latitude="40.807885" longitude="-73.945450" stop="125th St" sublines="2,3" substopid="41"/>
+    <marker latitude="40.804402" longitude="-73.937492" stop="125th St" sublines="4,5,6" substopid="123"/>
+    <marker latitude="40.811296" longitude="-73.952200" stop="125th St" sublines="A,B,C,D" substopid="194"/>
+    <marker latitude="40.814148" longitude="-73.940877" stop="135th St" sublines="2,3" substopid="42"/>
+    <marker latitude="40.817941" longitude="-73.947618" stop="135th St" sublines="B,C" substopid="195"/>
+    <marker latitude="40.821459" longitude="-73.954062" stop="137th St" sublines="1" substopid="26"/>
+    <marker latitude="40.813367" longitude="-73.930042" stop="138th St-Grand Concourse" sublines="4,5" substopid="124"/>
+    <marker latitude="40.826606" longitude="-73.950331" stop="145th St" sublines="1" substopid="27"/>
+    <marker latitude="40.820501" longitude="-73.936284" stop="145th St" sublines="3" substopid="43"/>
+    <marker latitude="40.824980" longitude="-73.944056" stop="145th St" sublines="A,B,C,D" substopid="196"/>
+    <marker latitude="40.823832" longitude="-73.936207" stop="148th St" sublines="3" substopid="44"/>
+    <marker latitude="40.818433" longitude="-73.927439" stop="149th St-Grand Concourse" sublines="2,4,5" substopid="125"/>
+    <marker latitude="40.818484" longitude="-73.926989" stop="149th St-Grand Concourse" sublines="2,4,5" substopid="45"/>
+    <marker latitude="40.738650" longitude="-73.995862" stop="14th St-6-7th Aves" sublines="1,2,3,F,L,V" substopid="293"/>
+    <marker latitude="40.745360" longitude="-73.998488" stop="14th St-8th Ave" sublines="C,E" substopid="182"/>
+    <marker latitude="40.830335" longitude="-73.937979" stop="155th St" sublines="B,D" substopid="205"/>
+    <marker latitude="40.830874" longitude="-73.941342" stop="155th St" sublines="C" substopid="197"/>
+    <marker latitude="40.834143" longitude="-73.944819" stop="157th St" sublines="1" substopid="28"/>
+    <marker latitude="40.660786" longitude="-73.980044" stop="15th St" sublines="F" substopid="342"/>
+    <marker latitude="40.828127" longitude="-73.925904" stop="161st St-Yankee Stadium" sublines="4,B,D" substopid="126"/>
+    <marker latitude="40.836164" longitude="-73.939974" stop="163rd St" sublines="C" substopid="198"/>
+    <marker latitude="40.835704" longitude="-73.921244" stop="167th St" sublines="4" substopid="127"/>
+    <marker latitude="40.834004" longitude="-73.918225" stop="167th St" sublines="B,D" substopid="207"/>
+    <marker latitude="40.840926" longitude="-73.939507" stop="168th St-Broadway" sublines="1,A,C" substopid="199"/>
+    <marker latitude="40.710468" longitude="-73.793563" stop="169th St" sublines="F" substopid="276"/>
+    <marker latitude="40.840153" longitude="-73.917655" stop="170th St" sublines="4" substopid="128"/>
+    <marker latitude="40.839435" longitude="-73.913304" stop="170th St" sublines="B,D" substopid="208"/>
+    <marker latitude="40.845689" longitude="-73.910383" stop="174-175th Sts" sublines="B,D" substopid="209"/>
+    <marker latitude="40.837393" longitude="-73.887711" stop="174th St-Southern Blvd" sublines="2,5" substopid="52"/>
+    <marker latitude="40.847652" longitude="-73.939612" stop="175th St" sublines="A" substopid="200"/>
+    <marker latitude="40.848570" longitude="-73.911638" stop="176th St" sublines="4" substopid="130"/>
+    <marker latitude="40.712598" longitude="-73.783972" stop="179th St" sublines="F" substopid="277"/>
+    <marker latitude="40.849884" longitude="-73.933276" stop="181st St" sublines="1" substopid="30"/>
+    <marker latitude="40.852128" longitude="-73.937812" stop="181st St" sublines="A" substopid="201"/>
+    <marker latitude="40.856355" longitude="-73.900565" stop="182-183rd Sts" sublines="B,D" substopid="211"/>
+    <marker latitude="40.858698" longitude="-73.903700" stop="183rd St" sublines="4" substopid="132"/>
+    <marker latitude="40.629751" longitude="-73.977035" stop="18th Ave" sublines="F" substopid="346"/>
+    <marker latitude="40.608011" longitude="-74.001721" stop="18th Ave" sublines="M,W" substopid="419"/>
+    <marker latitude="40.620709" longitude="-73.990533" stop="18th Ave" sublines="N" substopid="427"/>
+    <marker latitude="40.741029" longitude="-73.997814" stop="18th St-7th Ave" sublines="1,2" substopid="10"/>
+    <marker latitude="40.858841" longitude="-73.934339" stop="190th St" sublines="A" substopid="202"/>
+    <marker latitude="40.855574" longitude="-73.929116" stop="191st St" sublines="1" substopid="31"/>
+    <marker latitude="40.731336" longitude="-73.982536" stop="1st Ave-14th St" sublines="L" substopid="441"/>
+    <marker latitude="40.875014" longitude="-73.879430" stop="205th St" sublines="D" substopid="215"/>
+    <marker latitude="40.865070" longitude="-73.918415" stop="207th St" sublines="1" substopid="33"/>
+    <marker latitude="40.868108" longitude="-73.919736" stop="207th St-Washington Hts" sublines="A" substopid="204"/>
+    <marker latitude="40.604688" longitude="-73.998422" stop="20th Ave" sublines="M,W" substopid="420"/>
+    <marker latitude="40.617441" longitude="-73.985014" stop="20th Ave" sublines="N" substopid="428"/>
+    <marker latitude="40.869555" longitude="-73.915163" stop="215th St" sublines="1" substopid="34"/>
+    <marker latitude="40.883528" longitude="-73.862756" stop="219th St" sublines="2,5" substopid="60"/>
+    <marker latitude="40.743741" longitude="-73.949454" stop="21st St (Van Alst)" sublines="G" substopid="288"/>
+    <marker latitude="40.753621" longitude="-73.942198" stop="21st St-Queensbridge" sublines="F" substopid="466"/>
+    <marker latitude="40.874634" longitude="-73.909629" stop="225th St" sublines="1" substopid="35"/>
+    <marker latitude="40.888227" longitude="-73.860216" stop="225th St" sublines="2,5" substopid="61"/>
+    <marker latitude="40.878977" longitude="-73.904760" stop="231st St" sublines="1" substopid="36"/>
+    <marker latitude="40.893302" longitude="-73.857375" stop="233rd St" sublines="2,5" substopid="62"/>
+    <marker latitude="40.885019" longitude="-73.900690" stop="238th St" sublines="2,5" substopid="37"/>
+    <marker latitude="40.898417" longitude="-73.854239" stop="238th St" sublines="2,5" substopid="63"/>
+    <marker latitude="40.742939" longitude="-73.992810" stop="23rd St-6th Ave" sublines="F,V" substopid="294"/>
+    <marker latitude="40.744118" longitude="-73.995590" stop="23rd St-7th Ave" sublines="1,2" substopid="11"/>
+    <marker latitude="40.741065" longitude="-74.001525" stop="23rd St-8th Ave" sublines="A,C,E,L" substopid="181"/>
+    <marker latitude="40.741399" longitude="-73.989253" stop="23rd St-Broadway" sublines="N,R" substopid="368"/>
+    <marker latitude="40.746635" longitude="-73.945156" stop="23rd St-Ely Ave-Court Sq" sublines="7" substopid="161"/>
+    <marker latitude="40.747467" longitude="-73.945571" stop="23rd St-Ely Ave-Court Sq" sublines="E,G,V" substopid="257"/>
+    <marker latitude="40.740185" longitude="-73.986365" stop="23rd St-Park Ave S" sublines="6" substopid="110"/>
+    <marker latitude="40.903401" longitude="-73.850398" stop="241st St" sublines="2" substopid="64"/>
+    <marker latitude="40.889438" longitude="-73.898408" stop="242nd St" sublines="1" substopid="38"/>
+    <marker latitude="40.597869" longitude="-73.986911" stop="25th Ave" sublines="W" substopid="422"/>
+    <marker latitude="40.660282" longitude="-73.998106" stop="25th St" sublines="M,N,R" substopid="403"/>
+    <marker latitude="40.747181" longitude="-73.993321" stop="28th St-7th Ave" sublines="1,2" substopid="12"/>
+    <marker latitude="40.745380" longitude="-73.988663" stop="28th St-Broadway" sublines="N,R" substopid="367"/>
+    <marker latitude="40.743335" longitude="-73.984055" stop="28th St-Park Ave S" sublines="6" substopid="111"/>
+    <marker latitude="40.723418" longitude="-73.990255" stop="2nd Ave-Houston St" sublines="F,V" substopid="299"/>
+    <marker latitude="40.766503" longitude="-73.921395" stop="30th Ave" sublines="N,W" substopid="358"/>
+    <marker latitude="40.744368" longitude="-73.930814" stop="33rd St" sublines="7" substopid="163"/>
+    <marker latitude="40.746415" longitude="-73.981829" stop="33rd St-Park Ave" sublines="6" substopid="112"/>
+    <marker latitude="40.749824" longitude="-73.987770" stop="34th St-6th Ave" sublines="B,D,F,N,Q,R,V,W" substopid="295"/>
+    <marker latitude="40.750868" longitude="-73.990645" stop="34th St-7th Ave" sublines="1,2,3" substopid="13"/>
+    <marker latitude="40.752195" longitude="-73.993472" stop="34th St-8th Ave" sublines="A,C,E" substopid="183"/>
+    <marker latitude="40.756616" longitude="-73.929445" stop="36th Ave" sublines="N,W" substopid="356"/>
+    <marker latitude="40.751834" longitude="-73.928692" stop="36th St" sublines="G,R,V" substopid="259"/>
+    <marker latitude="40.655104" longitude="-74.003580" stop="36th St" sublines="M,N,R,W" substopid="404"/>
+    <marker latitude="40.752571" longitude="-73.932712" stop="39 Ave" sublines="N,W" substopid="355"/>
+    <marker latitude="40.810529" longitude="-73.926275" stop="3rd Ave-138th St" sublines="6" substopid="138"/>
+    <marker latitude="40.816144" longitude="-73.917895" stop="3rd Ave-149th St" sublines="2,5" substopid="46"/>
+    <marker latitude="40.733312" longitude="-73.987154" stop="3rd Ave-14th St" sublines="L" substopid="440"/>
+    <marker latitude="40.743629" longitude="-73.923925" stop="40th St" sublines="7" substopid="164"/>
+    <marker latitude="40.753944" longitude="-73.982109" stop="42nd St-5th Ave-6th Ave" sublines="7,B,D,F,V" substopid="157"/>
+    <marker latitude="40.754227" longitude="-73.984614" stop="42nd St-5th Ave-6th Ave" sublines="7,B,D,F,V" substopid="296"/>
+    <marker latitude="40.648870" longitude="-74.010136" stop="45th St" sublines="N,R" substopid="405"/>
+    <marker latitude="40.742952" longitude="-73.918321" stop="46th St" sublines="7" substopid="165"/>
+    <marker latitude="40.756250" longitude="-73.913036" stop="46th St" sublines="G,R,V" substopid="261"/>
+    <marker latitude="40.758629" longitude="-73.981273" stop="47-50th Sts-Rockefeller Center" sublines="B,D,F,V" substopid="297"/>
+    <marker latitude="40.759812" longitude="-73.984143" stop="49th St-7th Ave" sublines="N,R,W" substopid="364"/>
+    <marker latitude="40.636174" longitude="-73.994781" stop="50th St" sublines="M,W" substopid="414"/>
+    <marker latitude="40.762597" longitude="-73.985815" stop="50th St-8th Ave" sublines="C,E" substopid="185"/>
+    <marker latitude="40.761783" longitude="-73.983822" stop="50th St-Broadway" sublines="1,2" substopid="15"/>
+    <marker latitude="40.743977" longitude="-73.912347" stop="52nd St" sublines="7" substopid="166"/>
+    <marker latitude="40.645101" longitude="-74.014100" stop="53rd St" sublines="N,R" substopid="406"/>
+    <marker latitude="40.631579" longitude="-73.995423" stop="55th St" sublines="M,W" substopid="415"/>
+    <marker latitude="40.764026" longitude="-73.977391" stop="57th St-6th Ave" sublines="F" substopid="298"/>
+    <marker latitude="40.764632" longitude="-73.980660" stop="57th St-7th Ave" sublines="N,Q,R,W" substopid="363"/>
+    <marker latitude="40.641269" longitude="-74.018086" stop="59th St" sublines="N,R" substopid="407"/>
+    <marker latitude="40.768044" longitude="-73.981955" stop="59th St-Columbus Circle" sublines="1,2,A,B,C,D" substopid="16"/>
+    <marker latitude="40.762573" longitude="-73.967905" stop="59th St-Lexington Ave" sublines="4,5,6,N,R,W" substopid="115"/>
+    <marker latitude="40.762783" longitude="-73.967530" stop="59th St-Lexington Ave" sublines="F" substopid="361"/>
+    <marker latitude="40.760425" longitude="-73.975806" stop="5th Ave-53rd St" sublines="E,V" substopid="255"/>
+    <marker latitude="40.764955" longitude="-73.973535" stop="5th Ave-60th St" sublines="N,R,W" substopid="362"/>
+    <marker latitude="40.745402" longitude="-73.903138" stop="61st St" sublines="7" substopid="167"/>
+    <marker latitude="40.729829" longitude="-73.861657" stop="63rd Dr" sublines="G,R,V" substopid="268"/>
+    <marker latitude="40.749479" longitude="-73.898244" stop="65th St" sublines="G,R,V" substopid="263"/>
+    <marker latitude="40.773463" longitude="-73.982193" stop="66th St" sublines="1,2" substopid="17"/>
+    <marker latitude="40.726479" longitude="-73.852616" stop="67th Ave" sublines="G,R,V" substopid="269"/>
+    <marker latitude="40.768185" longitude="-73.963767" stop="68th St" sublines="6" substopid="116"/>
+    <marker latitude="40.746177" longitude="-73.896183" stop="69th St" sublines="7" substopid="168"/>
+    <marker latitude="40.721609" longitude="-73.844778" stop="71-Continental Aves" sublines="E,F,G,R,V" substopid="270"/>
+    <marker latitude="40.619721" longitude="-73.998813" stop="71st St" sublines="M,W" substopid="417"/>
+    <marker latitude="40.778666" longitude="-73.981876" stop="72nd St" sublines="1,2,3" substopid="18"/>
+    <marker latitude="40.776213" longitude="-73.975972" stop="72nd St" sublines="B,C" substopid="187"/>
+    <marker latitude="40.746686" longitude="-73.891274" stop="74th St-Roosevelt Ave" sublines="7,E,F,G,R,V" substopid="169"/>
+    <marker latitude="40.718357" longitude="-73.837370" stop="75th Ave" sublines="E,F" substopid="271"/>
+    <marker latitude="40.773671" longitude="-73.959876" stop="77th St" sublines="6" substopid="117"/>
+    <marker latitude="40.629647" longitude="-74.025652" stop="77th St" sublines="R" substopid="409"/>
+    <marker latitude="40.783831" longitude="-73.980098" stop="79th St" sublines="1,2" substopid="19"/>
+    <marker latitude="40.613394" longitude="-74.000626" stop="79th St" sublines="M,W" substopid="418"/>
+    <marker latitude="40.666149" longitude="-73.980021" stop="7th Ave" sublines="F" substopid="341"/>
+    <marker latitude="40.677142" longitude="-73.972585" stop="7th Ave" sublines="Q" substopid="381"/>
+    <marker latitude="40.762953" longitude="-73.981892" stop="7th Ave-53rd St" sublines="B,D,E" substopid="254"/>
+    <marker latitude="40.679152" longitude="-73.859205" stop="80th St" sublines="A" substopid="235"/>
+    <marker latitude="40.781504" longitude="-73.972250" stop="81st St" sublines="B,C" substopid="188"/>
+    <marker latitude="40.747419" longitude="-73.883573" stop="82nd St-Jackson Hts" sublines="7" substopid="170"/>
+    <marker latitude="40.788606" longitude="-73.976203" stop="86th St" sublines="1,2" substopid="20"/>
+    <marker latitude="40.779526" longitude="-73.955514" stop="86th St" sublines="4,5,6" substopid="118"/>
+    <marker latitude="40.785936" longitude="-73.968978" stop="86th St" sublines="B,C" substopid="189"/>
+    <marker latitude="40.592795" longitude="-73.978246" stop="86th St" sublines="N" substopid="432"/>
+    <marker latitude="40.622467" longitude="-74.028550" stop="86th St" sublines="R" substopid="410"/>
+    <marker latitude="40.679662" longitude="-73.851705" stop="88th St" sublines="A" substopid="236"/>
+    <marker latitude="40.634999" longitude="-74.011586" stop="8th Ave" sublines="N" substopid="424"/>
+    <marker latitude="40.730611" longitude="-73.992404" stop="8th St-Broadway" sublines="N,R" substopid="370"/>
+    <marker latitude="40.646092" longitude="-73.994779" stop="9 Ave" sublines="M,W" substopid="412"/>
+    <marker latitude="40.748383" longitude="-73.876395" stop="90th St-Elmhurst Ave" sublines="7" substopid="171"/>
+    <marker latitude="40.616621" longitude="-74.030851" stop="95th St" sublines="R" substopid="411"/>
+    <marker latitude="40.793966" longitude="-73.972240" stop="96th St" sublines="1,2,3" substopid="21"/>
+    <marker latitude="40.785867" longitude="-73.950910" stop="96th St" sublines="6" substopid="119"/>
+    <marker latitude="40.791715" longitude="-73.964717" stop="96th St" sublines="B,C" substopid="190"/>
+    <marker latitude="40.670931" longitude="-73.988213" stop="9th St-4 Ave" sublines="F,M,N,R" substopid="401"/>
+    <marker latitude="40.676974" longitude="-73.898995" stop="Alabama Ave" sublines="J" substopid="319"/>
+    <marker latitude="40.865437" longitude="-73.867379" stop="Allerton Ave" sublines="2,5" substopid="57"/>
+    <marker latitude="40.667763" longitude="-73.834175" stop="Aqueduct-North Conduit Ave" sublines="A" substopid="241"/>
+    <marker latitude="40.730634" longitude="-73.990565" stop="Astor Place" sublines="6" substopid="108"/>
+    <marker latitude="40.769964" longitude="-73.917363" stop="Astoria Blvd" sublines="N,W" substopid="359"/>
+    <marker latitude="40.675356" longitude="-73.903277" stop="Atlantic Ave" sublines="L" substopid="455"/>
+    <marker latitude="40.684495" longitude="-73.976840" stop="Atlantic Ave-Pacific St" sublines="1,2,4,5,M,N,Q,R,W" substopid="380"/>
+    <marker latitude="40.629256" longitude="-73.961779" stop="Ave H" sublines="Q" substopid="388"/>
+    <marker latitude="40.625373" longitude="-73.976192" stop="Ave I" sublines="F" substopid="347"/>
+    <marker latitude="40.624723" longitude="-73.960863" stop="Ave J" sublines="Q" substopid="389"/>
+    <marker latitude="40.617638" longitude="-73.959544" stop="Ave M" sublines="Q" substopid="390"/>
+    <marker latitude="40.614662" longitude="-73.974168" stop="Ave N" sublines="F" substopid="349"/>
+    <marker latitude="40.608892" longitude="-73.973102" stop="Ave P" sublines="F" substopid="350"/>
+    <marker latitude="40.596256" longitude="-73.973299" stop="Ave U" sublines="F" substopid="352"/>
+    <marker latitude="40.597635" longitude="-73.979258" stop="Ave U" sublines="N" substopid="431"/>
+    <marker latitude="40.599619" longitude="-73.956077" stop="Ave U" sublines="Q" substopid="392"/>
+    <marker latitude="40.589402" longitude="-73.974170" stop="Ave X" sublines="F" substopid="353"/>
+    <marker latitude="40.588922" longitude="-73.983610" stop="Bay 50th St" sublines="W" substopid="423"/>
+    <marker latitude="40.601967" longitude="-73.993859" stop="Bay Pkwy" sublines="M,W" substopid="421"/>
+    <marker latitude="40.611826" longitude="-73.982077" stop="Bay Pkwy" sublines="N" substopid="429"/>
+    <marker latitude="40.620983" longitude="-73.975315" stop="Bay Pkwy-22nd Ave" sublines="F" substopid="348"/>
+    <marker latitude="40.634878" longitude="-74.023489" stop="Bay Ridge Ave" sublines="R" substopid="408"/>
+    <marker latitude="40.878721" longitude="-73.838557" stop="Baychester Ave" sublines="5" substopid="67"/>
+    <marker latitude="40.583238" longitude="-73.827484" stop="Beach 105th St" sublines="A,S" substopid="252"/>
+    <marker latitude="40.599934" longitude="-73.761451" stop="Beach 25th St" sublines="A" substopid="248"/>
+    <marker latitude="40.595360" longitude="-73.768139" stop="Beach 36th St" sublines="A" substopid="247"/>
+    <marker latitude="40.593003" longitude="-73.775843" stop="Beach 44th St" sublines="A" substopid="246"/>
+    <marker latitude="40.592447" longitude="-73.788457" stop="Beach 60th St" sublines="A" substopid="245"/>
+    <marker latitude="40.590899" longitude="-73.796610" stop="Beach 67th St" sublines="A" substopid="244"/>
+    <marker latitude="40.588064" longitude="-73.813436" stop="Beach 90th St" sublines="A,S" substopid="250"/>
+    <marker latitude="40.585250" longitude="-73.820323" stop="Beach 98th St" sublines="A,S" substopid="251"/>
+    <marker latitude="40.717247" longitude="-73.956738" stop="Bedford Ave" sublines="L" substopid="442"/>
+    <marker latitude="40.873311" longitude="-73.890693" stop="Bedford Park Blvd" sublines="4" substopid="135"/>
+    <marker latitude="40.872964" longitude="-73.887288" stop="Bedford Park Blvd" sublines="B,D" substopid="214"/>
+    <marker latitude="40.689616" longitude="-73.953507" stop="Bedford-Nostrand Aves" sublines="G" substopid="281"/>
+    <marker latitude="40.680800" longitude="-73.975069" stop="Bergen St" sublines="1,2" substopid="77"/>
+    <marker latitude="40.686025" longitude="-73.990721" stop="Bergen St" sublines="F,G" substopid="337"/>
+    <marker latitude="40.645297" longitude="-73.948861" stop="Beverley Rd" sublines="2,5" substopid="95"/>
+    <marker latitude="40.644163" longitude="-73.964444" stop="Beverley Rd" sublines="Q" substopid="385"/>
+    <marker latitude="40.669879" longitude="-73.959352" stop="Botanic Garden" sublines="" substopid="433"/>
+    <marker latitude="40.720312" longitude="-73.994024" stop="Bowery" sublines="J,M" substopid="307"/>
+    <marker latitude="40.705078" longitude="-74.013934" stop="Bowling Green" sublines="4,5" substopid="101"/>
+    <marker latitude="40.577717" longitude="-73.960939" stop="Brighton Beach" sublines="Q" substopid="395"/>
+    <marker latitude="40.608085" longitude="-73.815542" stop="Broad Channel" sublines="A,S" substopid="243"/>
+    <marker latitude="40.707147" longitude="-74.010716" stop="Broad St" sublines="J,M,Z" substopid="303"/>
+    <marker latitude="40.706182" longitude="-73.950257" stop="Broadway" sublines="G" substopid="284"/>
+    <marker latitude="40.761397" longitude="-73.925439" stop="Broadway" sublines="N,W" substopid="357"/>
+    <marker latitude="40.849322" longitude="-73.868832" stop="Bronx Park East" sublines="2,5" substopid="55"/>
+    <marker latitude="40.807540" longitude="-73.919257" stop="Brook Ave" sublines="6" substopid="139"/>
+    <marker latitude="40.846756" longitude="-73.832613" stop="Buhre Ave" sublines="6" substopid="154"/>
+    <marker latitude="40.871413" longitude="-73.867147" stop="Burke Ave" sublines="2,5" substopid="58"/>
+    <marker latitude="40.853836" longitude="-73.907312" stop="Burnside Ave" sublines="4" substopid="131"/>
+    <marker latitude="40.682968" longitude="-73.905283" stop="Bushwick Ave" sublines="L" substopid="453"/>
+    <marker latitude="40.725913" longitude="-73.996357" stop="Bway-Lafayette St-Bleecker St" sublines="6,F,S,V" substopid="291"/>
+    <marker latitude="40.726310" longitude="-73.994350" stop="Bway-Lafayette St-Bleecker St" sublines="6,F,S,V" substopid="107"/>
+    <marker latitude="40.721342" longitude="-74.005294" stop="Canal-Church Sts" sublines="A,C,E" substopid="178"/>
+    <marker latitude="40.723170" longitude="-74.006179" stop="Canal-Varick Sts" sublines="1,2" substopid="6"/>
+    <marker latitude="40.680186" longitude="-73.994907" stop="Carroll St" sublines="F,G" substopid="338"/>
+    <marker latitude="40.834203" longitude="-73.851501" stop="Castle Hill Ave" sublines="6" substopid="150"/>
+    <marker latitude="40.804109" longitude="-73.966742" stop="Cathedral Pkwy" sublines="1" substopid="23"/>
+    <marker latitude="40.800591" longitude="-73.958153" stop="Cathedral Pkwy" sublines="B,C" substopid="192"/>
+    <marker latitude="40.697873" longitude="-73.927706" stop="Central Ave" sublines="M" substopid="330"/>
+    <marker latitude="40.716005" longitude="-74.008796" stop="Chambers St-W Broadway" sublines="1,2" substopid="4"/>
+    <marker latitude="40.713556" longitude="-74.004153" stop="Chambers-Brooklyn Bridge" sublines="4,5,6,J,M,Z" substopid="104"/>
+    <marker latitude="40.713888" longitude="-74.003384" stop="Chambers-Brooklyn Bridge" sublines="4,5,6,J,M,Z" substopid="305"/>
+    <marker latitude="40.714629" longitude="-74.008150" stop="Chambers-World Trade Ctr-Park Pl" sublines="1,2,A,C,E" substopid="216"/>
+    <marker latitude="40.682905" longitude="-73.910456" stop="Chauncey St" sublines="J,Z" substopid="317"/>
+    <marker latitude="40.734074" longitude="-74.002529" stop="Christopher St" sublines="1,2" substopid="8"/>
+    <marker latitude="40.650817" longitude="-73.949581" stop="Church Ave" sublines="2,5" substopid="94"/>
+    <marker latitude="40.644355" longitude="-73.979696" stop="Church Ave" sublines="F" substopid="344"/>
+    <marker latitude="40.650511" longitude="-73.962888" stop="Church Ave" sublines="Q" substopid="384"/>
+    <marker latitude="40.713610" longitude="-74.006724" stop="City Hall-Broadway" sublines="N,R" substopid="373"/>
+    <marker latitude="40.697450" longitude="-73.992984" stop="Clark St" sublines="1,2" substopid="72"/>
+    <marker latitude="40.688865" longitude="-73.959987" stop="Classon Ave" sublines="G" substopid="280"/>
+    <marker latitude="40.679814" longitude="-73.884930" stop="Cleveland St" sublines="J" substopid="320"/>
+    <marker latitude="40.683335" longitude="-73.964704" stop="Clinton-Washington Aves" sublines="C" substopid="222"/>
+    <marker latitude="40.688080" longitude="-73.966855" stop="Clinton-Washington Aves" sublines="G" substopid="279"/>
+    <marker latitude="40.640853" longitude="-73.963821" stop="Cortelyou Rd" sublines="Q" substopid="386"/>
+    <marker latitude="40.712165" longitude="-74.012134" stop="Cortlandt St-Greenwich St" sublines="1,9" substopid="3"/>
+    <marker latitude="40.711018" longitude="-74.010770" stop="Cortlandt St-Trinity Pl" sublines="N,R" substopid="374"/>
+    <marker latitude="40.693781" longitude="-73.990580" stop="Court St-Borough Hall" sublines="1,2,4,5,M,R" substopid="377"/>
+    <marker latitude="40.692300" longitude="-73.989485" stop="Court St-Borough Hall" sublines="4,5" substopid="100"/>
+    <marker latitude="40.683120" longitude="-73.873928" stop="Crescent St" sublines="J,Z" substopid="322"/>
+    <marker latitude="40.805481" longitude="-73.914272" stop="Cypress Ave" sublines="6" substopid="140"/>
+    <marker latitude="40.689806" longitude="-73.873170" stop="Cypress Hills" sublines="J" substopid="323"/>
+    <marker latitude="40.703864" longitude="-73.918439" stop="DeKalb Ave" sublines="L" substopid="449"/>
+    <marker latitude="40.689850" longitude="-73.981266" stop="DeKalb Ave" sublines="M,N,Q,R" substopid="379"/>
+    <marker latitude="40.718542" longitude="-73.988197" stop="Delancey-Essex Sts" sublines="F,J,M,Z" substopid="300"/>
+    <marker latitude="40.774874" longitude="-73.911427" stop="Ditmars Blvd" sublines="N,W" substopid="360"/>
+    <marker latitude="40.636090" longitude="-73.978245" stop="Ditmas Ave" sublines="F" substopid="345"/>
+    <marker latitude="40.861564" longitude="-73.924766" stop="Dyckman St" sublines="1" substopid="32"/>
+    <marker latitude="40.865502" longitude="-73.927262" stop="Dyckman St-200th St" sublines="A" substopid="203"/>
+    <marker latitude="40.888595" longitude="-73.831306" stop="Dyre Ave-233rd St" sublines="5" substopid="68"/>
+    <marker latitude="40.650841" longitude="-73.899865" stop="E 105th St" sublines="L" substopid="459"/>
+    <marker latitude="40.808695" longitude="-73.907658" stop="E 143rd St" sublines="6" substopid="141"/>
+    <marker latitude="40.812192" longitude="-73.904059" stop="E 149th St" sublines="6" substopid="142"/>
+    <marker latitude="40.833073" longitude="-73.861530" stop="E 177th St-Parkchester" sublines="6" substopid="149"/>
+    <marker latitude="40.841876" longitude="-73.873761" stop="E 180th St" sublines="2,5" substopid="54"/>
+    <marker latitude="40.677992" longitude="-73.905935" stop="E New York-Eastern Pkwy" sublines="A,C,J,L,Z" substopid="229"/>
+    <marker latitude="40.840579" longitude="-73.879751" stop="E Tremont Ave" sublines="2,5" substopid="53"/>
+    <marker latitude="40.714409" longitude="-73.990219" stop="East Broadway" sublines="F" substopid="301"/>
+    <marker latitude="40.672148" longitude="-73.964659" stop="Eastern Pkwy" sublines="1,2" substopid="79"/>
+    <marker latitude="40.828576" longitude="-73.879497" stop="Elder Ave" sublines="6" substopid="146"/>
+    <marker latitude="40.691321" longitude="-73.867226" stop="Elderts Lane" sublines="J,Z" substopid="324"/>
+    <marker latitude="40.742328" longitude="-73.881804" stop="Elmhurst Ave" sublines="G,R,V" substopid="265"/>
+    <marker latitude="40.675275" longitude="-73.872409" stop="Euclid Ave" sublines="A,C" substopid="233"/>
+    <marker latitude="40.603992" longitude="-73.755358" stop="Far Rockaway-Mott Ave" sublines="A" substopid="249"/>
+    <marker latitude="40.632918" longitude="-73.947595" stop="Flatitudebush Ave" sublines="2,5" substopid="97"/>
+    <marker latitude="40.700582" longitude="-73.950288" stop="Flushing Ave" sublines="G" substopid="283"/>
+    <marker latitude="40.700267" longitude="-73.941009" stop="Flushing Ave" sublines="J,M" substopid="312"/>
+    <marker latitude="40.862742" longitude="-73.901089" stop="Fordham Rd" sublines="4" substopid="133"/>
+    <marker latitude="40.861326" longitude="-73.897692" stop="Fordham Rd" sublines="B,D" substopid="212"/>
+    <marker latitude="40.704341" longitude="-73.903111" stop="Forest Ave" sublines="M" substopid="334"/>
+    <marker latitude="40.692293" longitude="-73.860423" stop="Forest Pkwy" sublines="J" substopid="325"/>
+    <marker latitude="40.681496" longitude="-73.957209" stop="Franklin Ave" sublines="C,S" substopid="223"/>
+    <marker latitude="40.719775" longitude="-74.006824" stop="Franklin St" sublines="1,2" substopid="5"/>
+    <marker latitude="40.830485" longitude="-73.891822" stop="Freeman St" sublines="2,5" substopid="51"/>
+    <marker latitude="40.706193" longitude="-73.896089" stop="Fresh Pond Rd" sublines="M" substopid="335"/>
+    <marker latitude="40.650862" longitude="-73.975569" stop="Ft Hamilton Pkwy" sublines="F" substopid="343"/>
+    <marker latitude="40.640935" longitude="-73.994327" stop="Ft Hamilton Pkwy" sublines="M,W" substopid="413"/>
+    <marker latitude="40.631482" longitude="-74.005379" stop="Ft Hamilton Pkwy" sublines="N" substopid="425"/>
+    <marker latitude="40.687289" longitude="-73.974837" stop="Fulton St" sublines="G" substopid="278"/>
+    <marker latitude="40.710582" longitude="-74.007387" stop="Fulton St-Broadway-Nassau" sublines="1,2,4,5,A,C,J,M,Z" substopid="304"/>
+    <marker latitude="40.689449" longitude="-73.922059" stop="Gates Ave" sublines="J,Z" substopid="315"/>
+    <marker latitude="40.714581" longitude="-73.943744" stop="Graham Ave" sublines="L" substopid="444"/>
+    <marker latitude="40.675307" longitude="-73.971028" stop="Grand Army Plaza" sublines="1,2" substopid="78"/>
+    <marker latitude="40.737252" longitude="-73.877179" stop="Grand Ave" sublines="G,R,V" substopid="266"/>
+    <marker latitude="40.752956" longitude="-73.979218" stop="Grand Central" sublines="4,5,6,7,S" substopid="99"/>
+    <marker latitude="40.711971" longitude="-73.940670" stop="Grand St" sublines="L" substopid="445"/>
+    <marker latitude="40.719105" longitude="-73.993342" stop="Grand St" sublines="S" substopid="290"/>
+    <marker latitude="40.676879" longitude="-73.865460" stop="Grant Ave" sublines="A" substopid="234"/>
+    <marker latitude="40.731553" longitude="-73.954470" stop="Greenpoint Ave" sublines="G" substopid="287"/>
+    <marker latitude="40.877868" longitude="-73.865919" stop="Gun Hill Rd" sublines="2,5" substopid="59"/>
+    <marker latitude="40.869162" longitude="-73.846463" stop="Gun Hill Rd" sublines="5" substopid="66"/>
+    <marker latitude="40.686396" longitude="-73.916644" stop="Halsey St" sublines="J" substopid="316"/>
+    <marker latitude="40.695699" longitude="-73.904262" stop="Halsey St" sublines="L" substopid="451"/>
+    <marker latitude="40.706804" longitude="-73.953200" stop="Hewes St" sublines="J,M" substopid="310"/>
+    <marker latitude="40.699094" longitude="-73.990383" stop="High St" sublines="A,C" substopid="218"/>
+    <marker latitude="40.728602" longitude="-74.005329" stop="Houston St" sublines="1,2" substopid="7"/>
+    <marker latitude="40.660403" longitude="-73.830446" stop="Howard Beach" sublines="A" substopid="242"/>
+    <marker latitude="40.690358" longitude="-73.984572" stop="Hoyt St" sublines="1,2" substopid="74"/>
+    <marker latitude="40.688488" longitude="-73.984831" stop="Hoyt-Schermerhorn Sts" sublines="A,C,G" substopid="220"/>
+    <marker latitude="40.742068" longitude="-73.948928" stop="Hunters Pt Ave" sublines="7" substopid="160"/>
+    <marker latitude="40.820957" longitude="-73.891288" stop="Hunts Pt Ave" sublines="6" substopid="144"/>
+    <marker latitude="40.822130" longitude="-73.896834" stop="Intervale Ave" sublines="2,5" substopid="49"/>
+    <marker latitude="40.816525" longitude="-73.907731" stop="Jackson Ave" sublines="2,5" substopid="47"/>
+    <marker latitude="40.702263" longitude="-73.801037" stop="Jamaica Center" sublines="E,J,Z" substopid="463"/>
+    <marker latitude="40.702465" longitude="-73.817079" stop="Jamaica-Van Wyck" sublines="E" substopid="461"/>
+    <marker latitude="40.692700" longitude="-73.987270" stop="Jay St" sublines="A,C,F" substopid="219"/>
+    <marker latitude="40.706559" longitude="-73.922537" stop="Jefferson St" sublines="L" substopid="448"/>
+    <marker latitude="40.749087" longitude="-73.869446" stop="Junction Blvd" sublines="7" substopid="172"/>
+    <marker latitude="40.663394" longitude="-73.902654" stop="Junius St" sublines="1" substopid="87"/>
+    <marker latitude="40.603439" longitude="-73.972369" stop="Kings Highway" sublines="F" substopid="351"/>
+    <marker latitude="40.604358" longitude="-73.980581" stop="Kings Highway" sublines="N" substopid="430"/>
+    <marker latitude="40.608755" longitude="-73.957795" stop="Kings Highway" sublines="Q" substopid="391"/>
+    <marker latitude="40.868047" longitude="-73.896916" stop="Kingsbridge Rd" sublines="4" substopid="134"/>
+    <marker latitude="40.867177" longitude="-73.893565" stop="Kingsbridge Rd" sublines="B,D" substopid="213"/>
+    <marker latitude="40.669321" longitude="-73.942045" stop="Kingston Ave" sublines="1" substopid="82"/>
+    <marker latitude="40.679807" longitude="-73.940584" stop="Kingston-Throop Aves" sublines="C" substopid="225"/>
+    <marker latitude="40.698755" longitude="-73.918852" stop="Knickerbocker Ave" sublines="M" substopid="331"/>
+    <marker latitude="40.693280" longitude="-73.928643" stop="Kosciusko St" sublines="J" substopid="314"/>
+    <marker latitude="40.686045" longitude="-73.973800" stop="Lafayette Ave" sublines="C" substopid="221"/>
+    <marker latitude="40.692191" longitude="-73.986201" stop="Lawrence St" sublines="M,R" substopid="378"/>
+    <marker latitude="40.685701" longitude="-73.826148" stop="Lefferts Blvd" sublines="A" substopid="240"/>
+    <marker latitude="40.757130" longitude="-73.971903" stop="Lexington-3rd Aves-51st St" sublines="6,E,V" substopid="114"/>
+    <marker latitude="40.757661" longitude="-73.969345" stop="Lexington-3rd Aves-51st St" sublines="6,E,V" substopid="256"/>
+    <marker latitude="40.674639" longitude="-73.896906" stop="Liberty Ave" sublines="C" substopid="230"/>
+    <marker latitude="40.663777" longitude="-73.900841" stop="Livonia Ave" sublines="L" substopid="457"/>
+    <marker latitude="40.816320" longitude="-73.896191" stop="Longwood Ave" sublines="6" substopid="143"/>
+    <marker latitude="40.703835" longitude="-73.947257" stop="Lorimer St" sublines="J,M" substopid="311"/>
+    <marker latitude="40.759429" longitude="-73.829937" stop="Main St" sublines="7" substopid="176"/>
+    <marker latitude="40.708476" longitude="-73.957754" stop="Marcy Ave" sublines="J,M,Z" substopid="309"/>
+    <marker latitude="40.711741" longitude="-73.889023" stop="Metropolitan Ave" sublines="M" substopid="336"/>
+    <marker latitude="40.712932" longitude="-73.951451" stop="Metropolitan Ave-Lorimer St" sublines="G,L" substopid="285"/>
+    <marker latitude="40.714086" longitude="-73.949923" stop="Metropolitan Ave-Lorimer St" sublines="G,L" substopid="443"/>
+    <marker latitude="40.843945" longitude="-73.836230" stop="Middletown Rd" sublines="6" substopid="153"/>
+    <marker latitude="40.707670" longitude="-73.939817" stop="Montrose Ave" sublines="L" substopid="446"/>
+    <marker latitude="40.706151" longitude="-73.932799" stop="Morgan Ave" sublines="L" substopid="447"/>
+    <marker latitude="40.854456" longitude="-73.860542" stop="Morris Park" sublines="5" substopid="65"/>
+    <marker latitude="40.829520" longitude="-73.874589" stop="Morrison-Soundview Aves" sublines="6" substopid="147"/>
+    <marker latitude="40.879704" longitude="-73.884703" stop="Mosholu Pkwy" sublines="4" substopid="136"/>
+    <marker latitude="40.844318" longitude="-73.914715" stop="Mt Eden Ave" sublines="4" substopid="129"/>
+    <marker latitude="40.697203" longitude="-73.935504" stop="Myrtle Ave" sublines="J,M,Z" substopid="313"/>
+    <marker latitude="40.694649" longitude="-73.949041" stop="Myrtle-Willoughby Aves" sublines="G" substopid="282"/>
+    <marker latitude="40.699550" longitude="-73.911056" stop="Myrtle-Wyckoff Aves" sublines="L,M" substopid="450"/>
+    <marker latitude="40.724555" longitude="-73.951219" stop="Nassau Ave" sublines="G" substopid="286"/>
+    <marker latitude="40.595545" longitude="-73.955274" stop="Neck Rd" sublines="Q" substopid="393"/>
+    <marker latitude="40.579977" longitude="-73.974625" stop="Neptune Ave-Van Sicklen" sublines="F" substopid="354"/>
+    <marker latitude="40.688192" longitude="-73.980456" stop="Nevins St" sublines="1,2,4,5" substopid="75"/>
+    <marker latitude="40.666178" longitude="-73.884332" stop="New Lots Ave" sublines="1" substopid="90"/>
+    <marker latitude="40.658934" longitude="-73.899611" stop="New Lots Ave" sublines="L" substopid="458"/>
+    <marker latitude="40.625085" longitude="-73.996753" stop="New Utrecht Ave-62nd St" sublines="M,N,W" substopid="426"/>
+    <marker latitude="40.639992" longitude="-73.948419" stop="Newkirk Ave" sublines="2,5" substopid="96"/>
+    <marker latitude="40.635299" longitude="-73.962818" stop="Newkirk Ave" sublines="Q" substopid="387"/>
+    <marker latitude="40.752664" longitude="-73.905683" stop="Northern Blvd" sublines="G,R,V" substopid="262"/>
+    <marker latitude="40.681323" longitude="-73.880213" stop="Norwood Ave" sublines="J,Z" substopid="321"/>
+    <marker latitude="40.669797" longitude="-73.950356" stop="Nostrand Ave" sublines="1" substopid="81"/>
+    <marker latitude="40.680497" longitude="-73.955769" stop="Nostrand Ave" sublines="1,2,4,5,S" substopid="436"/>
+    <marker latitude="40.680385" longitude="-73.949605" stop="Nostrand Ave" sublines="A,C" substopid="224"/>
+    <marker latitude="40.576349" longitude="-73.968089" stop="Ocean Pkwy" sublines="Q" substopid="396"/>
+    <marker latitude="40.674835" longitude="-73.957520" stop="Park Place" sublines="S" substopid="434"/>
+    <marker latitude="40.655116" longitude="-73.961465" stop="Parkside Ave" sublines="Q" substopid="383"/>
+    <marker latitude="40.707567" longitude="-73.803322" stop="Parsons Blvd" sublines="F" substopid="275"/>
+    <marker latitude="40.852745" longitude="-73.827398" stop="Pelham Bay Park" sublines="6" substopid="155"/>
+    <marker latitude="40.857194" longitude="-73.867581" stop="Pelham Pkwy" sublines="2,5" substopid="56"/>
+    <marker latitude="40.664503" longitude="-73.895360" stop="Pennsylvania Ave" sublines="1" substopid="88"/>
+    <marker latitude="40.667862" longitude="-73.950662" stop="President St" sublines="2,5" substopid="91"/>
+    <marker latitude="40.724854" longitude="-73.997275" stop="Prince St" sublines="N,R" substopid="371"/>
+    <marker latitude="40.819697" longitude="-73.901612" stop="Prospect Ave" sublines="2,5" substopid="48"/>
+    <marker latitude="40.665343" longitude="-73.992715" stop="Prospect Ave" sublines="M,N,R" substopid="402"/>
+    <marker latitude="40.661342" longitude="-73.962030" stop="Prospect Park" sublines="Q,S" substopid="382"/>
+    <marker latitude="40.748741" longitude="-73.936990" stop="Queens Plaza" sublines="E,G,R,V" substopid="258"/>
+    <marker latitude="40.750486" longitude="-73.940117" stop="Queensboro Plaza" sublines="7,N,W" substopid="162"/>
+    <marker latitude="40.678784" longitude="-73.920833" stop="Ralph Ave" sublines="C" substopid="227"/>
+    <marker latitude="40.707964" longitude="-74.013562" stop="Rector St-Greenwich St" sublines="1,9" substopid="2"/>
+    <marker latitude="40.707795" longitude="-74.012894" stop="Rector St-Trinity Pl" sublines="N,R" substopid="375"/>
+    <marker latitude="40.662408" longitude="-73.909201" stop="Rockaway Ave" sublines="1" substopid="86"/>
+    <marker latitude="40.678273" longitude="-73.912056" stop="Rockaway Ave" sublines="C" substopid="228"/>
+    <marker latitude="40.680266" longitude="-73.844235" stop="Rockaway Blvd" sublines="A" substopid="237"/>
+    <marker latitude="40.580745" longitude="-73.835479" stop="Rockaway Park-Beach 116th St" sublines="A,S" substopid="253"/>
+    <marker latitude="40.646827" longitude="-73.902293" stop="Rockaway Pkwy" sublines="L" substopid="460"/>
+    <marker latitude="40.759198" longitude="-73.953033" stop="Roosevelt Island" sublines="F" substopid="465"/>
+    <marker latitude="40.661348" longitude="-73.916655" stop="Saratoga Ave" sublines="1" substopid="85"/>
+    <marker latitude="40.702817" longitude="-73.907675" stop="Seneca Ave" sublines="M" substopid="333"/>
+    <marker latitude="40.587130" longitude="-73.953779" stop="Sheepshead Bay" sublines="Q" substopid="394"/>
+    <marker latitude="40.674037" longitude="-73.881158" stop="Shepherd Ave" sublines="C" substopid="232"/>
+    <marker latitude="40.824157" longitude="-73.892888" stop="Simpson St" sublines="2,5" substopid="50"/>
+    <marker latitude="40.674000" longitude="-73.997251" stop="Smith-9th Sts" sublines="F,G" substopid="339"/>
+    <marker latitude="40.701322" longitude="-74.013882" stop="South Ferry" sublines="1,9" substopid="1"/>
+    <marker latitude="40.726820" longitude="-74.003563" stop="Spring St-6th Ave" sublines="C,E" substopid="179"/>
+    <marker latitude="40.722318" longitude="-73.997117" stop="Spring St-Lafayette St" sublines="6" substopid="106"/>
+    <marker latitude="40.831373" longitude="-73.868101" stop="St Lawrence Ave" sublines="6" substopid="148"/>
+    <marker latitude="40.756736" longitude="-73.920160" stop="Steinway St" sublines="G,R,V" substopid="260"/>
+    <marker latitude="40.662713" longitude="-73.950677" stop="Sterling St" sublines="2,5" substopid="92"/>
+    <marker latitude="40.576940" longitude="-73.980594" stop="Stillwell Ave" sublines="F,Q,W" substopid="398"/>
+    <marker latitude="40.705321" longitude="-73.810955" stop="Sutphin Blvd" sublines="F" substopid="274"/>
+    <marker latitude="40.700565" longitude="-73.808100" stop="Sutphin Blvd-Archer Ave" sublines="E,J,Z" substopid="462"/>
+    <marker latitude="40.664696" longitude="-73.922528" stop="Sutter Ave" sublines="1" substopid="84"/>
+    <marker latitude="40.669155" longitude="-73.902258" stop="Sutter Ave" sublines="L" substopid="456"/>
+    <marker latitude="40.757191" longitude="-73.989801" stop="Times Square-42nd St-8th Ave" sublines="1,2,3,7,A,C,E,N,Q,R" substopid="184"/>
+    <marker latitude="40.850568" longitude="-73.905022" stop="Tremont Ave" sublines="B,D" substopid="210"/>
+    <marker latitude="40.735301" longitude="-73.989929" stop="Union Square" sublines="4,5,6,L,N,Q,R,W" substopid="109"/>
+    <marker latitude="40.677406" longitude="-73.983042" stop="Union St" sublines="M,N,R" substopid="400"/>
+    <marker latitude="40.714207" longitude="-73.830912" stop="Union Turnpike" sublines="E,F" substopid="272"/>
+    <marker latitude="40.668846" longitude="-73.932368" stop="Utica Ave" sublines="1,4" substopid="83"/>
+    <marker latitude="40.679301" longitude="-73.930073" stop="Utica Ave" sublines="A,C" substopid="226"/>
+    <marker latitude="40.665326" longitude="-73.889659" stop="Van Siclen Ave" sublines="1" substopid="89"/>
+    <marker latitude="40.672596" longitude="-73.890631" stop="Van Siclen Ave" sublines="C" substopid="231"/>
+    <marker latitude="40.709329" longitude="-73.821015" stop="Van Wyck Blvd" sublines="E,F" substopid="273"/>
+    <marker latitude="40.742470" longitude="-73.952763" stop="Vernon-Jackson Aves" sublines="7" substopid="159"/>
+    <marker latitude="40.732920" longitude="-74.000075" stop="W 4th St" sublines="A,C,E,F,S,V" substopid="180"/>
+    <marker latitude="40.575926" longitude="-73.975439" stop="W 8th St" sublines="F,Q" substopid="397"/>
+    <marker latitude="40.708307" longitude="-74.011243" stop="Wall St-Broadway" sublines="4,5" substopid="102"/>
+    <marker latitude="40.707011" longitude="-74.008961" stop="Wall St-William St" sublines="1,2" substopid="71"/>
+    <marker latitude="40.839805" longitude="-73.843058" stop="Westchester Square" sublines="6" substopid="152"/>
+    <marker latitude="40.703153" longitude="-74.012999" stop="Whitehall St" sublines="N,R" substopid="376"/>
+    <marker latitude="40.826797" longitude="-73.886009" stop="Whitlock Rd" sublines="6" substopid="145"/>
+    <marker latitude="40.754388" longitude="-73.845860" stop="Willets Pt" sublines="7" substopid="175"/>
+    <marker latitude="40.689013" longitude="-73.904283" stop="Wilson Ave" sublines="L" substopid="452"/>
+    <marker latitude="40.656712" longitude="-73.950210" stop="Winthrop St" sublines="2,5" substopid="93"/>
+    <marker latitude="40.733127" longitude="-73.869568" stop="Woodhaven Blvd" sublines="G,R,V" substopid="267"/>
+    <marker latitude="40.693641" longitude="-73.852072" stop="Woodhaven Blvd" sublines="J,Z" substopid="326"/>
+    <marker latitude="40.886345" longitude="-73.878444" stop="Woodlawn" sublines="4" substopid="137"/>
+    <marker latitude="40.700059" longitude="-73.986667" stop="York St" sublines="F" substopid="302"/>
+    <marker latitude="40.836381" longitude="-73.847072" stop="Zerega Ave" sublines="6" substopid="151"/>
 </markers>
