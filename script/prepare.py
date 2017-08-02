@@ -10,7 +10,8 @@ import calendar
 ### ================================================ ###
 # basic feature extract 
 
-def basic_feature_extract(df):
+
+def get_time_feature(df):
     df_= df.copy()
     # pickup
     df_["pickup_date"] = pd.to_datetime(df_.pickup_datetime.apply(lambda x : x.split(" ")[0]))
@@ -18,6 +19,10 @@ def basic_feature_extract(df):
     df_["pickup_year"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[0].split("-")[0])
     df_["pickup_month"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[0].split("-")[1])
     df_["pickup_weekday"] = df_.pickup_datetime.apply(lambda x :pd.to_datetime(x.split(" ")[0]).weekday())
+    # weekday
+    list(calendar.day_name)
+    df_['pickup_week_'] = pd.to_datetime(df_.pickup_datetime,coerce=True).dt.weekday
+    df_['pickup_weekday_'] = df_['pickup_week_'].apply(lambda x: calendar.day_name[x])
     # dropoff
     # in case test data dont have dropoff_datetime feature
     try:
@@ -30,14 +35,7 @@ def basic_feature_extract(df):
         pass 
     return df_
 
-# get weekday
-import calendar
-def get_weekday(df):
-    list(calendar.day_name)
-    df_=df.copy()
-    df_['pickup_week_'] = pd.to_datetime(df_.pickup_datetime,coerce=True).dt.weekday
-    df_['pickup_weekday_'] = df_['pickup_week_'].apply(lambda x: calendar.day_name[x])
-    return df_
+
 
 ### ================================================ ###
 # feature engineering 
@@ -115,15 +113,15 @@ def get_features(df):
     ###  USING .loc making return array ordering 
     # distance
     df_.loc[:, 'distance_haversine'] = get_haversine_distance(
-                      df_['pickup_latitude'].values,
-                      df_['pickup_longitude'].values,
-                      df_['dropoff_latitude'].values,
-                      df_['dropoff_longitude'].values)
+                                      df_['pickup_latitude'].values,
+                                      df_['pickup_longitude'].values,
+                                      df_['dropoff_latitude'].values,
+                                      df_['dropoff_longitude'].values)
     df_.loc[:, 'distance_manhattan'] = get_manhattan_distance(
-                      df_['pickup_latitude'].values,
-                      df_['pickup_longitude'].values,
-                      df_['dropoff_latitude'].values,
-                      df_['dropoff_longitude'].values)
+                                      df_['pickup_latitude'].values,
+                                      df_['pickup_longitude'].values,
+                                      df_['dropoff_latitude'].values,
+                                      df_['dropoff_longitude'].values)
     # direction 
     df_.loc[:, 'direction'] = get_direction(df_['pickup_latitude'].values,
                                           df_['pickup_longitude'].values, 

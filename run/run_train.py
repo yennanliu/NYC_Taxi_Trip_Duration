@@ -24,7 +24,7 @@ df_train, df_test, sampleSubmission = load_data()
 
 # only take 100 data points  here 
 
-df_train_ = basic_feature_extract(df_train.head(100))
+df_train_ = get_time_feature(df_train.head(100))
 df_train_ = get_features(df_train_)
 df_train_,df_test_ = pca_lon_lat(df_train_,df_test)
 df_train_ = avg_speed(df_train_)
