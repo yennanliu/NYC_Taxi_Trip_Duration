@@ -92,17 +92,38 @@ def pca_lon_lat(dftrain,dftest):
     return dftrain,dftest 
 
 
-# get Average speed for pickup location (taxi velocity)
-def avg_speed(df):
+# get lon & lat clustering for following avg location speed calculation
+def get_clustering(df):
+    coords = np.vstack((df_train[['pickup_latitude', 'pickup_longitude']].values,
+                    df_train[['dropoff_latitude', 'dropoff_longitude']].values,
+                    df_test[['pickup_latitude', 'pickup_longitude']].values,
+                    df_test[['dropoff_latitude', 'dropoff_longitude']].values))
     df_ = df.copy()
-    df_.loc[:, 'pickup_lat_'] = np.round(df_['pickup_latitude'], 3)
-    df_.loc[:, 'pickup_long_'] = np.round(df_['pickup_longitude'], 3)
-    gby_cols = ['pickup_lat_', 'pickup_long_']
-    coord_speed = df_.groupby(gby_cols).mean()[['avg_speed_h']].reset_index()
-    coord_speed.columns = ['pickup_lat_','pickup_long_','avg_area_speed_h']
-    # merge avg area speed and original dataframe
-    df_ = pd.merge(df_, coord_speed,  how='outer')
+    sample_ind = np.random.permutation(len(coords))[:500000]
+    kmeans = MiniBatchKMeans(n_clusters=100, batch_size=10000).fit(coords[sample_ind])
+    df_.loc[:, 'pickup_cluster'] = kmeans.predict(df_[['pickup_latitude', 'pickup_longitude']])
+    df_.loc[:, 'dropoff_cluster'] = kmeans.predict(df_[['dropoff_latitude', 'dropoff_longitude']])
     return df_
+
+
+def avg_cluster_speed_(df):
+    df_ = df.copy()
+    # only get pickup_cluster first as test here 
+    for gby_col in ['pickup_cluster']:
+        gby = df_.groupby(gby_col).mean()[['avg_speed_h', 'avg_speed_m', 'trip_duration']]
+        gby.columns = ['%s_gby_%s' % (col, gby_col) for col in gby.columns]
+        df_ = pd.merge(df_, gby, how='left', left_on=gby_col, right_index=True)
+        #df_test = pd.merge(df_test, gby, how='left', left_on=gby_col, right_index=True)
+    for gby_cols in [
+                 ['pickup_cluster', 'dropoff_cluster']]:
+        coord_speed = df_.groupby(gby_cols).mean()[['avg_speed_h']].reset_index()
+        coord_count = df_.groupby(gby_cols).count()[['id']].reset_index()
+        coord_stats = pd.merge(coord_speed, coord_count, on=gby_cols)
+        #coord_stats = coord_stats[coord_stats['id'] > 100]
+        coord_stats.columns = gby_cols + ['avg_speed_h_%s' % '_'.join(gby_cols), 'cnt_%s' %  '_'.join(gby_cols)]
+        df_ = pd.merge(df_, coord_stats, how='left', on=gby_cols)
+    return df_
+
 
 
 ### ======================== ###
