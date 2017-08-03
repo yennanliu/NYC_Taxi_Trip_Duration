@@ -26,7 +26,6 @@ df_test_ = get_time_feature(df_test)
 df_test_ = get_features(df_test_)
 #df_train_,df_test_ = pca_lon_lat(df_train_,df_test_)
 #df_train_ = avg_speed(df_train_)
-df_test_ = clean_data(df_test_)
 print (df_test.head())
 
 

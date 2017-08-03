@@ -185,7 +185,7 @@ def clean_data(df):
     # trip duration should less then 0.5 day and > 10 sec normally
     # in case test data has no trip duration 
     try:
-        df_ = df_[(df_['trip_duration']  < 12*3600) & (df_['trip_duration'] > 10)]
+        df_ = df_[(df_['trip_duration']  < 3*3600) & (df_['trip_duration'] > 10)]
         df_ = df_[(df_['trip_duration'] < df_['trip_duration'].quantile(0.95))&
              (df_['trip_duration'] > df_['trip_duration'].quantile(0.05))]
     # remove potential speed outlier  
