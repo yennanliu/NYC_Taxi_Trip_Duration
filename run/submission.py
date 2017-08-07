@@ -40,13 +40,14 @@ def get_time_feature(df):
     return df_
 
 # get time delta gap  
-def get_time_delta(df):
+def get_time_feature2(df):
     df_ = df.copy()
     df_['pickup_datetime'] = pd.to_datetime(df_['pickup_datetime'])
     df_['pickup_time_delta'] = (df_['pickup_datetime'] - df_['pickup_datetime'].min()).dt.total_seconds()
     df_['week_delta'] = df_['pickup_datetime'].dt.weekday + \
                         ((df_['pickup_datetime'].dt.hour + \
                         (df_['pickup_datetime'].dt.minute / 60.0)) / 24.0)
+    df_['weekofyear'] = df_['pickup_datetime'].dt.weekofyear
     return df_
 
 
@@ -270,11 +271,11 @@ def load_data():
 if __name__ == '__main__':
 
     df_train, df_test = load_data()
-	#get basic features 
+    #get basic features 
     df_train_ = get_time_feature(df_train)
     df_test_ = get_time_feature(df_test)
-    df_train_ = get_time_delta(df_train_)
-    df_test_ = get_time_delta(df_test_)
+    df_train_ = get_time_feature2(df_train_)
+    df_test_ = get_time_feature2(df_test_)
     df_train_ = get_time_cyclic(df_train_)
     df_test_ = get_time_cyclic(df_test_)
     # get other features 
