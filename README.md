@@ -46,7 +46,7 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/notebook
 
 ### 2. FEATURE EXTRACTION 
 
-1. **Overview**
+2-1. **Overview**
    * Time & date dependency
    * Region/zone dependency    
    * **Wanted variables**
@@ -76,19 +76,18 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/notebook
     ```
     * **Reference** <br />[New York City](https://en.wikipedia.org/wiki/Neighborhoods_in_New_York_City)<br />[List of Manhattan neighborhoods](https://en.wikipedia.org/wiki/List_of_Manhattan_neighborhoods)<br /> [List of Bronx neighborhoods](https://en.wikipedia.org/wiki/List_of_Bronx_neighborhoods)<br />[List of Brooklyn neighborhoods](https://en.wikipedia.org/wiki/List_of_Brooklyn_neighborhoods)<br />[List of Queens neighborhoods](https://en.wikipedia.org/wiki/List_of_Queens_neighborhoods)<br />[List of Staten Island neighborhoods](https://en.wikipedia.org/wiki/List_of_Staten_Island_neighborhoods)<br />[Subway Station coordinates](http://www.poi-factory.com/node/17432)
 
-2. **Encode & Standardization**
-3. **Feature transformation**
-4. **Dimension reduction**
+2-2. **Encode & Standardization**
+2-3. **Feature transformation**
+2-4. **Dimension reduction**
    * Use PCA
 
 ### 3. PRE-TEST
-Input all standardized features to all models.
-### Model pre-performance
-1. Regression
+3-1.Input all standardized features to all models.
+3-2. Regression
 
 ### 4. OPTIMIZATION
-#### Feature optimization
-#### Super-parameters tuning  
-#### Aggregation
+4-1. Feature optimization
+4-2. Super-parameters tuning  
+4-3. Aggregation
 
 ### 5. RESULTS  
