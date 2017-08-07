@@ -39,12 +39,12 @@ $python run/submission.py
 ```
 
 ---
-## Process 
+## PROCESS 
 
-### 1. Data Exploration (EDA)
+### 1. DATA EXPLORATION (EDA)
 https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/notebook
 
-### 2. Feature Extraction 
+### 2. FEATURE EXTRACTION 
 
 1. **Overview**
    * Time & date dependency
@@ -81,14 +81,14 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/notebook
 4. **Dimension reduction**
    * Use PCA
 ---
-### 3. Pre-test
+### 3. PRE-TEST
 Input all standardized features to all models.
 ### Model pre-performance
 1. Regression
 ---
-### 4. Optimization
-### Feature optimization
-### Super-parameters tuning  
-### Aggregation
+### 4. OPTIMIZATION
+#### Feature optimization
+#### Super-parameters tuning  
+#### Aggregation
 ---
-### 5. Results  
+### 5. RESULTS  
