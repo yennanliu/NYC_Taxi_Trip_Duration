@@ -259,7 +259,7 @@ def clean_data(df):
 
 
 def load_data():
-	df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=50000)
+	df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=100)
 	df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
 	return df_train, df_test
 
@@ -308,6 +308,7 @@ if __name__ == '__main__':
                'direction',
                'distance_manhattan',
                'pickup_month',
+               'pickup_weekday',
                'pickup_hour',
                'week_delta',
                'weekofyear',
