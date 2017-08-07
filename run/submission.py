@@ -223,6 +223,10 @@ def clean_data(df):
          (df_['avg_speed_h'] > df_['avg_speed_h'].quantile(0.05))]
         df_ = df_[(df_['avg_speed_m'] < df_['avg_speed_m'].quantile(0.95))&
          (df_['avg_speed_m'] > df_['avg_speed_m'].quantile(0.05))]
+    # remove the 2016-01-23 data since its too less comapre others days, 
+    # maybe quality is not good 
+        df_ = df_[(df_.pickup_date != '2016-01-23') &
+                 (df_.dropoff_date != '2016-01-23')]
     except:
         pass
  
@@ -230,8 +234,6 @@ def clean_data(df):
     df_ = df_[(df_['passenger_count']  <= 6) & (df_['passenger_count'] > 0)]
     
     return df_
-
-
 
 
 
