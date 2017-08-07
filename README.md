@@ -23,6 +23,17 @@ notebook : main analysis
 
 ```
 
+## Quick Start
+
+```
+$export PYTHONPATH=/Users/yennanliu/NYC_Taxi_Trip_Duration/
+$cd NYC_Taxi_Trip_Duration
+$python run/submission.py
+
+```
+
+
+
 ## Introduction
 
 Predicts the total ride duration of taxi trips in New York City. primary dataset is one released by the NYC Taxi and Limousine Commission, which includes pickup time, geo-coordinates, number of passengers, and several other variables.
