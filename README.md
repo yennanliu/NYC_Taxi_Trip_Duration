@@ -80,15 +80,15 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/notebook
 3. **Feature transformation**
 4. **Dimension reduction**
    * Use PCA
----
+
 ### 3. PRE-TEST
 Input all standardized features to all models.
 ### Model pre-performance
 1. Regression
----
+
 ### 4. OPTIMIZATION
 #### Feature optimization
 #### Super-parameters tuning  
 #### Aggregation
----
+
 ### 5. RESULTS  
