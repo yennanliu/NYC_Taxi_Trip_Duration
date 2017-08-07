@@ -39,13 +39,23 @@ def get_time_feature(df):
         pass 
     return df_
 
+# get time delta gap  
+def get_time_delta(df):
+    df_ = df.copy()
+    df_['pickup_datetime'] = pd.to_datetime(df_['pickup_datetime'])
+    df_['pickup_time_delta'] = (df_['pickup_datetime'] - df_['pickup_datetime'].min()).dt.total_seconds()
+    df_['week_delta'] = df_['pickup_datetime'].dt.weekday + \
+                        ((df_['pickup_datetime'].dt.hour + \
+                        (df_['pickup_datetime'].dt.minute / 60.0)) / 24.0)
+    return df_
+
 
 # make weekday and hour cyclic, since we want to let machine understand 
 # these features are in fact periodically 
 def get_time_cyclic(df):
     df_ = df.copy()
     df_.pickup_hour = df_.pickup_hour.astype('int')
-    df_['week_delta_sin'] = np.sin((df_['pickup_week_'] / 7) * np.pi)**2
+    df_['week_delta_sin'] = np.sin((df_['week_delta'] / 7) * np.pi)**2
     df_['pickup_hour_sin'] = np.sin((df_['pickup_hour'] / 24) * np.pi)**2
     return df_
 
@@ -258,60 +268,62 @@ def load_data():
 
 
 if __name__ == '__main__':
-	df_train, df_test = load_data()
+
+    df_train, df_test = load_data()
 	#get basic features 
-	df_train_ = get_time_feature(df_train)
-	df_test_ = get_time_feature(df_test)
-	df_train_ = get_time_cyclic(df_train_)
-	df_test_ = get_time_cyclic(df_test_)
-	# get other features 
-	df_train_ = get_features(df_train_)
-	df_test_ = get_features(df_test_)
-	df_train_,df_test_ = pca_lon_lat(df_train_,df_test_)
-	# get lon & lat clustering 
-	df_train_= get_clustering(df_train_)
-	df_test_= get_clustering(df_test_)
-	# get avg ride count on dropoff cluster 
-	df_train_ = trip_cluser_count(df_train_)
-	df_test_ = trip_cluser_count(df_test_)
-	# get log trip duration 
-	df_train_['trip_duration_log'] = df_train_['trip_duration'].apply(np.log)
-	# clean data 
-	df_train_ = clean_data(df_train_)
+    df_train_ = get_time_feature(df_train)
+    df_test_ = get_time_feature(df_test)
+    df_train_ = get_time_delta(df_train_)
+    df_test_ = get_time_delta(df_test_)
+    df_train_ = get_time_cyclic(df_train_)
+    df_test_ = get_time_cyclic(df_test_)
+    # get other features 
+    df_train_ = get_features(df_train_)
+    df_test_ = get_features(df_test_)
+    df_train_,df_test_ = pca_lon_lat(df_train_,df_test_)
+    # get lon & lat clustering 
+    df_train_= get_clustering(df_train_)
+    df_test_= get_clustering(df_test_)
+    # get avg ride count on dropoff cluster 
+    df_train_ = trip_cluser_count(df_train_)
+    df_test_ = trip_cluser_count(df_test_)
+    # get log trip duration 
+    df_train_['trip_duration_log'] = df_train_['trip_duration'].apply(np.log)
+    # clean data 
+    df_train_ = clean_data(df_train_)
 
- 	# modeling 
-	features = ['vendor_id',
-				 'passenger_count',
-				 'pickup_latitude',
-				 'pickup_longitude',
-				 'dropoff_latitude',
-				 'dropoff_longitude',
-				 'pickup_pca0',
-				 'pickup_pca1',
-				 'dropoff_pca0',
-				 'dropoff_pca1',
-				 'distance_haversine',
-				 'direction',
-				 'distance_manhattan',
-				 'pickup_month',
-				 'pickup_hour',
-				 'week_delta_sin',
-				 'pickup_hour_sin',
-				 'dropoff_cluster_count']
+    	# modeling 
+    features = ['vendor_id',
+    			 'passenger_count',
+    			 'pickup_latitude',
+    			 'pickup_longitude',
+    			 'dropoff_latitude',
+    			 'dropoff_longitude',
+    			 'pickup_pca0',
+    			 'pickup_pca1',
+    			 'dropoff_pca0',
+    			 'dropoff_pca1',
+    			 'distance_haversine',
+    			 'direction',
+    			 'distance_manhattan',
+    			 'pickup_month',
+    			 'pickup_hour',
+    			 'week_delta_sin',
+    			 'pickup_hour_sin',
+    			 'dropoff_cluster_count']
 
-	xtrain = df_train_.fillna(0)[features].values
-	ytrain = df_train_['trip_duration_log'].values
-	xtest = df_test_[features].values
-	auto_classifier = TPOTRegressor(generations=2, population_size=8, verbosity=2)
-	X_train, X_valid, y_train, y_valid = train_test_split(xtrain, ytrain,train_size=0.8, test_size=0.2)
-	auto_classifier.fit(X_train, y_train)
-	test_result = auto_classifier.predict(xtest)
-	sub = pd.DataFrame()
-	sub['id'] = df_test_['id']
-	sub['trip_duration'] = np.exp(test_result)
-	sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0803_submit.csv', index=False)
-	sub.head()
-
+    xtrain = df_train_.fillna(0)[features].values
+    ytrain = df_train_['trip_duration_log'].values
+    xtest = df_test_[features].values
+    auto_classifier = TPOTRegressor(generations=2, population_size=8, verbosity=2)
+    X_train, X_valid, y_train, y_valid = train_test_split(xtrain, ytrain,train_size=0.8, test_size=0.2)
+    auto_classifier.fit(X_train, y_train)
+    test_result = auto_classifier.predict(xtest)
+    sub = pd.DataFrame()
+    sub['id'] = df_test_['id']
+    sub['trip_duration'] = np.exp(test_result)
+    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0803_submit.csv', index=False)
+    sub.head()
 
 
 
