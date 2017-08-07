@@ -45,12 +45,12 @@ $python run/submission.py
 https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/notebook
 
 ### 2. Feature Extraction 
-```
+
 1. **Overview**
    * Time & date dependency
    * Region/zone dependency    
    * **Wanted variables**
-   
+   ```
      * Id (label, 0x2)
      * Date-time: (28)
        * Pickup year 
