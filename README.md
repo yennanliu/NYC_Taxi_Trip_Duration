@@ -52,7 +52,7 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run
 2-1. **Overview**
    * Time & date dependency
    * Region/zone dependency    
-   * **Wanted variables**
+   ***Wanted variables**
    ```
      * Id (label, 0x2)
      * Date-time: (28)
@@ -81,18 +81,18 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run
    
 
 
-2-2. Encode & Standardization
-2-3. Feature transformation
-2-4. Dimension reduction
+2-2. **Encode & Standardization**
+2-3. **Feature transformation**
+2-4. **Dimension reduction**
    * Use PCA
 
 ### 3. PRE-TEST
-3-1.Input all standardized features to all models.
-3-2. Regression
+3-1. **Input all standardized features to all models**
+3-2. **Regression**
 
 ### 4. OPTIMIZATION
-4-1. Feature optimization
-4-2. Super-parameters tuning  
-4-3. Aggregation
+4-1. **Feature optimization**
+4-2. **Super-parameters tuning**  
+4-3. **Aggregation**
 
 ### 5. RESULTS  
