@@ -81,8 +81,8 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run
    
 
 
-2-2. **Encode & Standardization**
-2-3. **Feature transformation**
+2-2. **Encode & Standardization** <br>
+2-3. **Feature transformation** <br>
 2-4. **Dimension reduction**
    * Use PCA
 
@@ -91,7 +91,7 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run
 3-2. **Regression**
 
 ### 4. OPTIMIZATION
-4-1. **Feature optimization**
+4-1. **Feature optimization** 
 4-2. **Super-parameters tuning**  
 4-3. **Aggregation**
 
