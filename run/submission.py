@@ -274,7 +274,7 @@ def clean_data(df):
 
 
 def load_data():
-	df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=500)
+	df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=50000)
 	df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
 	return df_train, df_test
 
@@ -322,6 +322,8 @@ if __name__ == '__main__':
                'pickup_longitude',
                'dropoff_latitude',
                'dropoff_longitude',
+               'center_latitude',
+               'center_longitude',
                'pickup_pca0',
                'pickup_pca1',
                'dropoff_pca0',
