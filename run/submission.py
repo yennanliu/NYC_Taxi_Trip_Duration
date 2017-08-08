@@ -94,6 +94,14 @@ def get_direction(lat1, lng1, lat2, lng2):
     return np.degrees(np.arctan2(y, x))
 
 
+def gat_trip_center(df):
+    df_ = df.copy()
+    df_.loc[:, 'center_latitude'] = (df_['pickup_latitude'].values + df_['dropoff_latitude'].values) / 2
+    df_.loc[:, 'center_longitude'] = (df_['pickup_longitude'].values + df_['dropoff_longitude'].values) / 2
+    return df_
+
+
+
 # PCA to transform longitude and latitude
 # to improve decision tree performance 
 from sklearn.decomposition import PCA
@@ -284,6 +292,9 @@ if __name__ == '__main__':
     df_train_ = get_features(df_train_)
     df_test_ = get_features(df_test_)
     df_train_,df_test_ = pca_lon_lat(df_train_,df_test_)
+    # get center of trip route 
+    df_train_ = gat_trip_center(df_train_)
+    df_test_ = gat_trip_center(df_test_)
     # get lon & lat clustering 
     df_train_= get_clustering(df_train_)
     df_test_= get_clustering(df_test_)
