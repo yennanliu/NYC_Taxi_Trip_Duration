@@ -43,12 +43,14 @@ def get_time_feature(df):
 def get_time_feature2(df):
     df_ = df.copy()
     df_['pickup_datetime'] = pd.to_datetime(df_['pickup_datetime'])
+    df_['pickup_minute'] = df_['pickup_datetime'].dt.minute
     df_['pickup_time_delta'] = (df_['pickup_datetime'] - df_['pickup_datetime'].min()).dt.total_seconds()
     df_['week_delta'] = df_['pickup_datetime'].dt.weekday + \
                         ((df_['pickup_datetime'].dt.hour + \
                         (df_['pickup_datetime'].dt.minute / 60.0)) / 24.0)
     df_['weekofyear'] = df_['pickup_datetime'].dt.weekofyear
     return df_
+
 
 
 # make weekday and hour cyclic, since we want to let machine understand 
@@ -224,7 +226,7 @@ def clean_data(df):
     # trip duration should less then 0.5 day and > 10 sec normally
     # in case test data has no trip duration 
     try:
-        df_ = df_[(df_['trip_duration']  < 3*3600) & (df_['trip_duration'] > 10)]
+        df_ = df_[(df_['trip_duration']  < 2*3600) & (df_['trip_duration'] > 10)]
         df_ = df_[(df_['trip_duration'] < df_['trip_duration'].quantile(0.95))&
              (df_['trip_duration'] > df_['trip_duration'].quantile(0.05))]
     # remove potential speed outlier  
@@ -259,7 +261,7 @@ def clean_data(df):
 
 
 def load_data():
-	df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=100)
+	df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=500)
 	df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
 	return df_train, df_test
 
@@ -327,7 +329,7 @@ if __name__ == '__main__':
     sub = pd.DataFrame()
     sub['id'] = df_test_['id']
     sub['trip_duration'] = np.exp(test_result)
-    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0803_submit.csv', index=False)
+    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0808_submit.csv', index=False)
     sub.head()
 
 
