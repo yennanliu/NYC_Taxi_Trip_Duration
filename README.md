@@ -31,7 +31,9 @@ Predicts the total ride duration of taxi trips in New York City. primary dataset
 
 ## Quick Start
 
-```
+
+
+```Bash
 $export PYTHONPATH=/Users/yennanliu/NYC_Taxi_Trip_Duration/
 $cd NYC_Taxi_Trip_Duration
 $python run/submission.py
