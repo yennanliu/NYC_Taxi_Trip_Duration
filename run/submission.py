@@ -104,6 +104,7 @@ def gat_trip_center(df):
 
 # PCA to transform longitude and latitude
 # to improve decision tree performance 
+from sklearn.decomposition import PCA
 def pca_lon_lat(dftrain,dftest):
     X = np.vstack \
             ((dftrain[['pickup_latitude', 'pickup_longitude']].values,
