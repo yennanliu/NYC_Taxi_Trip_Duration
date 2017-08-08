@@ -87,12 +87,12 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run
    * Use PCA
 
 ### 3. PRE-TEST
-3-1. **Input all standardized features to all models**
+3-1. **Input all standardized features to all models** <br>
 3-2. **Regression**
 
 ### 4. OPTIMIZATION
-4-1. **Feature optimization** 
-4-2. **Super-parameters tuning**  
-4-3. **Aggregation**
+4-1. **Feature optimization**<br>
+4-2. **Super-parameters tuning** <br>
+4-3. **Aggregation**<br>
 
 ### 5. RESULTS  
