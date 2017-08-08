@@ -104,7 +104,6 @@ def gat_trip_center(df):
 
 # PCA to transform longitude and latitude
 # to improve decision tree performance 
-from sklearn.decomposition import PCA
 def pca_lon_lat(dftrain,dftest):
     X = np.vstack \
             ((dftrain[['pickup_latitude', 'pickup_longitude']].values,
@@ -124,6 +123,9 @@ def pca_lon_lat(dftrain,dftest):
     dftest['pickup_pca1'] = pca.transform(dftest[['pickup_latitude', 'pickup_longitude']])[:, 1]
     dftest['dropoff_pca0'] = pca.transform(dftest[['dropoff_latitude', 'dropoff_longitude']])[:, 0]
     dftest['dropoff_pca1'] = pca.transform(dftest[['dropoff_latitude', 'dropoff_longitude']])[:, 1]
+    # manhattan distance from pca lon & lat 
+    dftrain.loc[:, 'pca_manhattan'] = np.abs(dftrain['dropoff_pca1'] - dftrain['pickup_pca1']) + np.abs(dftrain['dropoff_pca0'] - dftrain['pickup_pca0'])
+    dftest.loc[:, 'pca_manhattan'] = np.abs(dftest['dropoff_pca1'] - dftest['pickup_pca1']) + np.abs(dftest['dropoff_pca0'] - dftest['pickup_pca0'])
     return dftrain,dftest 
 
 
@@ -239,7 +241,7 @@ def clean_data(df):
     # trip duration should less then 0.5 day and > 10 sec normally
     # in case test data has no trip duration 
     try:
-        df_ = df_[(df_['trip_duration']  < 2*3600) & (df_['trip_duration'] > 10)]
+        df_ = df_[(df_['trip_duration']  < 3*3600) & (df_['trip_duration'] > 10)]
         df_ = df_[(df_['trip_duration'] < df_['trip_duration'].quantile(0.95))&
              (df_['trip_duration'] > df_['trip_duration'].quantile(0.05))]
     # remove potential speed outlier  
@@ -274,7 +276,7 @@ def clean_data(df):
 
 
 def load_data():
-	df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=50000)
+	df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=100000)
 	df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
 	return df_train, df_test
 
@@ -352,7 +354,7 @@ if __name__ == '__main__':
     sub = pd.DataFrame()
     sub['id'] = df_test_['id']
     sub['trip_duration'] = np.exp(test_result)
-    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0808_submit.csv', index=False)
+    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0808_2_submit.csv', index=False)
     sub.head()
 
 
