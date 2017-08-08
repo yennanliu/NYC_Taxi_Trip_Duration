@@ -182,6 +182,11 @@ def avg_cluster_speed_(df):
     return df_
 
 
+def label_2_binary(df):
+    df_ = df.copy()
+    df_['store_and_fwd_flag_'] = df_['store_and_fwd_flag'].map(lambda x: 0 if x =='N' else 1)
+    return df_
+
 
 ### ======================== ###
 
@@ -301,6 +306,9 @@ if __name__ == '__main__':
     # get avg ride count on dropoff cluster 
     df_train_ = trip_cluser_count(df_train_)
     df_test_ = trip_cluser_count(df_test_)
+    # label -> 0,1 
+    df_train_ = label_2_binary(df_train_)
+    df_test_ = label_2_binary(df_test_)
     # get log trip duration 
     df_train_['trip_duration_log'] = df_train_['trip_duration'].apply(np.log)
     # clean data 
