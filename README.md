@@ -46,6 +46,9 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/notebook
 
 ### 2. FEATURE EXTRACTION 
 
+https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/script
+https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run
+
 2-1. **Overview**
    * Time & date dependency
    * Region/zone dependency    
