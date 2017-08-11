@@ -317,7 +317,7 @@ if __name__ == '__main__':
     # clean data 
     df_train_ = clean_data(df_train_)
 
-    	# modeling 
+    # modeling 
     features = ['vendor_id',
                'passenger_count',
                'store_and_fwd_flag_',
@@ -355,7 +355,7 @@ if __name__ == '__main__':
     sub = pd.DataFrame()
     sub['id'] = df_test_['id']
     sub['trip_duration'] = np.exp(test_result)
-    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0808_2_submit.csv', index=False)
+    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0811_submit.csv', index=False)
     sub.head()
 
 
