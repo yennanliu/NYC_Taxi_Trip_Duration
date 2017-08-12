@@ -272,12 +272,11 @@ def clean_data(df):
 
 
 def load_data():
-    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv')
+    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=50000)
     df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
-    # merge train and test data for fast process and let model view test data 
-    # when training as well 
+    # merge train and test data for fast process and let model view test data when training as well 
     df_all = pd.concat([df_train, df_test], axis=0)
-    return df_all
+    return df_all , df_train , df_test
 
 
 
@@ -286,7 +285,7 @@ def load_data():
 
 if __name__ == '__main__':
 
-    df_all = load_data()
+    df_all, df_train, df_test  = load_data()
     #get basic features 
     df_all_ = get_time_feature(df_all)
     df_all_ = get_time_feature2(df_all_)
@@ -305,8 +304,58 @@ if __name__ == '__main__':
     # get log trip duration 
     df_all_['trip_duration_log'] = df_all_['trip_duration'].apply(np.log)
     # clean data 
-    df_all_ = clean_data(df_all_)
-    print (df_all_)
+    #df_all_ = clean_data(df_all_)
+    print (df_all_.head())
+
+    # modeling 
+    features = ['vendor_id',
+               'passenger_count',
+               'store_and_fwd_flag_',
+               'pickup_latitude',
+               'pickup_longitude',
+               'dropoff_latitude',
+               'dropoff_longitude',
+               'center_latitude',
+               'center_longitude',
+               'pickup_pca0',
+               'pickup_pca1',
+               'dropoff_pca0',
+               'dropoff_pca1',
+               'distance_haversine',
+               'direction',
+               'distance_manhattan',
+               'pickup_minute',
+               'pickup_hour',
+               'pickup_weekday',
+               'pickup_month',
+               'week_delta',
+               'weekofyear',
+               'week_delta_sin',
+               'pickup_hour_sin',
+               'pickup_time_delta',
+               'dropoff_cluster_count']
+    # split all data into train, test set 
+    xtrain = df_all_[df_all_['trip_duration'].notnull()][features].values
+    ytrain = df_all_[df_all_['trip_duration'].notnull()]['trip_duration_log'].values
+    xtest  = df_all_[df_all_['trip_duration'].isnull()][features].values
+    # using tpot optimize model automatically 
+    from tpot import TPOTRegressor
+    auto_classifier = TPOTRegressor(generations=3, population_size=9, verbosity=2)
+    from sklearn.model_selection import train_test_split
+    X_train, X_valid, y_train, y_valid = train_test_split(xtrain, ytrain,train_size=0.8, test_size=0.2)
+    auto_classifier.fit(X_train, y_train)
+    print("The cross-validation MSE")
+    print(auto_classifier.score(X_valid, y_valid))
+    # prediction
+    test_result = auto_classifier.predict(xtest)
+    sub = pd.DataFrame()
+    sub['id'] = df_test['id']
+    sub['trip_duration'] = np.exp(test_result)
+    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0812_submit.csv', index=False)
+    sub.head()
+
+
+
 
 
 
