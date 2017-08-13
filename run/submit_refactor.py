@@ -18,39 +18,36 @@ from sklearn.model_selection import train_test_split
 def get_time_feature(df):
     df_= df.copy()
     # pickup
-    df_["pickup_date"] = pd.to_datetime(df_.pickup_datetime.apply(lambda x : x.split(" ")[0]))
-    df_["pickup_hour"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[1].split(":")[0])
-    df_["pickup_year"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[0].split("-")[0])
-    df_["pickup_month"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[0].split("-")[1])
-    df_["pickup_weekday"] = df_.pickup_datetime.apply(lambda x :pd.to_datetime(x.split(" ")[0]).weekday())
-    # weekday
-    list(calendar.day_name)
-    df_['pickup_week_'] = pd.to_datetime(df_.pickup_datetime,coerce=True).dt.weekday
-    df_['pickup_weekday_'] = df_['pickup_week_'].apply(lambda x: calendar.day_name[x])
+    df_['pickup_datetime'] = pd.to_datetime(df_.pickup_datetime)
+    df_.loc[:, 'pickup_date'] = df_['pickup_datetime'].dt.date
+    df_.loc[:, 'pickup_weekday'] = df_['pickup_datetime'].dt.weekday
+    df_.loc[:, 'pickup_day'] = df_['pickup_datetime'].dt.day
+    df_.loc[:, 'pickup_month'] = df_['pickup_datetime'].dt.month
+    df_.loc[:, 'pickup_year'] = df_['pickup_datetime'].dt.year 
+    df_.loc[:, 'pickup_hour'] = df_['pickup_datetime'].dt.hour
+    df_.loc[:, 'pickup_minute'] = df_['pickup_datetime'].dt.minute
+    df_.loc[:,'weekofyear'] = df_['pickup_datetime'].dt.weekofyear
+    df_.loc[:,'week_delta'] = df_['pickup_datetime'].dt.weekday + \
+                        ((df_['pickup_datetime'].dt.hour + \
+                        (df_['pickup_datetime'].dt.minute / 60.0)) / 24.0)
+    df_.loc[:, 'pickup_time_delta'] = (df_['pickup_datetime'] - df_['pickup_datetime'].min()).map(
+                                     lambda x: x.total_seconds())
     # dropoff
-    # in case test data dont have dropoff_datetime feature
+    # in case test data have no dropoff_datetime 
     try:
-        df_["dropoff_date"] = pd.to_datetime(df_.dropoff_datetime.apply(lambda x : x.split(" ")[0]))
-        df_["dropoff_hour"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[1].split(":")[0])
-        df_["dropoff_year"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[0].split("-")[0])
-        df_["dropoff_month"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[0].split("-")[1])
-        df_["dropoff_weekday"] = df_.dropoff_datetime.apply(lambda x :pd.to_datetime(x.split(" ")[0]).weekday())
+        df_['dropoff_datetime'] = pd.to_datetime(df_.dropoff_datetime)
+        df_.loc[:, 'dropoff_date'] = df_['dropoff_datetime'].dt.date
+        df_.loc[:, 'dropoff_weekday'] = df_['dropoff_datetime'].dt.weekday
+        df_.loc[:, 'dropoff_day'] = df_['dropoff_datetime'].dt.day
+        df_.loc[:, 'dropoff_month'] = df_['dropoff_datetime'].dt.month
+        df_.loc[:, 'dropoff_year'] = df_['dropoff_datetime'].dt.year 
+        df_.loc[:, 'dropoff_hour'] = df_['dropoff_datetime'].dt.hour
+        df_.loc[:, 'dropoff_minute'] = df_['dropoff_datetime'].dt.minute
+        df_.loc[:, 'dropoff_time_delta'] = (df_['dropoff_datetime'] - df_['dropoff_datetime'].min()).map(
+                                            lambda x: x.total_seconds())
     except:
         pass 
     return df_
-
-# get time delta gap  
-def get_time_feature2(df):
-    df_ = df.copy()
-    df_['pickup_datetime'] = pd.to_datetime(df_['pickup_datetime'])
-    df_['pickup_minute'] = df_['pickup_datetime'].dt.minute
-    df_['pickup_time_delta'] = (df_['pickup_datetime'] - df_['pickup_datetime'].min()).dt.total_seconds()
-    df_['week_delta'] = df_['pickup_datetime'].dt.weekday + \
-                        ((df_['pickup_datetime'].dt.hour + \
-                        (df_['pickup_datetime'].dt.minute / 60.0)) / 24.0)
-    df_['weekofyear'] = df_['pickup_datetime'].dt.weekofyear
-    return df_
-
 
 
 # make weekday and hour cyclic, since we want to let machine understand 
@@ -272,7 +269,7 @@ def clean_data(df):
 
 
 def load_data():
-    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=50000)
+    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=100)
     df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
     # merge train and test data for fast process and let model view test data when training as well 
     df_all = pd.concat([df_train, df_test], axis=0)
@@ -288,7 +285,6 @@ if __name__ == '__main__':
     df_all, df_train, df_test  = load_data()
     #get basic features 
     df_all_ = get_time_feature(df_all)
-    df_all_ = get_time_feature2(df_all_)
     df_all_ = get_time_cyclic(df_all_)
     # get other features 
     df_all_ = get_features(df_all_)
@@ -351,7 +347,7 @@ if __name__ == '__main__':
     sub = pd.DataFrame()
     sub['id'] = df_test['id']
     sub['trip_duration'] = np.exp(test_result)
-    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0812_submit.csv', index=False)
+    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0813_submit.csv', index=False)
     sub.head()
 
 
