@@ -185,7 +185,7 @@ def label_2_binary(df):
 
 ### ======================== ###
 
-def get_features(df):
+def get_geo_feature(df):
     # km 
     df_ = df.copy()
     ###  USING .loc making return array ordering 
@@ -287,7 +287,7 @@ if __name__ == '__main__':
     df_all_ = get_time_feature(df_all)
     df_all_ = get_time_cyclic(df_all_)
     # get other features 
-    df_all_ = get_features(df_all_)
+    df_all_ = get_geo_feature(df_all_)
     df_all_ = pca_lon_lat(df_all_)
     # get center of trip route 
     df_all_ = gat_trip_center(df_all_)
