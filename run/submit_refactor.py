@@ -177,6 +177,25 @@ def avg_cluster_speed_(df):
     return df_
 
 
+def get_cluser_feature(df):
+    df_ = df.copy()
+    # avg cluster speed  
+    avg_cluser_h = df_.groupby(['pickup_cluster','dropoff_cluster']).mean()['avg_speed_h'].reset_index()
+    avg_cluser_h.columns = ['pickup_cluster','dropoff_cluster','avg_speed_cluster_h']
+    avg_cluser_m = df_.groupby(['pickup_cluster','dropoff_cluster']).mean()['avg_speed_m'].reset_index()
+    avg_cluser_m.columns = ['pickup_cluster','dropoff_cluster','avg_speed_cluster_m']
+    # merge 
+    df_ = pd.merge(df_,avg_cluser_h, how = 'left', on = ['pickup_cluster','dropoff_cluster'])
+    df_ = pd.merge(df_,avg_cluser_m, how = 'left', on = ['pickup_cluster','dropoff_cluster'])
+    # avg cluster duration 
+    avg_cluser_duration = df_.groupby(['pickup_cluster','dropoff_cluster']).mean()['trip_duration'].reset_index()
+    avg_cluser_duration.columns = ['pickup_cluster','dropoff_cluster','avg_cluster_duration']
+    # merge 
+    df_ = pd.merge(df_,avg_cluser_duration, how = 'left', on = ['pickup_cluster','dropoff_cluster'])
+    
+    return df_
+
+
 def label_2_binary(df):
     df_ = df.copy()
     df_['store_and_fwd_flag_'] = df_['store_and_fwd_flag'].map(lambda x: 0 if x =='N' else 1)
@@ -295,6 +314,7 @@ if __name__ == '__main__':
     df_all_ = get_clustering(df_all_)
     # get avg ride count on dropoff cluster 
     df_all_ = trip_cluser_count(df_all_)
+    df_all_ = get_cluser_feature(df_all_)
     # label -> 0,1 
     df_all_ = label_2_binary(df_all_)
     # get log trip duration 
