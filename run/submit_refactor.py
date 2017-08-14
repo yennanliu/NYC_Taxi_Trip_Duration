@@ -420,7 +420,9 @@ if __name__ == '__main__':
     sub['id'] = df_test['id']
     sub['trip_duration'] = np.exp(test_result)
     sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0814_4-2_submit.csv', index=False)
+    print (auto_classifier.config_dict)
     sub.head()
+
 
 
 
