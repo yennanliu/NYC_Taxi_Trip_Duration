@@ -278,7 +278,26 @@ def clean_data(df):
 
 
 
+def clean_data_(df):
+    df_ = df.copy()
+    # remove potential lon & lat  outlier 
+    df_ = df_[(df_['pickup_latitude'] < df_['pickup_latitude'].quantile(0.95))&
+         (df_['pickup_latitude'] > df_['pickup_latitude'].quantile(0.05))]
+    df_ = df_[(df_['pickup_longitude'] < df_['pickup_longitude'].quantile(0.95))&
+         (df_['pickup_longitude'] > df_['pickup_longitude'].quantile(0.05))]
 
+    df_ = df_[(df_['dropoff_latitude'] < df_['dropoff_latitude'].quantile(0.95))&
+         (df_['dropoff_latitude'] > df_['dropoff_latitude'].quantile(0.05))]
+    df_ = df_[(df_['dropoff_longitude'] < df_['dropoff_longitude'].quantile(0.95))&
+         (df_['dropoff_longitude'] > df_['dropoff_longitude'].quantile(0.05))]
+
+    # remove the 2016-01-23 data since its too less comapre others days, 
+    # maybe quality is not good 
+    #df_ = df_[(df_.pickup_date != '2016-01-23') & (df_.dropoff_date != '2016-01-23')]
+    # potential passenger_count outlier 
+    df_ = df_[(df_['passenger_count']  <= 6) & (df_['passenger_count'] > 0)]
+    
+    return df_
 
 
 
@@ -288,10 +307,11 @@ def clean_data(df):
 
 
 def load_data():
-    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=100)
+    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=60)
     df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
     # merge train and test data for fast process and let model view test data when training as well 
-    df_all = pd.concat([df_train, df_test], axis=0)
+    df_train_ = clean_data_(df_train)
+    df_all = pd.concat([df_train_, df_test], axis=0)
     return df_all , df_train , df_test
 
 
@@ -337,9 +357,15 @@ if __name__ == '__main__':
                'pickup_pca1',
                'dropoff_pca0',
                'dropoff_pca1',
+               'pca_manhattan',
                'distance_haversine',
                'direction',
-               'distance_manhattan',
+               'center_latitude',
+               'center_longitude',
+               'pickup_cluster',
+               'dropoff_cluster',
+               'avg_speed_cluster_h',
+               'avg_cluster_duration',
                'pickup_minute',
                'pickup_hour',
                'pickup_weekday',
@@ -367,7 +393,7 @@ if __name__ == '__main__':
     sub = pd.DataFrame()
     sub['id'] = df_test['id']
     sub['trip_duration'] = np.exp(test_result)
-    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0813_submit.csv', index=False)
+    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0814_4-2_submit.csv', index=False)
     sub.head()
 
 
