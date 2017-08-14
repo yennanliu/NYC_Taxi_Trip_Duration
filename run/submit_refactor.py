@@ -196,6 +196,28 @@ def get_cluser_feature(df):
     return df_
 
 
+
+def get_avg_travel_duration_speed(df):
+    df_ = df.copy()
+    ################################################################
+    # using following tricks we can get average duration, speed as #
+    # features which are not available at first                    #
+    # since duration is the values we want to predict              #
+    ################################################################
+    
+    # avg  duration
+    avg_duration = df_.groupby(['pickup_weekday','pickup_hour']).mean()['trip_duration'].reset_index()
+    avg_duration.columns = ['pickup_weekday','pickup_hour','avg_trip_duration']
+    # avg speed 
+    avg_speed = df_.groupby(['pickup_weekday','pickup_hour']).mean()['avg_speed_h'].reset_index()
+    avg_speed.columns = ['pickup_weekday','pickup_hour','avg_trip_speed_h']
+    print (avg_speed)
+    # merge 
+    df_ = pd.merge(df_,avg_duration, how = 'left', on = ['pickup_weekday','pickup_hour'])
+    df_ = pd.merge(df_,avg_speed, how = 'left', on = ['pickup_weekday','pickup_hour'])
+    return df_
+
+
 def label_2_binary(df):
     df_ = df.copy()
     df_['store_and_fwd_flag_'] = df_['store_and_fwd_flag'].map(lambda x: 0 if x =='N' else 1)
@@ -307,7 +329,7 @@ def clean_data_(df):
 
 
 def load_data():
-    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=60)
+    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=100)
     df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
     # merge train and test data for fast process and let model view test data when training as well 
     df_train_ = clean_data_(df_train)
@@ -335,6 +357,8 @@ if __name__ == '__main__':
     # get avg ride count on dropoff cluster 
     df_all_ = trip_cluser_count(df_all_)
     df_all_ = get_cluser_feature(df_all_)
+    # get avg speed, duration
+    df_all_ = get_avg_travel_duration_speed(df_all_)
     # label -> 0,1 
     df_all_ = label_2_binary(df_all_)
     # get log trip duration 
@@ -375,7 +399,9 @@ if __name__ == '__main__':
                'week_delta_sin',
                'pickup_hour_sin',
                'pickup_time_delta',
-               'dropoff_cluster_count']
+               'dropoff_cluster_count',
+               'avg_trip_duration',
+               'avg_trip_speed_h']
     # split all data into train, test set 
     xtrain = df_all_[df_all_['trip_duration'].notnull()][features].values
     ytrain = df_all_[df_all_['trip_duration'].notnull()]['trip_duration_log'].values
