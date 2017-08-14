@@ -1,12 +1,6 @@
 # -*- coding: utf-8 -*-
 
 
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.datasets import samples_generator
-from sklearn.feature_selection import SelectKBest, f_regression
-from sklearn.pipeline import make_pipeline
-
-
 ### ================================================ ###
 
 """
@@ -48,7 +42,14 @@ y = df_train_tree_['trip_duration']
 
 ### ================================================ ###
 
-# import your dataset here !  (X,y)
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.datasets import samples_generator
+from sklearn.feature_selection import SelectKBest, f_regression
+from sklearn.pipeline import make_pipeline
+
+
+# your dataset here !  (X,y)
+
 # ANOVA SVM-C
 # 1) anova filter, take 3 best ranked features
 anova_filter = SelectKBest(f_regression, k=3)
@@ -59,6 +60,20 @@ anova_svm = make_pipeline(anova_filter, rf)
 anova_svm.fit(X, y)
 anova_svm.predict(X)
 print (anova_svm.predict(X))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
