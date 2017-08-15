@@ -39,6 +39,10 @@ cd NYC_Taxi_Trip_Duration
 python run/submission.py
 ```
 
+### Tech
+- Python 3.4.5, Sklearn, Pandas 0.20.3 , Numpy, Xgboost, tpot
+
+
 ---
 ## PROCESS 
 

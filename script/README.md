@@ -2,7 +2,7 @@
 
 
 ## Tech
-- Python 3, Sklearn, Pandas, Numpy, Xgboost
+- Python 3.4.5, Sklearn, Pandas 0.20.3 , Numpy, Xgboost, tpot
 
 ## Scripts 
 
