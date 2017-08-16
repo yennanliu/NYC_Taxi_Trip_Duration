@@ -6,6 +6,7 @@ import calendar
 from sklearn.cluster import MiniBatchKMeans
 from tpot import TPOTRegressor
 from sklearn.model_selection import train_test_split
+import xgboost as xgb
 
 
 
@@ -224,6 +225,14 @@ def label_2_binary(df):
     return df_
 
 
+def trip_over_60min(df):
+    df_ = df.copy()
+    df_counts = df_.set_index('pickup_datetime')[['id']].sort_index()
+    df_counts['count_60min'] = df_counts.isnull().rolling('60min').count()['id']
+    df_ = df_.merge(df_counts, on='id', how='left')
+    return df_ 
+
+
 ### ======================== ###
 
 def get_geo_feature(df):
@@ -329,12 +338,15 @@ def clean_data_(df):
 
 
 def load_data():
-    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=100)
+    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=50000)
     df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
-    # merge train and test data for fast process and let model view test data when training as well 
+    # sample train data for fast job 
+    #df_train = df_train.sample(n=100)
+    # clean train data 
     df_train_ = clean_data_(df_train)
+    # merge train and test data for fast process and let model view test data when training as well 
     df_all = pd.concat([df_train_, df_test], axis=0)
-    return df_all , df_train , df_test
+    return df_all , df_train_ , df_test
 
 
 
@@ -361,6 +373,8 @@ if __name__ == '__main__':
     df_all_ = get_avg_travel_duration_speed(df_all_)
     # label -> 0,1 
     df_all_ = label_2_binary(df_all_)
+    # count trip over 60 min
+    df_all_ = trip_over_60min(df_all_)
     # get log trip duration 
     df_all_['trip_duration_log'] = df_all_['trip_duration'].apply(np.log)
     # clean data 
@@ -368,60 +382,71 @@ if __name__ == '__main__':
     print (df_all_.head())
 
     # modeling 
-    features = ['vendor_id',
-               'passenger_count',
-               'store_and_fwd_flag_',
-               'pickup_latitude',
-               'pickup_longitude',
-               'dropoff_latitude',
-               'dropoff_longitude',
-               'center_latitude',
-               'center_longitude',
-               'pickup_pca0',
-               'pickup_pca1',
-               'dropoff_pca0',
-               'dropoff_pca1',
-               'pca_manhattan',
-               'distance_haversine',
-               'direction',
-               'center_latitude',
-               'center_longitude',
-               'pickup_cluster',
-               'dropoff_cluster',
-               'avg_speed_cluster_h',
-               'avg_cluster_duration',
-               'pickup_minute',
-               'pickup_hour',
-               'pickup_weekday',
-               'pickup_month',
-               'week_delta',
-               'weekofyear',
-               'week_delta_sin',
-               'pickup_hour_sin',
-               'pickup_time_delta',
-               'dropoff_cluster_count',
-               'avg_trip_duration',
-               'avg_trip_speed_h']
+    features =[
+           'vendor_id',
+           'pickup_latitude',
+           'pickup_longitude',
+           'dropoff_latitude',
+           'dropoff_longitude',
+           'pickup_pca1',
+           'dropoff_pca1',
+           'distance_haversine',
+           'direction',
+           'pca_manhattan',
+           'pickup_month', 
+           'weekofyear',
+           'pickup_weekday',
+           'pickup_hour',
+           'week_delta',
+           'week_delta_sin', 
+           'pickup_time_delta',
+           'dropoff_cluster_count',
+           'count_60min']
     # split all data into train, test set 
-    xtrain = df_all_[df_all_['trip_duration'].notnull()][features].values
-    ytrain = df_all_[df_all_['trip_duration'].notnull()]['trip_duration_log'].values
-    xtest  = df_all_[df_all_['trip_duration'].isnull()][features].values
-    # using tpot optimize model automatically 
-    from tpot import TPOTRegressor
-    auto_classifier = TPOTRegressor(generations=3, population_size=9, verbosity=2)
+    X_train = df_all_[df_all_['trip_duration'].notnull()][features].values
+    y_train = df_all_[df_all_['trip_duration'].notnull()]['trip_duration_log'].values
+    X_test  = df_all_[df_all_['trip_duration'].isnull()][features].values
+
+
+### ================================================ ###
+    
     from sklearn.model_selection import train_test_split
-    X_train, X_valid, y_train, y_valid = train_test_split(xtrain, ytrain,train_size=0.8, test_size=0.2)
-    auto_classifier.fit(X_train, y_train)
-    print("The cross-validation MSE")
-    print(auto_classifier.score(X_valid, y_valid))
-    # prediction
-    test_result = auto_classifier.predict(xtest)
-    sub = pd.DataFrame()
-    sub['id'] = df_test['id']
-    sub['trip_duration'] = np.exp(test_result)
-    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0814_4-2_submit.csv', index=False)
-    print (auto_classifier.config_dict)
-    sub.head()
+    from sklearn.model_selection import KFold
+    from xgboost import XGBRegressor
+
+    # train xgb  
+    xgb = XGBRegressor(n_estimators=1000, max_depth=12, min_child_weight=150, 
+                   subsample=0.7, colsample_bytree=0.3)
+    y_test = np.zeros(len(X_test))
+
+    for i, (train_ind, val_ind) in enumerate(KFold(n_splits=2, shuffle=True, 
+                                            random_state=1989).split(X_train)):
+        print('----------------------')
+        print('Training model #%d' % i)
+        print('----------------------')
+        
+        xgb.fit(X_train[train_ind], y_train[train_ind],
+                eval_set=[(X_train[val_ind], y_train[val_ind])],
+                early_stopping_rounds=10, verbose=25)
+        
+        y_test += xgb.predict(X_test, ntree_limit=xgb.best_ntree_limit)
+    y_test /= 2
+
+### ================================================ ###
+
+    df_sub = pd.DataFrame({
+            'id': df_all[df_all['trip_duration'].isnull()]['id'].values,
+             'trip_duration': np.exp(y_test)}).set_index('id')
+
+    print (df_sub)
+    """
+    #print (auto_classifier.config_dict)
+    feature_importance = pd.DataFrame({'feature': features, \
+                          'importance': xgboost_model.feature_importances_})\
+                          .sort_values('importance',ascending =False)\
+                          .set_index('feature')
+    print (feature_importance)
+     """
 
 
 

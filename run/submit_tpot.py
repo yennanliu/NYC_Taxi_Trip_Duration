@@ -18,39 +18,36 @@ from sklearn.model_selection import train_test_split
 def get_time_feature(df):
     df_= df.copy()
     # pickup
-    df_["pickup_date"] = pd.to_datetime(df_.pickup_datetime.apply(lambda x : x.split(" ")[0]))
-    df_["pickup_hour"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[1].split(":")[0])
-    df_["pickup_year"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[0].split("-")[0])
-    df_["pickup_month"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[0].split("-")[1])
-    df_["pickup_weekday"] = df_.pickup_datetime.apply(lambda x :pd.to_datetime(x.split(" ")[0]).weekday())
-    # weekday
-    list(calendar.day_name)
-    df_['pickup_week_'] = pd.to_datetime(df_.pickup_datetime,coerce=True).dt.weekday
-    df_['pickup_weekday_'] = df_['pickup_week_'].apply(lambda x: calendar.day_name[x])
+    df_['pickup_datetime'] = pd.to_datetime(df_.pickup_datetime)
+    df_.loc[:, 'pickup_date'] = df_['pickup_datetime'].dt.date
+    df_.loc[:, 'pickup_weekday'] = df_['pickup_datetime'].dt.weekday
+    df_.loc[:, 'pickup_day'] = df_['pickup_datetime'].dt.day
+    df_.loc[:, 'pickup_month'] = df_['pickup_datetime'].dt.month
+    df_.loc[:, 'pickup_year'] = df_['pickup_datetime'].dt.year 
+    df_.loc[:, 'pickup_hour'] = df_['pickup_datetime'].dt.hour
+    df_.loc[:, 'pickup_minute'] = df_['pickup_datetime'].dt.minute
+    df_.loc[:,'weekofyear'] = df_['pickup_datetime'].dt.weekofyear
+    df_.loc[:,'week_delta'] = df_['pickup_datetime'].dt.weekday + \
+                        ((df_['pickup_datetime'].dt.hour + \
+                        (df_['pickup_datetime'].dt.minute / 60.0)) / 24.0)
+    df_.loc[:, 'pickup_time_delta'] = (df_['pickup_datetime'] - df_['pickup_datetime'].min()).map(
+                                     lambda x: x.total_seconds())
     # dropoff
-    # in case test data dont have dropoff_datetime feature
+    # in case test data have no dropoff_datetime 
     try:
-        df_["dropoff_date"] = pd.to_datetime(df_.dropoff_datetime.apply(lambda x : x.split(" ")[0]))
-        df_["dropoff_hour"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[1].split(":")[0])
-        df_["dropoff_year"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[0].split("-")[0])
-        df_["dropoff_month"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[0].split("-")[1])
-        df_["dropoff_weekday"] = df_.dropoff_datetime.apply(lambda x :pd.to_datetime(x.split(" ")[0]).weekday())
+        df_['dropoff_datetime'] = pd.to_datetime(df_.dropoff_datetime)
+        df_.loc[:, 'dropoff_date'] = df_['dropoff_datetime'].dt.date
+        df_.loc[:, 'dropoff_weekday'] = df_['dropoff_datetime'].dt.weekday
+        df_.loc[:, 'dropoff_day'] = df_['dropoff_datetime'].dt.day
+        df_.loc[:, 'dropoff_month'] = df_['dropoff_datetime'].dt.month
+        df_.loc[:, 'dropoff_year'] = df_['dropoff_datetime'].dt.year 
+        df_.loc[:, 'dropoff_hour'] = df_['dropoff_datetime'].dt.hour
+        df_.loc[:, 'dropoff_minute'] = df_['dropoff_datetime'].dt.minute
+        df_.loc[:, 'dropoff_time_delta'] = (df_['dropoff_datetime'] - df_['dropoff_datetime'].min()).map(
+                                            lambda x: x.total_seconds())
     except:
         pass 
     return df_
-
-# get time delta gap  
-def get_time_feature2(df):
-    df_ = df.copy()
-    df_['pickup_datetime'] = pd.to_datetime(df_['pickup_datetime'])
-    df_['pickup_minute'] = df_['pickup_datetime'].dt.minute
-    df_['pickup_time_delta'] = (df_['pickup_datetime'] - df_['pickup_datetime'].min()).dt.total_seconds()
-    df_['week_delta'] = df_['pickup_datetime'].dt.weekday + \
-                        ((df_['pickup_datetime'].dt.hour + \
-                        (df_['pickup_datetime'].dt.minute / 60.0)) / 24.0)
-    df_['weekofyear'] = df_['pickup_datetime'].dt.weekofyear
-    return df_
-
 
 
 # make weekday and hour cyclic, since we want to let machine understand 
@@ -59,7 +56,9 @@ def get_time_cyclic(df):
     df_ = df.copy()
     df_.pickup_hour = df_.pickup_hour.astype('int')
     df_['week_delta_sin'] = np.sin((df_['week_delta'] / 7) * np.pi)**2
+    df_['week_delta_cos'] = np.cos((df_['week_delta'] / 7) * np.pi)**2
     df_['pickup_hour_sin'] = np.sin((df_['pickup_hour'] / 24) * np.pi)**2
+    df_['pickup_hour_cos'] = np.cos((df_['pickup_hour'] / 24) * np.pi)**2
     return df_
 
 
@@ -105,40 +104,33 @@ def gat_trip_center(df):
 # PCA to transform longitude and latitude
 # to improve decision tree performance 
 from sklearn.decomposition import PCA
-def pca_lon_lat(dftrain,dftest):
+def pca_lon_lat(df):
+    df_ =df.copy()
     X = np.vstack \
-            ((dftrain[['pickup_latitude', 'pickup_longitude']].values,
-              dftrain[['dropoff_latitude', 'dropoff_longitude']].values,
-              dftest[['pickup_latitude', 'pickup_longitude']].values,
-              dftest[['dropoff_latitude', 'dropoff_longitude']].values))
+            ((df_[['pickup_latitude', 'pickup_longitude']].values,
+              df_[['dropoff_latitude', 'dropoff_longitude']].values))
     # remove potential lon & lat outliers 
     min_lat, min_lng = X.mean(axis=0) - X.std(axis=0)
     max_lat, max_lng = X.mean(axis=0) + X.std(axis=0)
     X = X[(X[:,0] > min_lat) & (X[:,0] < max_lat) & (X[:,1] > min_lng) & (X[:,1] < max_lng)]
     pca = PCA().fit(X)
-    dftrain['pickup_pca0'] = pca.transform(dftrain[['pickup_latitude', 'pickup_longitude']])[:, 0]
-    dftrain['pickup_pca1'] = pca.transform(dftrain[['pickup_latitude', 'pickup_longitude']])[:, 1]
-    dftrain['dropoff_pca0'] = pca.transform(dftrain[['dropoff_latitude', 'dropoff_longitude']])[:, 0]
-    dftrain['dropoff_pca1'] = pca.transform(dftrain[['dropoff_latitude', 'dropoff_longitude']])[:, 1]
-    dftest['pickup_pca0'] = pca.transform(dftest[['pickup_latitude', 'pickup_longitude']])[:, 0]
-    dftest['pickup_pca1'] = pca.transform(dftest[['pickup_latitude', 'pickup_longitude']])[:, 1]
-    dftest['dropoff_pca0'] = pca.transform(dftest[['dropoff_latitude', 'dropoff_longitude']])[:, 0]
-    dftest['dropoff_pca1'] = pca.transform(dftest[['dropoff_latitude', 'dropoff_longitude']])[:, 1]
+    df_['pickup_pca0'] = pca.transform(df_[['pickup_latitude', 'pickup_longitude']])[:, 0]
+    df_['pickup_pca1'] = pca.transform(df_[['pickup_latitude', 'pickup_longitude']])[:, 1]
+    df_['dropoff_pca0'] = pca.transform(df_[['dropoff_latitude', 'dropoff_longitude']])[:, 0]
+    df_['dropoff_pca1'] = pca.transform(df_[['dropoff_latitude', 'dropoff_longitude']])[:, 1]
     # manhattan distance from pca lon & lat 
-    dftrain.loc[:, 'pca_manhattan'] = np.abs(dftrain['dropoff_pca1'] - dftrain['pickup_pca1']) + np.abs(dftrain['dropoff_pca0'] - dftrain['pickup_pca0'])
-    dftest.loc[:, 'pca_manhattan'] = np.abs(dftest['dropoff_pca1'] - dftest['pickup_pca1']) + np.abs(dftest['dropoff_pca0'] - dftest['pickup_pca0'])
-    return dftrain,dftest 
+    df_.loc[:, 'pca_manhattan'] = np.abs(df_['dropoff_pca1'] - df_['pickup_pca1']) + np.abs(df_['dropoff_pca0'] - df_['pickup_pca0'])
+    return df_ 
 
 
 # get lon & lat clustering for following avg location speed calculation
 def get_clustering(df):
-    coords = np.vstack((df_train[['pickup_latitude', 'pickup_longitude']].values,
-                    df_train[['dropoff_latitude', 'dropoff_longitude']].values,
-                    df_test[['pickup_latitude', 'pickup_longitude']].values,
-                    df_test[['dropoff_latitude', 'dropoff_longitude']].values))
+    df_ = df.copy()
+    coords = np.vstack((df_[['pickup_latitude', 'pickup_longitude']].values,
+                        df_[['dropoff_latitude', 'dropoff_longitude']].values))
     df_ = df.copy()
     sample_ind = np.random.permutation(len(coords))[:500000]
-    kmeans = MiniBatchKMeans(n_clusters=100, batch_size=10000).fit(coords[sample_ind])
+    kmeans = MiniBatchKMeans(n_clusters=40, batch_size=10000).fit(coords[sample_ind])
     df_.loc[:, 'pickup_cluster'] = kmeans.predict(df_[['pickup_latitude', 'pickup_longitude']])
     df_.loc[:, 'dropoff_cluster'] = kmeans.predict(df_[['dropoff_latitude', 'dropoff_longitude']])
     return df_
@@ -185,6 +177,47 @@ def avg_cluster_speed_(df):
     return df_
 
 
+def get_cluser_feature(df):
+    df_ = df.copy()
+    # avg cluster speed  
+    avg_cluser_h = df_.groupby(['pickup_cluster','dropoff_cluster']).mean()['avg_speed_h'].reset_index()
+    avg_cluser_h.columns = ['pickup_cluster','dropoff_cluster','avg_speed_cluster_h']
+    avg_cluser_m = df_.groupby(['pickup_cluster','dropoff_cluster']).mean()['avg_speed_m'].reset_index()
+    avg_cluser_m.columns = ['pickup_cluster','dropoff_cluster','avg_speed_cluster_m']
+    # merge 
+    df_ = pd.merge(df_,avg_cluser_h, how = 'left', on = ['pickup_cluster','dropoff_cluster'])
+    df_ = pd.merge(df_,avg_cluser_m, how = 'left', on = ['pickup_cluster','dropoff_cluster'])
+    # avg cluster duration 
+    avg_cluser_duration = df_.groupby(['pickup_cluster','dropoff_cluster']).mean()['trip_duration'].reset_index()
+    avg_cluser_duration.columns = ['pickup_cluster','dropoff_cluster','avg_cluster_duration']
+    # merge 
+    df_ = pd.merge(df_,avg_cluser_duration, how = 'left', on = ['pickup_cluster','dropoff_cluster'])
+    
+    return df_
+
+
+
+def get_avg_travel_duration_speed(df):
+    df_ = df.copy()
+    ################################################################
+    # using following tricks we can get average duration, speed as #
+    # features which are not available at first                    #
+    # since duration is the values we want to predict              #
+    ################################################################
+    
+    # avg  duration
+    avg_duration = df_.groupby(['pickup_weekday','pickup_hour']).mean()['trip_duration'].reset_index()
+    avg_duration.columns = ['pickup_weekday','pickup_hour','avg_trip_duration']
+    # avg speed 
+    avg_speed = df_.groupby(['pickup_weekday','pickup_hour']).mean()['avg_speed_h'].reset_index()
+    avg_speed.columns = ['pickup_weekday','pickup_hour','avg_trip_speed_h']
+    print (avg_speed)
+    # merge 
+    df_ = pd.merge(df_,avg_duration, how = 'left', on = ['pickup_weekday','pickup_hour'])
+    df_ = pd.merge(df_,avg_speed, how = 'left', on = ['pickup_weekday','pickup_hour'])
+    return df_
+
+
 def label_2_binary(df):
     df_ = df.copy()
     df_['store_and_fwd_flag_'] = df_['store_and_fwd_flag'].map(lambda x: 0 if x =='N' else 1)
@@ -193,7 +226,7 @@ def label_2_binary(df):
 
 ### ======================== ###
 
-def get_features(df):
+def get_geo_feature(df):
     # km 
     df_ = df.copy()
     ###  USING .loc making return array ordering 
@@ -267,7 +300,26 @@ def clean_data(df):
 
 
 
+def clean_data_(df):
+    df_ = df.copy()
+    # remove potential lon & lat  outlier 
+    df_ = df_[(df_['pickup_latitude'] < df_['pickup_latitude'].quantile(0.95))&
+         (df_['pickup_latitude'] > df_['pickup_latitude'].quantile(0.05))]
+    df_ = df_[(df_['pickup_longitude'] < df_['pickup_longitude'].quantile(0.95))&
+         (df_['pickup_longitude'] > df_['pickup_longitude'].quantile(0.05))]
 
+    df_ = df_[(df_['dropoff_latitude'] < df_['dropoff_latitude'].quantile(0.95))&
+         (df_['dropoff_latitude'] > df_['dropoff_latitude'].quantile(0.05))]
+    df_ = df_[(df_['dropoff_longitude'] < df_['dropoff_longitude'].quantile(0.95))&
+         (df_['dropoff_longitude'] > df_['dropoff_longitude'].quantile(0.05))]
+
+    # remove the 2016-01-23 data since its too less comapre others days, 
+    # maybe quality is not good 
+    #df_ = df_[(df_.pickup_date != '2016-01-23') & (df_.dropoff_date != '2016-01-23')]
+    # potential passenger_count outlier 
+    df_ = df_[(df_['passenger_count']  <= 6) & (df_['passenger_count'] > 0)]
+    
+    return df_
 
 
 
@@ -277,9 +329,15 @@ def clean_data(df):
 
 
 def load_data():
-	df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=100000)
-	df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
-	return df_train, df_test
+    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=10000)
+    df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
+    # sample train data for fast job 
+    #df_train = df_train.sample(n=100)
+    # clean train data 
+    df_train_ = clean_data_(df_train)
+    # merge train and test data for fast process and let model view test data when training as well 
+    df_all = pd.concat([df_train_, df_test], axis=0)
+    return df_all , df_train_ , df_test
 
 
 
@@ -288,34 +346,29 @@ def load_data():
 
 if __name__ == '__main__':
 
-    df_train, df_test = load_data()
+    df_all, df_train, df_test  = load_data()
     #get basic features 
-    df_train_ = get_time_feature(df_train)
-    df_test_ = get_time_feature(df_test)
-    df_train_ = get_time_feature2(df_train_)
-    df_test_ = get_time_feature2(df_test_)
-    df_train_ = get_time_cyclic(df_train_)
-    df_test_ = get_time_cyclic(df_test_)
+    df_all_ = get_time_feature(df_all)
+    df_all_ = get_time_cyclic(df_all_)
     # get other features 
-    df_train_ = get_features(df_train_)
-    df_test_ = get_features(df_test_)
-    df_train_,df_test_ = pca_lon_lat(df_train_,df_test_)
+    df_all_ = get_geo_feature(df_all_)
+    df_all_ = pca_lon_lat(df_all_)
     # get center of trip route 
-    df_train_ = gat_trip_center(df_train_)
-    df_test_ = gat_trip_center(df_test_)
+    df_all_ = gat_trip_center(df_all_)
     # get lon & lat clustering 
-    df_train_= get_clustering(df_train_)
-    df_test_= get_clustering(df_test_)
+    df_all_ = get_clustering(df_all_)
     # get avg ride count on dropoff cluster 
-    df_train_ = trip_cluser_count(df_train_)
-    df_test_ = trip_cluser_count(df_test_)
+    df_all_ = trip_cluser_count(df_all_)
+    df_all_ = get_cluser_feature(df_all_)
+    # get avg speed, duration
+    df_all_ = get_avg_travel_duration_speed(df_all_)
     # label -> 0,1 
-    df_train_ = label_2_binary(df_train_)
-    df_test_ = label_2_binary(df_test_)
+    df_all_ = label_2_binary(df_all_)
     # get log trip duration 
-    df_train_['trip_duration_log'] = df_train_['trip_duration'].apply(np.log)
+    df_all_['trip_duration_log'] = df_all_['trip_duration'].apply(np.log)
     # clean data 
-    df_train_ = clean_data(df_train_)
+    #df_all_ = clean_data(df_all_)
+    print (df_all_.head())
 
     # modeling 
     features = ['vendor_id',
@@ -331,9 +384,15 @@ if __name__ == '__main__':
                'pickup_pca1',
                'dropoff_pca0',
                'dropoff_pca1',
+               'pca_manhattan',
                'distance_haversine',
                'direction',
-               'distance_manhattan',
+               'center_latitude',
+               'center_longitude',
+               'pickup_cluster',
+               'dropoff_cluster',
+               'avg_speed_cluster_h',
+               'avg_cluster_duration',
                'pickup_minute',
                'pickup_hour',
                'pickup_weekday',
@@ -344,19 +403,29 @@ if __name__ == '__main__':
                'pickup_hour_sin',
                'pickup_time_delta',
                'dropoff_cluster_count']
-
-    xtrain = df_train_.fillna(0)[features].values
-    ytrain = df_train_['trip_duration_log'].values
-    xtest = df_test_[features].values
-    auto_classifier = TPOTRegressor(generations=2, population_size=8, verbosity=2)
+    # split all data into train, test set 
+    xtrain = df_all_[df_all_['trip_duration'].notnull()][features].values
+    ytrain = df_all_[df_all_['trip_duration'].notnull()]['trip_duration_log'].values
+    xtest  = df_all_[df_all_['trip_duration'].isnull()][features].values
+    # using tpot optimize model automatically 
+    from tpot import TPOTRegressor
+    auto_classifier = TPOTRegressor(generations=3, population_size=9, verbosity=2)
+    from sklearn.model_selection import train_test_split
     X_train, X_valid, y_train, y_valid = train_test_split(xtrain, ytrain,train_size=0.8, test_size=0.2)
     auto_classifier.fit(X_train, y_train)
+    print("The cross-validation MSE")
+    print(auto_classifier.score(X_valid, y_valid))
+    # prediction
     test_result = auto_classifier.predict(xtest)
     sub = pd.DataFrame()
-    sub['id'] = df_test_['id']
+    sub['id'] = df_test['id']
     sub['trip_duration'] = np.exp(test_result)
-    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0811_submit.csv', index=False)
+    sub.to_csv('~/NYC_Taxi_Trip_Duration/output/Tpot_0815_0_submit.csv', index=False)
+    print (auto_classifier.config_dict)
     sub.head()
+
+
+
 
 
 
