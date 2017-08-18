@@ -107,7 +107,7 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run
 ## REFERENCE 
 
 - xgboost
-fhttp://xgboost.readthedocs.io/en/latest/python/python_api.html 
+http://xgboost.readthedocs.io/en/latest/python/python_api.html 
 
 
 
