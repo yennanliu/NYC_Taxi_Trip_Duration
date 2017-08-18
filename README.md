@@ -101,3 +101,13 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run
 4-3. **Aggregation**<br>
 
 ### 5. RESULTS  
+
+
+---
+## REFERENCE 
+
+- xgboost
+fhttp://xgboost.readthedocs.io/en/latest/python/python_api.html 
+
+
+
