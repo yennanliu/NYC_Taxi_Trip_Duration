@@ -338,7 +338,7 @@ def clean_data_(df):
 
 
 def load_data():
-    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv',nrows=50000)
+    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv')
     df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
     # sample train data for fast job 
     #df_train = df_train.sample(n=100)
@@ -434,19 +434,21 @@ if __name__ == '__main__':
 
 ### ================================================ ###
 
+
     df_sub = pd.DataFrame({
             'id': df_all[df_all['trip_duration'].isnull()]['id'].values,
              'trip_duration': np.exp(y_test)}).set_index('id')
 
     print (df_sub)
-    """
-    #print (auto_classifier.config_dict)
-    feature_importance = pd.DataFrame({'feature': features, \
-                          'importance': xgboost_model.feature_importances_})\
-                          .sort_values('importance',ascending =False)\
-                          .set_index('feature')
-    print (feature_importance)
-     """
+    df_sub.to_csv('~/NYC_Taxi_Trip_Duration/output/0818_xgb_all.csv')
+
+
+### ================================================ ###
+
+# 0.42271 
+
+### ================================================ ###
+
 
 
 
