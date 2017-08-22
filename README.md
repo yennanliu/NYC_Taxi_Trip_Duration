@@ -44,7 +44,7 @@ python run/submission.py
 
 
 ---
-## PROCESS 
+## Process
 
 ### 1. DATA EXPLORATION (EDA)
 https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/notebook
@@ -104,7 +104,7 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run
 
 
 ---
-## REFERENCE 
+## Reference
 
 - xgboost
   - http://xgboost.readthedocs.io/en/latest/python/python_api.html 
