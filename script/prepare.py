@@ -64,6 +64,42 @@ class feature_datetime:
     
 
 
+class feature_distance:
+    # need to fix (ordering)
+
+    def __init__(self, lat1, lng1, lat2, lng2):
+        self.AVG_EARTH_RADIUS = 6371 
+        self.lat1 = lat1 
+        self.lng1 = lng1 
+        self.lat2 = lat2 
+        self.lng2 = lng2 
+        
+    def get_haversine_distance(self,lat1=None, lng1=None, lat2=None, lng2=None):
+        # km
+        lat1, lng1, lat2, lng2 = map(np.radians, (self.lat1, self.lng1, self.lat2, self.lng2))
+        lat = lat2 - lat1
+        lng = lng2 - lng1
+        d = np.sin(lat * 0.5) ** 2 + np.cos(lat1) * np.cos(lat2) * np.sin(lng * 0.5) ** 2
+        h = 2 * self.AVG_EARTH_RADIUS * np.arcsin(np.sqrt(d))
+        return h 
+    
+    def get_manhattan_distance(self):
+        # km 
+        a = self.get_haversine_distance(self.lat1, self.lng1, self.lat1, self.lng2)
+        b = self.get_haversine_distance(self.lat1, self.lng1, self.lat2, self.lng1)
+        return a + b
+    
+    def get_direction(self):
+        # theta
+        lng_delta_rad = np.radians(self.lng2 - self.lng1)
+        lat1, lng1, lat2, lng2 = map(np.radians, (self.lat1, self.lng1, self.lat2, self.lng2))
+        y = np.sin(lng_delta_rad) * np.cos(self.lat2)
+        x = np.cos(self.lat1) * np.sin(self.lat2) - np.sin(self.lat1) * np.cos(self.lat2) * np.cos(lng_delta_rad)
+        return np.degrees(np.arctan2(y, x))
+
+
+
+
 ### ================================================ ###
 # basic feature extract 
 
