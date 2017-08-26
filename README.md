@@ -110,5 +110,8 @@ https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run
   - http://xgboost.readthedocs.io/en/latest/python/python_api.html 
   - https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/
 
+- LightGBM
+  - https://github.com/Microsoft/LightGBM/wiki/Installation-Guide
+
 
 
