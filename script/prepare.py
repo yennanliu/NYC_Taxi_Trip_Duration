@@ -101,37 +101,55 @@ class feature_distance:
 
 
 ### ================================================ ###
-# basic feature extract 
+# all feature  
 
 
 def get_time_feature(df):
     df_= df.copy()
     # pickup
-    df_["pickup_date"] = pd.to_datetime(df_.pickup_datetime.apply(lambda x : x.split(" ")[0]))
-    df_["pickup_hour"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[1].split(":")[0])
-    df_["pickup_year"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[0].split("-")[0])
-    df_["pickup_month"] = df_.pickup_datetime.apply(lambda x : x.split(" ")[0].split("-")[1])
-    df_["pickup_weekday"] = df_.pickup_datetime.apply(lambda x :pd.to_datetime(x.split(" ")[0]).weekday())
-    # weekday
-    list(calendar.day_name)
-    df_['pickup_week_'] = pd.to_datetime(df_.pickup_datetime,coerce=True).dt.weekday
-    df_['pickup_weekday_'] = df_['pickup_week_'].apply(lambda x: calendar.day_name[x])
+    df_['pickup_datetime'] = pd.to_datetime(df_.pickup_datetime)
+    df_.loc[:, 'pickup_date'] = df_['pickup_datetime'].dt.date
+    df_.loc[:, 'pickup_weekday'] = df_['pickup_datetime'].dt.weekday
+    df_.loc[:, 'pickup_day'] = df_['pickup_datetime'].dt.day
+    df_.loc[:, 'pickup_month'] = df_['pickup_datetime'].dt.month
+    df_.loc[:, 'pickup_year'] = df_['pickup_datetime'].dt.year 
+    df_.loc[:, 'pickup_hour'] = df_['pickup_datetime'].dt.hour
+    df_.loc[:, 'pickup_minute'] = df_['pickup_datetime'].dt.minute
+    df_.loc[:,'weekofyear'] = df_['pickup_datetime'].dt.weekofyear
+    df_.loc[:,'week_delta'] = df_['pickup_datetime'].dt.weekday + \
+                        ((df_['pickup_datetime'].dt.hour + \
+                        (df_['pickup_datetime'].dt.minute / 60.0)) / 24.0)
+    df_.loc[:, 'pickup_time_delta'] = (df_['pickup_datetime'] - df_['pickup_datetime'].min()).map(
+                                     lambda x: x.total_seconds())
     # dropoff
-    # in case test data dont have dropoff_datetime feature
+    # in case test data have no dropoff_datetime 
     try:
-        df_["dropoff_date"] = pd.to_datetime(df_.dropoff_datetime.apply(lambda x : x.split(" ")[0]))
-        df_["dropoff_hour"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[1].split(":")[0])
-        df_["dropoff_year"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[0].split("-")[0])
-        df_["dropoff_month"] = df_.dropoff_datetime.apply(lambda x : x.split(" ")[0].split("-")[1])
-        df_["dropoff_weekday"] = df_.dropoff_datetime.apply(lambda x :pd.to_datetime(x.split(" ")[0]).weekday())
+        df_['dropoff_datetime'] = pd.to_datetime(df_.dropoff_datetime)
+        df_.loc[:, 'dropoff_date'] = df_['dropoff_datetime'].dt.date
+        df_.loc[:, 'dropoff_weekday'] = df_['dropoff_datetime'].dt.weekday
+        df_.loc[:, 'dropoff_day'] = df_['dropoff_datetime'].dt.day
+        df_.loc[:, 'dropoff_month'] = df_['dropoff_datetime'].dt.month
+        df_.loc[:, 'dropoff_year'] = df_['dropoff_datetime'].dt.year 
+        df_.loc[:, 'dropoff_hour'] = df_['dropoff_datetime'].dt.hour
+        df_.loc[:, 'dropoff_minute'] = df_['dropoff_datetime'].dt.minute
+        df_.loc[:, 'dropoff_time_delta'] = (df_['dropoff_datetime'] - df_['dropoff_datetime'].min()).map(
+                                            lambda x: x.total_seconds())
     except:
         pass 
     return df_
 
 
+# make weekday and hour cyclic, since we want to let machine understand 
+# these features are in fact periodically 
+def get_time_cyclic(df):
+    df_ = df.copy()
+    df_.pickup_hour = df_.pickup_hour.astype('int')
+    df_['week_delta_sin'] = np.sin((df_['week_delta'] / 7) * np.pi)**2
+    df_['week_delta_cos'] = np.cos((df_['week_delta'] / 7) * np.pi)**2
+    df_['pickup_hour_sin'] = np.sin((df_['pickup_hour'] / 24) * np.pi)**2
+    df_['pickup_hour_cos'] = np.cos((df_['pickup_hour'] / 24) * np.pi)**2
+    return df_
 
-### ================================================ ###
-# feature engineering 
 
 # Haversine distance
 def get_haversine_distance(lat1, lng1, lat2, lng2):
@@ -164,40 +182,70 @@ def get_direction(lat1, lng1, lat2, lng2):
     return np.degrees(np.arctan2(y, x))
 
 
+def gat_trip_center(df):
+    df_ = df.copy()
+    df_.loc[:, 'center_latitude'] = (df_['pickup_latitude'].values + df_['dropoff_latitude'].values) / 2
+    df_.loc[:, 'center_longitude'] = (df_['pickup_longitude'].values + df_['dropoff_longitude'].values) / 2
+    return df_
+
+
+
 # PCA to transform longitude and latitude
 # to improve decision tree performance 
 from sklearn.decomposition import PCA
-def pca_lon_lat(dftrain,dftest):
-    coords = np.vstack \
-            ((dftrain[['pickup_latitude', 'pickup_longitude']].values,
-              dftrain[['dropoff_latitude', 'dropoff_longitude']].values,
-              dftest[['pickup_latitude', 'pickup_longitude']].values,
-              dftest[['dropoff_latitude', 'dropoff_longitude']].values))
-    pca = PCA().fit(coords)
-    dftrain['pickup_pca0'] = pca.transform(dftrain[['pickup_latitude', 'pickup_longitude']])[:, 0]
-    dftrain['pickup_pca1'] = pca.transform(dftrain[['pickup_latitude', 'pickup_longitude']])[:, 1]
-    dftrain['dropoff_pca0'] = pca.transform(dftrain[['dropoff_latitude', 'dropoff_longitude']])[:, 0]
-    dftrain['dropoff_pca1'] = pca.transform(dftrain[['dropoff_latitude', 'dropoff_longitude']])[:, 1]
-    dftest['pickup_pca0'] = pca.transform(dftest[['pickup_latitude', 'pickup_longitude']])[:, 0]
-    dftest['pickup_pca1'] = pca.transform(dftest[['pickup_latitude', 'pickup_longitude']])[:, 1]
-    dftest['dropoff_pca0'] = pca.transform(dftest[['dropoff_latitude', 'dropoff_longitude']])[:, 0]
-    dftest['dropoff_pca1'] = pca.transform(dftest[['dropoff_latitude', 'dropoff_longitude']])[:, 1]
-    return dftrain,dftest 
+def pca_lon_lat(df):
+    df_ =df.copy()
+    X = np.vstack \
+            ((df_[['pickup_latitude', 'pickup_longitude']].values,
+              df_[['dropoff_latitude', 'dropoff_longitude']].values))
+    # remove potential lon & lat outliers 
+    min_lat, min_lng = X.mean(axis=0) - X.std(axis=0)
+    max_lat, max_lng = X.mean(axis=0) + X.std(axis=0)
+    X = X[(X[:,0] > min_lat) & (X[:,0] < max_lat) & (X[:,1] > min_lng) & (X[:,1] < max_lng)]
+    pca = PCA().fit(X)
+    df_['pickup_pca0'] = pca.transform(df_[['pickup_latitude', 'pickup_longitude']])[:, 0]
+    df_['pickup_pca1'] = pca.transform(df_[['pickup_latitude', 'pickup_longitude']])[:, 1]
+    df_['dropoff_pca0'] = pca.transform(df_[['dropoff_latitude', 'dropoff_longitude']])[:, 0]
+    df_['dropoff_pca1'] = pca.transform(df_[['dropoff_latitude', 'dropoff_longitude']])[:, 1]
+    # manhattan distance from pca lon & lat 
+    df_.loc[:, 'pca_manhattan'] = np.abs(df_['dropoff_pca1'] - df_['pickup_pca1']) + np.abs(df_['dropoff_pca0'] - df_['pickup_pca0'])
+    return df_ 
 
 
 # get lon & lat clustering for following avg location speed calculation
 def get_clustering(df):
-    coords = np.vstack((df_train[['pickup_latitude', 'pickup_longitude']].values,
-                    df_train[['dropoff_latitude', 'dropoff_longitude']].values,
-                    df_test[['pickup_latitude', 'pickup_longitude']].values,
-                    df_test[['dropoff_latitude', 'dropoff_longitude']].values))
+    df_ = df.copy()
+    coords = np.vstack((df_[['pickup_latitude', 'pickup_longitude']].values,
+                        df_[['dropoff_latitude', 'dropoff_longitude']].values))
     df_ = df.copy()
     sample_ind = np.random.permutation(len(coords))[:500000]
-    kmeans = MiniBatchKMeans(n_clusters=100, batch_size=10000).fit(coords[sample_ind])
+    kmeans = MiniBatchKMeans(n_clusters=40, batch_size=10000).fit(coords[sample_ind])
     df_.loc[:, 'pickup_cluster'] = kmeans.predict(df_[['pickup_latitude', 'pickup_longitude']])
     df_.loc[:, 'dropoff_cluster'] = kmeans.predict(df_[['dropoff_latitude', 'dropoff_longitude']])
     return df_
 
+
+def trip_cluser_count(df):
+    df_ = df.copy()
+    df_.pickup_datetime = pd.to_datetime(df_.pickup_datetime)
+    group_freq = '60min'
+    df_dropoff_counts = df_ \
+        .set_index('pickup_datetime') \
+        .groupby([pd.TimeGrouper(group_freq), 'dropoff_cluster']) \
+        .agg({'id': 'count'}) \
+        .reset_index().set_index('pickup_datetime') \
+        .groupby('dropoff_cluster').rolling('240min').mean() \
+        .drop('dropoff_cluster', axis=1) \
+        .reset_index().set_index('pickup_datetime').shift(freq='-120min').reset_index() \
+        .rename(columns={'pickup_datetime': 'pickup_datetime_group', 'id': 'dropoff_cluster_count'})
+        
+    df_['pickup_datetime_group'] = df_['pickup_datetime'].dt.round(group_freq)
+    df_['dropoff_cluster_count'] = \
+            df_[['pickup_datetime_group', 'dropoff_cluster']]\
+            .merge(df_dropoff_counts,on=['pickup_datetime_group', 'dropoff_cluster'], how='left')\
+            ['dropoff_cluster_count'].fillna(0)
+            
+    return df_
 
 def avg_cluster_speed_(df):
     df_ = df.copy()
@@ -218,10 +266,84 @@ def avg_cluster_speed_(df):
     return df_
 
 
+def get_cluser_feature(df):
+    df_ = df.copy()
+    # avg cluster speed  
+    avg_cluser_h = df_.groupby(['pickup_cluster','dropoff_cluster']).mean()['avg_speed_h'].reset_index()
+    avg_cluser_h.columns = ['pickup_cluster','dropoff_cluster','avg_speed_cluster_h']
+    avg_cluser_m = df_.groupby(['pickup_cluster','dropoff_cluster']).mean()['avg_speed_m'].reset_index()
+    avg_cluser_m.columns = ['pickup_cluster','dropoff_cluster','avg_speed_cluster_m']
+    # merge 
+    df_ = pd.merge(df_,avg_cluser_h, how = 'left', on = ['pickup_cluster','dropoff_cluster'])
+    df_ = pd.merge(df_,avg_cluser_m, how = 'left', on = ['pickup_cluster','dropoff_cluster'])
+    # avg cluster duration 
+    avg_cluser_duration = df_.groupby(['pickup_cluster','dropoff_cluster']).mean()['trip_duration'].reset_index()
+    avg_cluser_duration.columns = ['pickup_cluster','dropoff_cluster','avg_cluster_duration']
+    # merge 
+    df_ = pd.merge(df_,avg_cluser_duration, how = 'left', on = ['pickup_cluster','dropoff_cluster'])
+    
+    return df_
+
+
+
+def get_avg_feature(df):
+    df_ = df.copy()
+    ################################################################
+    # using following tricks we can get average duration, speed as #
+    # features which are not available at first                    #
+    # since duration is the values we want to predict              #
+    ################################################################
+    
+    # avg  duration
+    avg_duration = df_.groupby(['pickup_weekday','pickup_hour']).mean()['trip_duration'].reset_index()
+    avg_duration.columns = ['pickup_weekday','pickup_hour','avg_trip_duration']
+    # avg speed 
+    avg_speed = df_.groupby(['pickup_weekday','pickup_hour']).mean()['avg_speed_h'].reset_index()
+    avg_speed.columns = ['pickup_weekday','pickup_hour','avg_trip_speed_h']
+    # avg month
+    month_avg = df_.groupby('pickup_month').trip_duration.mean().reset_index()
+    month_avg.columns = ['pickup_month', 'month_avg']
+    # avg weekofyear
+    week_year_avg = df_.groupby('weekofyear').trip_duration.mean().reset_index()
+    week_year_avg.columns = ['weekofyear', 'week_of_year_avg']
+    # avg day of month
+    day_month_avg = df_.groupby('pickup_date').trip_duration.mean().reset_index()
+    day_month_avg.columns = ['pickup_date', 'day_of_month_avg']
+    # avg hour
+    hour_avg = df_.groupby('pickup_hour').trip_duration.mean().reset_index()
+    hour_avg.columns = ['pickup_hour', 'hour_avg']
+    # avg pickup weekday
+    day_week_avg = df_.groupby('pickup_weekday').trip_duration.mean().reset_index()
+    day_week_avg.columns = ['pickup_weekday', 'day_week_avg']
+    # merge 
+    df_ = pd.merge(df_,avg_duration, how = 'left', on = ['pickup_weekday','pickup_hour'])
+    df_ = pd.merge(df_,avg_speed, how = 'left', on = ['pickup_weekday','pickup_hour'])
+    df_ = pd.merge(df_,month_avg,how='left',on='pickup_month')
+    df_ = pd.merge(df_, week_year_avg,how='left',on='weekofyear')
+    df_ = pd.merge(df_, day_month_avg,how='left' ,on='pickup_date')
+    df_ = pd.merge(df_, hour_avg, how='left' ,on='pickup_hour')
+    df_ = pd.merge(df_, day_week_avg,how='left',on='pickup_weekday') 
+    
+    return df_
+
+
+def label_2_binary(df):
+    df_ = df.copy()
+    df_['store_and_fwd_flag_'] = df_['store_and_fwd_flag'].map(lambda x: 0 if x =='N' else 1)
+    return df_
+
+
+def trip_over_60min(df):
+    df_ = df.copy()
+    df_counts = df_.set_index('pickup_datetime')[['id']].sort_index()
+    df_counts['count_60min'] = df_counts.isnull().rolling('60min').count()['id']
+    df_ = df_.merge(df_counts, on='id', how='left')
+    return df_ 
+
 
 ### ======================== ###
 
-def get_features(df):
+def get_geo_feature(df):
     # km 
     df_ = df.copy()
     ###  USING .loc making return array ordering 
@@ -255,17 +377,9 @@ def get_features(df):
 
 
 
-
 ### ================================================ ###
 # data cleaning
 
-
-
-# data cleaning help function
-
-
-# just simple remove too big /small data points in features, will do further after
-# data cleaning analysis
 
 def clean_data(df):
     df_ = df.copy()
@@ -288,6 +402,10 @@ def clean_data(df):
          (df_['avg_speed_h'] > df_['avg_speed_h'].quantile(0.05))]
         df_ = df_[(df_['avg_speed_m'] < df_['avg_speed_m'].quantile(0.95))&
          (df_['avg_speed_m'] > df_['avg_speed_m'].quantile(0.05))]
+    # remove the 2016-01-23 data since its too less comapre others days, 
+    # maybe quality is not good 
+        df_ = df_[(df_.pickup_date != '2016-01-23') &
+                 (df_.dropoff_date != '2016-01-23')]
     except:
         pass
  
@@ -295,8 +413,29 @@ def clean_data(df):
     df_ = df_[(df_['passenger_count']  <= 6) & (df_['passenger_count'] > 0)]
     
     return df_
-       
-   
+
+
+def clean_data_(df):
+    df_ = df.copy()
+    # remove potential lon & lat  outlier 
+    df_ = df_[(df_['pickup_latitude'] < df_['pickup_latitude'].quantile(0.99))&
+         (df_['pickup_latitude'] > df_['pickup_latitude'].quantile(0.01))]
+    df_ = df_[(df_['pickup_longitude'] < df_['pickup_longitude'].quantile(0.99))&
+         (df_['pickup_longitude'] > df_['pickup_longitude'].quantile(0.01))]
+
+    df_ = df_[(df_['dropoff_latitude'] < df_['dropoff_latitude'].quantile(0.99))&
+         (df_['dropoff_latitude'] > df_['dropoff_latitude'].quantile(0.01))]
+    df_ = df_[(df_['dropoff_longitude'] < df_['dropoff_longitude'].quantile(0.99))&
+         (df_['dropoff_longitude'] > df_['dropoff_longitude'].quantile(0.01))]
+
+    # remove the 2016-01-23 data since its too less comapre others days, 
+    # maybe quality is not good 
+    #df_ = df_[(df_.pickup_date != '2016-01-23') & (df_.dropoff_date != '2016-01-23')]
+    # potential passenger_count outlier 
+    df_ = df_[(df_['passenger_count']  <= 6) & (df_['passenger_count'] > 0)]
+    
+    return df_
+
 
 
 
@@ -309,6 +448,28 @@ def load_data():
 	sampleSubmission = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/sample_submission.csv')
 	return df_train, df_test, sampleSubmission
 
+
+
+def load_data_():
+    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv')
+    df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
+    # sample train data for fast job 
+    #df_train = df_train.sample(n=100)
+    # clean train data 
+    df_train_ = clean_data_(df_train)
+    # merge train and test data for fast process and let model view test data when training as well 
+    df_all = pd.concat([df_train_, df_test], axis=0)
+    return df_all , df_train_ , df_test
+
+def load_OSRM_data():
+    # load OSRM dataset 
+    # https://www.kaggle.com/oscarleo/new-york-city-taxi-with-osrm
+    train_fastest_1 = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/fastest_routes_train_part_1.csv')
+    train_fastest_2 = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/fastest_routes_train_part_2.csv')
+    test_fastest = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/fastest_routes_test.csv')
+    # merge 
+    frame_fastest = pd.concat([train_fastest_1, train_fastest_2, test_fastest], axis = 0)
+    return frame_fastest
 
 
 
