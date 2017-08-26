@@ -47,7 +47,8 @@ python run/submission.py
 ## Process
 
 ### 1. DATA EXPLORATION (EDA)
-https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/notebook
+
+[Analysis](/tree/master/notebook)
 
 ### 2. FEATURE EXTRACTION 
 
