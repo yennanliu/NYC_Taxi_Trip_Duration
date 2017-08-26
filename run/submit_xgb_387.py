@@ -444,7 +444,7 @@ if __name__ == '__main__':
              'trip_duration': np.exp(y_test)}).set_index('id')
 
     print (df_sub)
-    df_sub.to_csv('~/NYC_Taxi_Trip_Duration/output/0818_xgb_390_dev.csv')
+    df_sub.to_csv('~/NYC_Taxi_Trip_Duration/output/0824_xgb_387.csv')
 
     """
     #print (auto_classifier.config_dict)
