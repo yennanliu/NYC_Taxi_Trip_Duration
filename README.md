@@ -34,9 +34,9 @@ Predicts the total ride duration of taxi trips in New York City. primary dataset
 
 
 ```Bash
-export PYTHONPATH=/Users/yennanliu/NYC_Taxi_Trip_Duration/
 cd NYC_Taxi_Trip_Duration
-python run/submission.py
+export PYTHONPATH=/Users/youruserid/NYC_Taxi_Trip_Duration/
+python run/submit_xgb_387.py
 ```
 
 ### Tech
@@ -52,8 +52,8 @@ python run/submission.py
 
 ### 2. FEATURE EXTRACTION 
 
-https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/script
-https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run
+[script](/tree/master/script)
+[run ML](/tree/master/run)
 
 2-1. **Overview**
    * Time & date dependency
