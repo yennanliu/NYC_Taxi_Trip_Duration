@@ -48,12 +48,12 @@ python run/submit_xgb_387.py
 
 ### 1. DATA EXPLORATION (EDA)
 
-[Analysis](/tree/master/notebook)
+[Analysis](/notebook)
 
 ### 2. FEATURE EXTRACTION 
 
-[script](/tree/master/script)<br>
-[run ML](/tree/master/run)
+[Script](/script)<br>
+[Modeling](/run)
 
 2-1. **Overview**
    * Time & date dependency
