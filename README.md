@@ -7,7 +7,6 @@ Kaggle page : https://www.kaggle.com/c/nyc-taxi-trip-duration
 
 Predicts the total ride duration of taxi trips in New York City. primary dataset is one released by the NYC Taxi and Limousine Commission, which includes pickup time, geo-coordinates, number of passengers, and several other variables.
 
-```
 ## File structure
 
 ```
@@ -38,6 +37,7 @@ notebook : main analysis
 cd NYC_Taxi_Trip_Duration
 export PYTHONPATH=/Users/youruserid/NYC_Taxi_Trip_Duration/
 python run/submit_xgb_387.py
+
 ```
 
 ### Tech
@@ -64,7 +64,7 @@ EDA -> Data Preprocess -> Model select -> Feature engineering ->Model tune -> Pr
 [Modeling](/run)
 
 2-1. **Feature dependency**
-[variable](/variable.md)
+[variable](/variable.md) <br>
 2-2. **Encode & Standardization** <br>
 2-3. **Feature transformation** <br>
 2-4. **Dimension reduction**
