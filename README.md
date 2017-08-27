@@ -7,11 +7,11 @@ Kaggle page : https://www.kaggle.com/c/nyc-taxi-trip-duration
 ![image](https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/nyc_taxi.jpg)
 
 
-## Introduction
+## INTRO
 
 Predicts the total ride duration of taxi trips in New York City. primary dataset is one released by the NYC Taxi and Limousine Commission, which includes pickup time, geo-coordinates, number of passengers, and several other variables.
 
-## File structure
+## FILE STRUCTURE
 
 ```
 ├── README.md
@@ -33,7 +33,7 @@ notebook : main analysis
 ```
 
 
-## Quick Start
+## QUICK START
 
 
 
@@ -49,7 +49,7 @@ python run/submit_xgb_387.py
 
 
 ---
-## Process
+## PROCESS
 
 ```
 
@@ -58,11 +58,11 @@ EDA -> Data Preprocess -> Model select -> Feature engineering ->Model tune -> Pr
 ```
 
 
-### 1. DATA EXPLORATION (EDA)
+#### 1. DATA EXPLORATION (EDA)
 
 [Analysis](/notebook)
 
-### 2. FEATURE EXTRACTION 
+#### 2. FEATURE EXTRACTION 
 
 [Script](/script)<br>
 [Modeling](/run)
@@ -74,19 +74,19 @@ EDA -> Data Preprocess -> Model select -> Feature engineering ->Model tune -> Pr
 2-4. **Dimension reduction**
    * Use PCA
 
-### 3. PRE-TEST
+#### 3. PRE-TEST
 3-1. **Input all standardized features to all models** <br>
 3-2. **Regression**
 
-### 4. OPTIMIZATION
+#### 4. OPTIMIZATION
 4-1. **Feature optimization**<br>
 4-2. **Super-parameters tuning** <br>
 4-3. **Aggregation**<br>
 
-### 5. RESULTS  
+#### 5. RESULTS  
 
 ---
-## Reference
+## REFERENCE
 
 - xgboost
   - http://xgboost.readthedocs.io/en/latest/python/python_api.html 
