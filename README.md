@@ -3,6 +3,10 @@ Kaggle page : https://www.kaggle.com/c/nyc-taxi-trip-duration
 <br >Discussion Folum :point_right: <https://hackmd.io/s/BkScUQ4IW>
 
 
+
+![image](https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/nyc_taxi.jpg)
+
+
 ## Introduction
 
 Predicts the total ride duration of taxi trips in New York City. primary dataset is one released by the NYC Taxi and Limousine Commission, which includes pickup time, geo-coordinates, number of passengers, and several other variables.
@@ -63,7 +67,7 @@ EDA -> Data Preprocess -> Model select -> Feature engineering ->Model tune -> Pr
 [Script](/script)<br>
 [Modeling](/run)
 
-2-1. **Feature dependency**
+2-1. **Feature dependency**<br>
 [variable](/variable.md) <br>
 2-2. **Encode & Standardization** <br>
 2-3. **Feature transformation** <br>
