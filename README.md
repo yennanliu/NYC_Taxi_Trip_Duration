@@ -68,21 +68,21 @@ EDA -> Data Preprocess -> Model select -> Feature engineering -> Model tune -> P
 [Script](/script)<br>
 [Modeling](/run)
 
--2-1. **Feature dependency**<br>
-	[variable](/variable.md) <br>
--2-2. **Encode & Standardization** <br>
--2-3. **Feature transformation** <br>
--2-4. **Dimension reduction**
-		* Use PCA
+2-1. **Feature dependency**<br>
+[variable](/variable.md) <br>
+2-2. **Encode & Standardization** <br>
+2-3. **Feature transformation** <br>
+2-4. **Dimension reduction**
+   * Use PCA
 
 #### 3. PRE-TEST
--3-1. **Input all standardized features to all models** <br>
--3-2. **Regression**
+3-1. **Input all standardized features to all models** <br>
+3-2. **Regression**
 
 #### 4. OPTIMIZATION
--4-1. **Feature optimization**<br>
--4-2. **Super-parameters tuning** <br>
--4-3. **Aggregation**<br>
+4-1. **Feature optimization**<br>
+4-2. **Super-parameters tuning** <br>
+4-3. **Aggregation**<br>
 
 #### 5. RESULTS  
 
