@@ -376,6 +376,18 @@ def get_geo_feature(df):
     return df_
 
 
+def get_label_feature(df):
+    df_ = df.copy()
+    # weekday or weekend 
+    df_['weekend'] = df_.pickup_weekday.map(lambda x : 1 if x== 5 or x==6 else 0 )
+    # pickup hour 6-9  
+    df_['hr_6_9'] = df_.pickup_hour.map(lambda x : 1 if  6 <=x <= 9 else 0 )
+    # pickup hour 10-20  
+    df_['hr_10_20'] = df_.pickup_hour.map(lambda x : 1 if  10 <=x <= 20 else 0  )
+    # pickup hour 21-5    
+    df_['hr_21_5'] = df_.pickup_hour.map(lambda x : 1 if  21 <=x <= 23 or 0 <= x <=5  else 0 )
+    return df_
+    
 
 ### ================================================ ###
 # data cleaning
