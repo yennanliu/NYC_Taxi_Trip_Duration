@@ -92,6 +92,8 @@ EDA -> Data Preprocess -> Model select -> Feature engineering -> Model tune -> P
 - xgboost
   - http://xgboost.readthedocs.io/en/latest/python/python_api.html 
   - https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/
+  - Core XGBoost Library VS scikit-learn API
+  	- https://zz001.wordpress.com/2017/05/13/basics-of-xgboost-in-python/
 
 - LightGBM
   - https://github.com/Microsoft/LightGBM/wiki/Installation-Guide

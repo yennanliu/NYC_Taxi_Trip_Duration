@@ -34,8 +34,8 @@ def tune_model_1(X,y):
 
 
 def xgb_model_1(X_train,y_train,X_test,params=None):
-
-	xgb = XGBRegressor(n_estimators=1000, max_depth=13, min_child_weight=150, 
+    # rain with the scikit-learn API
+    xgb = XGBRegressor(n_estimators=1000, max_depth=13, min_child_weight=150, 
                    subsample=0.7, colsample_bytree=0.3)
     y_test = np.zeros(len(X_test))
 	for i, (train_ind, val_ind) in enumerate(KFold(n_splits=2, shuffle=True, 
@@ -56,16 +56,17 @@ def xgb_model_1(X_train,y_train,X_test,params=None):
 
 
 def xgb_model_2(X_train,y_train,X_test,y_test,params=None):
-	# transform data to DMatrix form for fasting fitting process 
+    # train with xgboost core library
+    # transform data to DMatrix form for fasting fitting process 
     dtrain = xgb.DMatrix(X_train, label=y_train)
     dvalid = xgb.DMatrix(X_test, label=y_test)
     dtest = xgb.DMatrix(X_test)
     watchlist = [(dtrain, 'train'), (dvalid, 'valid')]
 	xgb_pars = {'min_child_weight': 10, 'eta': 0.04,
 				'colsample_bytree': 0.8, 'max_depth': 15,
-            	'subsample': 0.75, 'lambda': 2, 'nthread': -1,
-             	'booster' : 'gbtree', 'silent': 1, 'gamma' : 0,
-            	'eval_metric': 'rmse', 'objective': 'reg:linear'}    
+                'subsample': 0.75, 'lambda': 2, 'nthread': -1,
+                'booster' : 'gbtree', 'silent': 1, 'gamma' : 0,
+                'eval_metric': 'rmse', 'objective': 'reg:linear'}    
     # xgb.train   	
     model = xgb.train(xgb_pars, dtrain, 500, watchlist, early_stopping_rounds=250,
                   maximize=False, verbose_eval=15)
