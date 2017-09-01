@@ -25,7 +25,7 @@ def tune_model_1(X,y):
                 'nthread': -1}
     xgbreg = XGBRegressor(nthreads=-1) 
     # random search 
-    gs = RandomizedSearchCV(xgbreg, params, n_jobs=1)  
+    gs = RandomizedSearchCV(xgbreg, params, n_jobs=1,n_iter=10)  
     #gs.fit(X_train, y_train) 
     gs.fit(X, y) 
     print (gs.best_model_)
@@ -34,7 +34,7 @@ def tune_model_1(X,y):
 
 
 def xgb_model_1(X_train,y_train,X_test,params=None):
-    # rain with the scikit-learn API
+    # train with the scikit-learn API
     xgb = XGBRegressor(n_estimators=1000, max_depth=13, min_child_weight=150, 
                    subsample=0.7, colsample_bytree=0.3)
     y_test = np.zeros(len(X_test))
