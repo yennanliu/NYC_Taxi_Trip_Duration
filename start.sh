@@ -30,8 +30,20 @@ chmod +x start.sh
 
 
 function install_ () {
+echo "install library via pip"
+pip install pandas numpy sklearn 
 
-pip install pandas numpy sklearn xgboost 
+echo "install xgboost"
+cd && git clone --recursive https://github.com/dmlc/xgboost
+cd xgboost; cp make/minimum.mk ./config.mk; make -j4
+
+echo "install lightGBM"
+cd && brew install cmake && brew install gcc --without-multilib
+&& git clone --recursive https://github.com/Microsoft/LightGBM ; cd LightGBM
+export CXX=g++-7 CC=gcc-7
+mkdir build ; cd build
+cmake .. 
+make -j4 
 
 }
 
