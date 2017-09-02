@@ -1,0 +1,38 @@
+
+
+# feature 1 
+features = [ 'vendor_id', 
+            'passenger_count',
+            'pickup_latitude', 
+            'pickup_longitude', 
+            'dropoff_latitude', 
+            'dropoff_longitude',
+            'pickup_pca0', 
+            'pickup_pca1', 
+            'dropoff_pca0', 
+            'dropoff_pca1',
+            'distance_haversine',
+            'direction',
+            'pca_manhattan',
+            'pickup_time_delta',
+            'pickup_month',
+            'weekofyear', 
+            'pickup_weekday', 
+            'pickup_hour', 
+            'week_delta',
+            'week_delta_sin', 
+            'pickup_hour_sin',
+            'count_60min', 
+            'dropoff_cluster_count',
+            'total_travel_time',
+            'total_distance',
+            'number_of_steps',
+            'month_avg',
+            'week_of_year_avg',
+            'day_of_month_avg',
+            'hour_avg',
+            'day_week_avg',
+            'right_turn',
+            'left_turn']
+
+
