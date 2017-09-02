@@ -6,48 +6,92 @@
 # basic library 
 import pandas as pd, numpy as np
 import calendar
+import pickle 
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.metrics import mean_squared_error, r2_score, explained_variance_score, mean_absolute_error
-import pickle 
+from sklearn.model_selection import train_test_split
+from sklearn.model_selection import KFold
+from xgboost import XGBRegressor
 
 # import user defined library
 from script.prepare import *
 from script.train import *  
 from script.model import *  
+from script.parameter import * 
 
 
 ### ================================================ ###
 #run the process 
 
-df_train, df_test, sampleSubmission = load_data()
-#print (df_train.head())
 
-# only take 100 data points  here 
+def train_model():
+    
+    df_all, df_train, df_test  = load_data()
+    #get basic features 
+    df_all_ = get_time_feature(df_all)
+    df_all_ = get_time_cyclic(df_all_)
+    # get other features 
+    df_all_ = get_geo_feature(df_all_)
+    df_all_ = pca_lon_lat(df_all_)
+    # get center of trip route 
+    df_all_ = gat_trip_center(df_all_)
+    # get lon & lat clustering 
+    df_all_ = get_clustering(df_all_)
+    # get avg ride count on dropoff cluster 
+    df_all_ = trip_cluser_count(df_all_)
+    df_all_ = get_cluser_feature(df_all_)
+    # get avg feature value 
+    df_all_ = get_avg_feature(df_all_)
+    # label -> 0,1 
+    df_all_ = label_2_binary(df_all_)
+    # count trip over 60 min
+    df_all_ = trip_over_60min(df_all_)
+    # get log trip duration 
+    df_all_['trip_duration_log'] = df_all_['trip_duration'].apply(np.log)
 
-df_train_ = get_time_feature(df_train.head(100))
-df_train_ = get_features(df_train_)
-df_train_,df_test_ = pca_lon_lat(df_train_,df_test)
-#df_train_ = avg_speed(df_train_)
-df_train_ = clean_data(df_train_)
+    # merge with OSRM data 
+    frame_fastest = load_OSRM_data()
+    #print (frame_fastest.head())
+    df_all_ = pd.merge(left=df_all_,
+                       right=frame_fastest[['id', 'total_distance', 
+                                            'total_travel_time', 'number_of_steps',
+                                            'right_turn','left_turn']],
+                                            on='id', how='left')
+    print (df_all_.head())
+    # from script.parameter import  feature list 
+    
+    X_train = df_all_[df_all_['trip_duration'].notnull()][features].values
+    y_train = df_all_[df_all_['trip_duration'].notnull()]['trip_duration_log'].values
+    X_test  = df_all_[df_all_['trip_duration'].isnull()][features].values
 
-print (df_train_.head())
-print ('Train Data Ready  ! ')
+    # train xgb  
+    xgb = XGBRegressor(n_estimators=1000, max_depth=13, min_child_weight=150, 
+                   subsample=0.7, colsample_bytree=0.3)
+    y_test = np.zeros(len(X_test))
 
-#### fitting test dataset  ####
-df_train_tree_ = clean_data(df_train_)
-tree_feature = ['trip_duration', 'vendor_id', 
-                'passenger_count', 'pickup_longitude', 
-                'pickup_latitude','dropoff_longitude',
-                'dropoff_latitude','pickup_hour','pickup_month',  
-                'distance_haversine','pickup_weekday',
-                'distance_manhattan']
-from sklearn.tree import DecisionTreeRegressor
-tree_model = DecisionTreeRegressor()
-model_tree = reg_analysis(tree_model,df_train_tree_[tree_feature])
-print (model_tree)
+    for i, (train_ind, val_ind) in enumerate(KFold(n_splits=2, shuffle=True, 
+                                            random_state=1989).split(X_train)):
+        print('----------------------')
+        print('Training model #%d' % i)
+        print('----------------------')
+        
+        xgb.fit(X_train[train_ind], y_train[train_ind],
+                eval_set=[(X_train[val_ind], y_train[val_ind])],
+                early_stopping_rounds=10, verbose=25)
+    print (xgb)
+    # save tuneed data for prediction 
+    df_all_.to_csv('df_all_.csv')
+    print ('train OK ! ')
+    return xgb
 
-# save model 
-save_model(model_tree)
+
+
+### ================================================ ###
+
+
+if __name__ == '__main__':
+    model_xgb  = train_model()
+    save_model(model_xgb)
 
 
 
