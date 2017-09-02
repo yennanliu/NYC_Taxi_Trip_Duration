@@ -69,7 +69,7 @@ EDA -> Data Preprocess -> Model select -> Feature engineering -> Model tune -> P
 [Modeling](/run)
 
 2-1. **Feature dependency**<br>
-[variable](/variable.md) <br>
+[variable](/reference/variable.md) <br>
 2-2. **Encode & Standardization** <br>
 2-3. **Feature transformation** <br>
 2-4. **Dimension reduction**
