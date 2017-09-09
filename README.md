@@ -7,6 +7,8 @@
 
 ![image](https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/nyc_taxi.jpg)
 
+![image](https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/submit_log.png)
+
 
 ## INTRO
 
