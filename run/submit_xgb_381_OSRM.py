@@ -502,7 +502,7 @@ if __name__ == '__main__':
              'trip_duration': np.exp(y_test)}).set_index('id')
 
     print (df_sub)
-    df_sub.to_csv('~/NYC_Taxi_Trip_Duration/output/0826_xgb_0.38115_ORSM.csv')
+    df_sub.to_csv('~/NYC_Taxi_Trip_Duration/output/0831_xgb_0.381_ORSM.csv')
 
 
 

@@ -519,7 +519,7 @@ if __name__ == '__main__':
              'id': df_all[df_all['trip_duration'].isnull()]['id'].values,
              'trip_duration': np.exp(y_test_pred)}).set_index('id')
 
-    df_sub.to_csv('~/NYC_Taxi_Trip_Duration/output/0828_LightGBM_OSRM.csv')
+    df_sub.to_csv('~/NYC_Taxi_Trip_Duration/output/0831_LightGBM_OSRM.csv')
 
 
 
