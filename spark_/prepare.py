@@ -28,7 +28,14 @@ def run():
 	                   .agg(avg("pickup_longitude"), count("*"))
 	df_group1.show()
 	print (df_group1.show())
-	return df_group1
+	#return df_group1
+	#=====================
+	df__ = sc.textFile("/Users/yennanliu/NYC_Taxi_Trip_Duration/data/train.csv")
+	header = df__.first()
+	df__value = df__.filter(lambda line: line != header)
+	df__value.map(lambda x : x[0:][12:22]).take(10)
+	print (df__value.map(lambda x : x[0:][12:22]).take(10))
+
 
 
 run()
