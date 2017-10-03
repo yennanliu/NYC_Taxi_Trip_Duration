@@ -18,20 +18,18 @@ Predicts the total ride duration of taxi trips in New York City. primary dataset
 
 ```
 ├── README.md
-├── data  
-├── documents
-├── model   
-├── notebook
-├── output
-├── run
-└── script
+├── data     : directory of train/test data 
+├── documents: main reference 
+├── model    : save the tuned model
+├── notebook : main analysis
+├── output   : prediction outcome
+├── reference: other reference 
+├── run      : fire the train/predict process 
+├── script   : utility script for data preprocess / feature extract / train /predict  
+├── spark_   : (dev)
+└── start.sh : launch env
 
 
-script : utility script for data prepare / modeling 
-run    : fire the fitting process 
-model  : save the tuned model
-output : prediction outcome
-notebook : main analysis
 
 ```
 
@@ -60,7 +58,7 @@ EDA -> Data Preprocess -> Model select -> Feature engineering -> Model tune -> P
 
 ```
 
-
+```
 #### 1. DATA EXPLORATION (EDA)
 
 [Analysis](/notebook)
@@ -86,7 +84,9 @@ EDA -> Data Preprocess -> Model select -> Feature engineering -> Model tune -> P
 4-2. **Super-parameters tuning** <br>
 4-3. **Aggregation**<br>
 
+
 #### 5. RESULTS  
+```
 
 ---
 ## REFERENCE
