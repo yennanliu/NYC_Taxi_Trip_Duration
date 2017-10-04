@@ -36,9 +36,27 @@ def run():
 	df__value.map(lambda x : x[0:][12:22]).take(10)
 	print (df__value.map(lambda x : x[0:][12:22]).take(10))
 
+def test():
+	df_train = sqlCtx.read.format('com.databricks.spark.csv')\
+	                      .options(header='true', inferschema='true')\
+	                      .load('/Users/yennanliu/NYC_Taxi_Trip_Duration/data/train.csv')
+	# select columns in DataFrame then transform to rdd 
+	rdd_ = df_train.select('id','vendor_id','pickup_datetime').rdd
+	type(rdd_)
+	print ("==================")
+	# id 
+	print (rdd_.map(lambda x: x[0]).take(3))
+	print ("==================")
+	# vendor_id
+	print(rdd_.map(lambda x: x[1]).take(3))
+	print ("==================")
+	# pickup_datetime
+	print(rdd_.map(lambda x: x[2]).take(3))
+	print ("==================")
 
-
-run()
+if __name__ == '__main__':
+	#run()
+	test()
 
 
 
