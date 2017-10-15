@@ -54,9 +54,32 @@ def test():
 	print(rdd_.map(lambda x: x[2]).take(3))
 	print ("==================")
 
+def filter_column():
+	# dataframe 
+    df_train = sqlCtx.read.format('com.databricks.spark.csv')\
+                      .options(header='true', inferschema='true')\
+                      .load('/Users/yennanliu/NYC_Taxi_Trip_Duration/data/train.csv')
+    # rdd 
+    rdd_ = df_train.select('id','vendor_id','pickup_datetime').rdd
+    # rdd -> dataframe
+    df_xx = spark.createDataFrame(rdd_)
+    # dataframe -> sql
+    df_xx.registerTempTable("df_xx_table")
+    spark.sql(""" #
+				SELECT id, count(*) 
+                FROM df_xx_table
+                group by 1 
+                order by 2 desc 
+                limit 10""").show()
+
+
+
+
+
 if __name__ == '__main__':
 	#run()
-	test()
+	#test()
+	filter_column()
 
 
 
