@@ -59,13 +59,13 @@ def filter_column():
     df_train = sqlCtx.read.format('com.databricks.spark.csv')\
                       .options(header='true', inferschema='true')\
                       .load('/Users/yennanliu/NYC_Taxi_Trip_Duration/data/train.csv')
-    # rdd 
+    # dataframe -> rdd 
     rdd_ = df_train.select('id','vendor_id','pickup_datetime').rdd
     # rdd -> dataframe
-    df_xx = spark.createDataFrame(rdd_)
+    df_xx = sqlCtx.createDataFrame(rdd_)
     # dataframe -> sql
     df_xx.registerTempTable("df_xx_table")
-    spark.sql(""" #
+    sqlCtx.sql(""" 
 				SELECT id, count(*) 
                 FROM df_xx_table
                 group by 1 
