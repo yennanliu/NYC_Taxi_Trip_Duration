@@ -39,11 +39,40 @@ Predicts the total ride duration of taxi trips in New York City. primary dataset
 
 
 ```Bash
+# demo of  submit_xgb_387.py
 cd NYC_Taxi_Trip_Duration
 export PYTHONPATH=/Users/youruserid/NYC_Taxi_Trip_Duration/
 python run/submit_xgb_387.py
 
 ```
+
+```Bash
+# demo of submit_tpot.py 
+cd NYC_Taxi_Trip_Duration
+export PYTHONPATH=/Users/youruserid/NYC_Taxi_Trip_Duration/
+python run/submit_tpot.py 
+
+# output 
+
+  dropoff_datetime  dropoff_latitude  dropoff_longitude         id  \
+0 2016-03-14 17:32:30         40.765602         -73.964630  id2875421   
+1 2016-06-12 00:54:38         40.731152         -73.999481  id2377394   
+2 2016-01-19 12:10:48         40.710087         -74.005333  id3858529   
+3 2016-01-30 22:09:03         40.749184         -73.992081  id0801584   
+4 2016-06-17 22:40:40         40.765896         -73.957405  id1813257 
+Best pipeline: ExtraTreesRegressor(input_matrix, bootstrap=True, max_features=0.8, min_samples_leaf=4, min_samples_split=8, n_estimators=100)
+The cross-validation MSE
+-0.1800694337127113
+Imputing missing values in feature set
+....
+
+{'sklearn.linear_model.ElasticNetCV': {'tol': [1e-05, 0.0001, 0.001, 0.01, 0.1], 'l1_ratio': array([0.  , 0.05, 0.1 , 0.15, 0.2 , 0.25, 0.3 , 0.35, 0.4 , 0.45, 0.5 ,
+       0.55, 0.6 , 0.65, 0.7 , 0.75, 0.8 , 0.85, 0.9 , 0.95, 1.  ])}, 'sklearn.cluster.FeatureAgglomeration': {'affinity': ['euclidean', 'l1', 'l2', 'manhattan', 'cosine'], 'linkage': ['ward', 'complete', 'average']}, 'sklearn.preprocessing.Binarizer': {'threshold': array([0.  , 0.05, 0.1 , 0.15, 0.2 , 0.25, 0.3 , 0.35, 0.4 , 0.45, 0.5 ,
+       0.55, 0.6 , 0.65, 0.7 , 0.75, 0.8 , 0.85, 0.9 , 0.95, 1.  ])}
+.....
+
+```
+
 
 ### Tech
 - Python 3.4.5, Sklearn, Pandas 0.20.3 , Numpy, Xgboost, tpot
