@@ -3,7 +3,7 @@
 
 function lauch_env () {
 
-source activate g_dash  &&  export PYTHONPATH=/Users/yennanliu/NYC_Taxi_Trip_Duration/
+source activate ds_dash  &&  export PYTHONPATH=/Users/yennanliu/NYC_Taxi_Trip_Duration/
 }
 
 
@@ -33,6 +33,7 @@ function install_ () {
 echo "install library via pip"
 pip install pandas numpy sklearn 
 
+# https://stackoverflow.com/questions/43327020/xgboostlibrarynotfound-cannot-find-xgboost-library-in-the-candidate-path-did-y
 echo "install xgboost"
 cd && git clone --recursive https://github.com/dmlc/xgboost \
 cd xgboost; cp make/minimum.mk ./config.mk; make -j4
