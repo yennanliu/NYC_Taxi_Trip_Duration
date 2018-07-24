@@ -1,8 +1,8 @@
 # NYC Taxi Trip Duration
 
-[Kaggle Page](https://www.kaggle.com/c/nyc-taxi-trip-duration)<br>
-[Forum](https://hackmd.io/s/BkScUQ4IW)
-
+* [Kaggle Page](https://www.kaggle.com/c/nyc-taxi-trip-duration)
+* [Analysis nb](https://nbviewer.jupyter.org/github/yennanliu/NYC_Taxi_Trip_Duration/blob/master/notebook/NYC_Taxi_EDA_V1_Yen.ipynb) - EDA ipython notebook 
+* [ML nb](https://nbviewer.jupyter.org/github/yennanliu/NYC_Taxi_Trip_Duration/blob/master/notebook/NYC_Taxi_ML_V1_Yen.ipynb) - ML ipython notebook 
 
 
 ![image](https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/nyc_taxi.jpg)
