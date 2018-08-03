@@ -98,6 +98,7 @@ public class train_spark_RF {
 
         System.out.println("----------------- accuracy ----------------- "); 
         System.out.println("Trained RF model:\n" + rfModel.toDebugString());
+        System.out.println("accuracy: " + rmse );
         System.out.println("----------------- accuracy ----------------- "); 
     }
 }
