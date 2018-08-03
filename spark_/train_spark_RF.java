@@ -15,14 +15,27 @@ import static org.apache.spark.sql.functions.col;
 import static org.apache.spark.sql.functions.when;
 
 /****
-credit 
+
+# credit 
+
 https://craftsmen.nl/an-introduction-to-machine-learning-with-apache-spark/
 https://github.com/Silfen66/SparkIris/blob/master/src/main/java/nl/craftsmen/spark/iris/SparkIris.java
+
+# ML spark feature vectore set up 
+
+https://spark.apache.org/docs/latest/ml-classification-regression.html
+
 **** /
+
 /**
+
  * Apache Spark MLLib Java algorithm for classifying the Iris Species
  * into three categories using a Random Forest Classification algorithm.
- */
+ *
+
+ **/
+
+
 public class train_spark_RF {
 
     private static final String PATH = "train_data_java.csv";
@@ -50,7 +63,7 @@ public class train_spark_RF {
 
 
         // identify the feature colunms
-        String[] inputColumns = {"vendor_id","passenger_count", "pickup_longitude","pickup_latitude", "dropoff_longitude", "dropoff_latitude","trip_duration"};
+        String[] inputColumns = {"vendor_id","passenger_count", "pickup_longitude","pickup_latitude", "dropoff_longitude", "dropoff_latitude"};
         VectorAssembler assembler = new VectorAssembler().setInputCols(inputColumns).setOutputCol("features");
         Dataset<Row> featureSet = assembler.transform(transformedDataSet);
 
@@ -63,7 +76,9 @@ public class train_spark_RF {
         trainingSet.show();
 
         // train the algorithm based on a Random Forest Classification Algorithm with default values
-        RandomForestRegressor rf = new RandomForestRegressor(); 
+        RandomForestRegressor rf = new RandomForestRegressor()
+                                    .setLabelCol("trip_duration")
+                                    .setFeaturesCol("features");
         RandomForestRegressionModel rfModel = rf.fit(trainingSet);
         Dataset<Row> predictions = rfModel.transform(testSet);
         RegressionEvaluator evaluator = new RegressionEvaluator()
