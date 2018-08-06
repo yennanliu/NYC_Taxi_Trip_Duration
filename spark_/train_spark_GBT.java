@@ -96,7 +96,7 @@ public class train_spark_GBT {
         // evaluate the model
 
         System.out.println("----------------- accuracy ----------------- "); 
-        System.out.println("Trained RF model:\n" + gbtModel.toDebugString());
+        System.out.println("Trained GBT model:\n" + gbtModel.toDebugString());
         System.out.println("accuracy: " + rmse );
         System.out.println("----------------- accuracy ----------------- "); 
     }
