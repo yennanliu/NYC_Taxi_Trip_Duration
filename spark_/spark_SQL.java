@@ -135,34 +135,20 @@ public class spark_SQL {
 
     // Select only the "name" column
     df.select("id").show();
-    // +-------+
-    // |   name|
-    // +-------+
-    // |Michael|
-    // |   Andy|
-    // | Justin|
-    // +-------+
 
     // Select everybody, but increment the age by 1
-    df.select(col("id"), col("id").plus(1)).show();
-    // +-------+---------+
-    // |   name|(age + 1)|
-    // +-------+---------+
-    // |Michael|     null|
-    // |   Andy|       31|
-    // | Justin|       20|
-    // +-------+---------+
-    /*
-    // Select people older than 21
-    df.filter(col("age").gt(21)).show();
+    //df.select(col("id"), col("id").plus(1)).show();
+    
+    // Select pickup_latitude older than 40.76
+    df.filter(col("pickup_latitude").gt(40.76)).show();
     // +---+----+
     // |age|name|
     // +---+----+
     // | 30|Andy|
     // +---+----+
 
-    // Count people by age
-    df.groupBy("age").count().show();
+    // Count trips by vendor_id
+    df.groupBy("vendor_id").count().show();
     // +----+-----+
     // | age|count|
     // +----+-----+
@@ -174,9 +160,9 @@ public class spark_SQL {
 
     // $example on:run_sql$
     // Register the DataFrame as a SQL temporary view
-    df.createOrReplaceTempView("people");
+    df.createOrReplaceTempView("df");
 
-    Dataset<Row> sqlDF = spark.sql("SELECT * FROM people");
+    Dataset<Row> sqlDF = spark.sql("SELECT * FROM df limit 10 ");
     sqlDF.show();
     // +----+-------+
     // | age|   name|
@@ -189,10 +175,10 @@ public class spark_SQL {
 
     // $example on:global_temp_view$
     // Register the DataFrame as a global temporary view
-    df.createGlobalTempView("people");
+    df.createGlobalTempView("df");
 
     // Global temporary view is tied to a system preserved database `global_temp`
-    spark.sql("SELECT * FROM global_temp.people").show();
+    spark.sql("SELECT * FROM global_temp.df limit 10 ").show();
     // +----+-------+
     // | age|   name|
     // +----+-------+
@@ -202,7 +188,7 @@ public class spark_SQL {
     // +----+-------+
 
     // Global temporary view is cross-session
-    spark.newSession().sql("SELECT * FROM global_temp.people").show();
+    spark.newSession().sql("SELECT * FROM global_temp.df limit 10").show();
     // +----+-------+
     // | age|   name|
     // +----+-------+
@@ -212,7 +198,7 @@ public class spark_SQL {
     // +----+-------+
     // $example off:global_temp_view$
 
-    */
+    
   }
 
   
