@@ -161,17 +161,16 @@ public class spark_SQL {
     // $example on:run_sql$
     // Register the DataFrame as a SQL temporary view
     df.createOrReplaceTempView("df");
-
     Dataset<Row> sqlDF = spark.sql("SELECT * FROM df limit 10 ");
     sqlDF.show();
-    // +----+-------+
-    // | age|   name|
-    // +----+-------+
-    // |null|Michael|
-    // |  30|   Andy|
-    // |  19| Justin|
-    // +----+-------+
-    // $example off:run_sql$
+
+    // -------------  SQL FOR EXTRACT FEATURES  -------------
+    df.createOrReplaceTempView("df");
+    Dataset<Row> sqlDF2 = spark.sql("SELECT id, pickup_datetime, date(pickup_datetime) as date,month(pickup_datetime) as month,  date_format(pickup_datetime, 'EEEE')  as dow FROM df limit 10 ");
+    sqlDF2.show();
+
+
+
 
     // $example on:global_temp_view$
     // Register the DataFrame as a global temporary view
