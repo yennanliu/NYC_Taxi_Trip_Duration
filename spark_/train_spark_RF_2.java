@@ -1,4 +1,3 @@
-// package nl.craftsmen.spark.iris;
 
 import org.apache.spark.ml.evaluation.RegressionEvaluator;
 import org.apache.spark.ml.feature.VectorIndexer;
@@ -75,7 +74,7 @@ public class train_spark_RF_2 {
         Dataset<Row> rawData = sparkSession.read().option("header", "true").csv(PATH);
             // -------------  SQL FOR EXTRACT FEATURES  -------------
         rawData.createOrReplaceTempView("df");
-        Dataset<Row> sqlDF2 = sparkSession.sql("SELECT id, vendor_id, passenger_count, pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_duration, month(pickup_datetime) as month  FROM df limit 1000 ");
+        Dataset<Row> sqlDF2 = sparkSession.sql("SELECT id, vendor_id, passenger_count, pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_duration, month(pickup_datetime) as month ,year(pickup_datetime) as year , hour(pickup_datetime) as hour FROM df  ");
         sqlDF2.show();
 
 
@@ -87,7 +86,10 @@ public class train_spark_RF_2 {
                 .withColumn("dropoff_longitude", sqlDF2.col("dropoff_longitude").cast("double"))
                 .withColumn("dropoff_latitude", sqlDF2.col("dropoff_latitude").cast("double")) 
                 .withColumn("trip_duration", sqlDF2.col("trip_duration").cast("double"))
-                .withColumn("month", sqlDF2.col("month").cast("double")); 
+                .withColumn("month", sqlDF2.col("month").cast("double"))
+                .withColumn("year", sqlDF2.col("year").cast("double"))
+                .withColumn("hour", sqlDF2.col("hour").cast("double")); 
+                //.withColumn("dow", sqlDF2.col("dow").cast("double")); 
 
         // add a numerical label column for the Random Forest Classifier
         //transformedDataSet = transformedDataSet
@@ -95,7 +97,7 @@ public class train_spark_RF_2 {
 
 
         // identify the feature colunms
-        String[] inputColumns = {"vendor_id","passenger_count", "pickup_longitude","pickup_latitude", "dropoff_longitude", "dropoff_latitude","month"};
+        String[] inputColumns = {"vendor_id","passenger_count", "pickup_longitude","pickup_latitude", "dropoff_longitude", "dropoff_latitude","month","year","hour"};
         VectorAssembler assembler = new VectorAssembler().setInputCols(inputColumns).setOutputCol("features");
         Dataset<Row> featureSet = assembler.transform(transformedDataSet);
 
