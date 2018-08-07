@@ -75,7 +75,7 @@ public class train_spark_RF_2 {
         Dataset<Row> rawData = sparkSession.read().option("header", "true").csv(PATH);
             // -------------  SQL FOR EXTRACT FEATURES  -------------
         rawData.createOrReplaceTempView("df");
-        Dataset<Row> sqlDF2 = sparkSession.sql("SELECT id, vendor_id, passenger_count, pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_duration, month(pickup_datetime) as month  FROM df limit 100 ");
+        Dataset<Row> sqlDF2 = sparkSession.sql("SELECT id, vendor_id, passenger_count, pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_duration, month(pickup_datetime) as month  FROM df limit 1000 ");
         sqlDF2.show();
 
 
@@ -86,7 +86,8 @@ public class train_spark_RF_2 {
                 .withColumn("pickup_latitude", sqlDF2.col("pickup_latitude").cast("double"))
                 .withColumn("dropoff_longitude", sqlDF2.col("dropoff_longitude").cast("double"))
                 .withColumn("dropoff_latitude", sqlDF2.col("dropoff_latitude").cast("double")) 
-                .withColumn("trip_duration", sqlDF2.col("trip_duration").cast("double")); 
+                .withColumn("trip_duration", sqlDF2.col("trip_duration").cast("double"))
+                .withColumn("month", sqlDF2.col("month").cast("double")); 
 
         // add a numerical label column for the Random Forest Classifier
         //transformedDataSet = transformedDataSet
@@ -94,7 +95,7 @@ public class train_spark_RF_2 {
 
 
         // identify the feature colunms
-        String[] inputColumns = {"vendor_id","passenger_count", "pickup_longitude","pickup_latitude", "dropoff_longitude", "dropoff_latitude"};
+        String[] inputColumns = {"vendor_id","passenger_count", "pickup_longitude","pickup_latitude", "dropoff_longitude", "dropoff_latitude","month"};
         VectorAssembler assembler = new VectorAssembler().setInputCols(inputColumns).setOutputCol("features");
         Dataset<Row> featureSet = assembler.transform(transformedDataSet);
 
