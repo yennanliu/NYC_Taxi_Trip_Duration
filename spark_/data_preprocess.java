@@ -63,9 +63,14 @@ public class data_preprocess {
     System.out.println(transformedDataSet);
 
     // PART 2  : aggregation via spark sql
-    transformedDataSet.groupBy("vendor_id")
-                        .agg(avg("pickup_longitude"), max("trip_duration"))
-                        .show();
+    transformedDataSet.groupBy("trip_duration")
+                      .agg(avg("pickup_longitude"), max("pickup_latitude"))
+                      .show();
+
+
+    transformedDataSet.groupBy("passenger_count")
+                      .agg(avg("trip_duration"), max("pickup_latitude"),max("pickup_longitude"))
+                      .show();
 
 
   }
