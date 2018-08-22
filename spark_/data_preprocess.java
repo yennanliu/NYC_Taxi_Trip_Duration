@@ -8,6 +8,25 @@ import org.apache.spark.sql.SparkSession;
 
 import static org.apache.spark.sql.functions.col;
 import static org.apache.spark.sql.functions.when;
+import static org.apache.spark.sql.functions.avg;
+import static org.apache.spark.sql.functions.col;
+import static org.apache.spark.sql.functions.max;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
+
+
+/*
+
+Credit 
+
+1) https://github.com/jleetutorial/sparkTutorial/blob/master/src/main/java/com/sparkTutorial/sparkSql/HousePriceSolution.java
+
+
+*/
+
+
 
 public class data_preprocess {
 
@@ -27,6 +46,7 @@ public class data_preprocess {
   public static void read_csv (String csvFile)
 
   {
+    // PART 1  : load csv via spark session 
     SparkSession sparkSession = SparkSession.builder().appName("data_preprocess").config("spark.master", "local").getOrCreate();
     String PATH = "train_data_java.csv";
     Dataset<Row> rawData = sparkSession.read().option("header", "true").csv(PATH);
@@ -41,6 +61,12 @@ public class data_preprocess {
     // print first 20 row of csv 
     transformedDataSet.show(20);
     System.out.println(transformedDataSet);
+
+    // PART 2  : aggregation via spark sql
+    transformedDataSet.groupBy("vendor_id")
+                        .agg(avg("pickup_longitude"), max("trip_duration"))
+                        .show();
+
 
   }
 
