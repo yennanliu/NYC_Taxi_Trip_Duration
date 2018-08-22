@@ -80,6 +80,9 @@ public class data_preprocess {
 
     // PART 4  : linear manipulation 
     System.out.println(" ---------------- PART 4 ----------------");
+    Dataset<Row> transformedDataSet_ = transformedDataSet.withColumn(
+                "trip_duration_", col("trip_duration").divide(10).cast("double"));
+    transformedDataSet_.select( col("trip_duration_"),col("trip_duration")).show();
 
 
   }
