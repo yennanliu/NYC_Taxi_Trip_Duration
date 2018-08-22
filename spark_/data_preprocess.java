@@ -47,6 +47,7 @@ public class data_preprocess {
 
   {
     // PART 1  : load csv via spark session 
+    System.out.println(" ---------------- PART 1 ----------------");
     SparkSession sparkSession = SparkSession.builder().appName("data_preprocess").config("spark.master", "local").getOrCreate();
     String PATH = "train_data_java.csv";
     Dataset<Row> rawData = sparkSession.read().option("header", "true").csv(PATH);
@@ -63,6 +64,7 @@ public class data_preprocess {
     System.out.println(transformedDataSet);
 
     // PART 2  : aggregation via spark sql
+    System.out.println(" ---------------- PART 2 ----------------");
     transformedDataSet.groupBy("trip_duration")
                       .agg(avg("pickup_longitude"), max("pickup_latitude"))
                       .show();
@@ -71,6 +73,13 @@ public class data_preprocess {
     transformedDataSet.groupBy("passenger_count")
                       .agg(avg("trip_duration"), max("pickup_latitude"),max("pickup_longitude"))
                       .show();
+
+    // PART 3  : filter trip_duration < 500 data 
+    System.out.println(" ---------------- PART 3 ----------------");
+    transformedDataSet.filter(col("trip_duration").$less(500)).show();
+
+    // PART 4  : linear manipulation 
+    System.out.println(" ---------------- PART 4 ----------------");
 
 
   }
