@@ -1,29 +1,27 @@
 # python 3 
-# using keras DL framework re-run travel time regrsiion 
-
-
-"""
-
-ref 
-
-https://www.kaggle.com/dimitreoliveira/taxi-fare-prediction-with-keras-deep-learning
-
-"""
-
-
 # -*- coding: utf-8 -*-
-
 # load basics library 
 import pandas as pd, numpy as np
 import calendar
 from sklearn.cluster import MiniBatchKMeans
-from tpot import TPOTRegressor
-from 
+from tpot import TPOTRegressor 
 # DL 
 from keras.models import Sequential
 from keras.layers import Dense
 from keras import regularizers, callbacks, optimizers
 from keras.layers import BatchNormalization
+
+"""
+
+# using keras DL framework re-run travel time regrsiion 
+
+
+ref 
+
+https://www.kaggle.com/dimitreoliveira/taxi-fare-prediction-with-keras-deep-learning
+
+
+"""
 
 
 
@@ -433,9 +431,9 @@ if __name__ == '__main__':
 	y_test = df_all_[df_all_['trip_duration'].isnull()]['trip_duration_log'].values
 	# Model parameters
 	BATCH_SIZE = 256
-	EPOCHS = 10
+	EPOCHS = 2
 	LEARNING_RATE = 0.001
-	DATASET_SIZE = 6000000
+	DATASET_SIZE = 600
 	# --------------------- DL MODEL --------------------- #
 	model = Sequential()
 	model.add(Dense(256, activation='relu', input_dim=X_train.shape[1], activity_regularizer=regularizers.l1(0.01)))
