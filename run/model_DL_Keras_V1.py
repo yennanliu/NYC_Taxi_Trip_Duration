@@ -4,6 +4,7 @@
 import pandas as pd, numpy as np
 import calendar
 from sklearn.cluster import MiniBatchKMeans
+from sklearn import preprocessing
 from tpot import TPOTRegressor 
 # DL 
 from keras.models import Sequential
@@ -429,6 +430,10 @@ if __name__ == '__main__':
 	y_train = df_all_[df_all_['trip_duration'].notnull()]['trip_duration_log'].values
 	X_test  = df_all_[df_all_['trip_duration'].isnull()][features].values
 	y_test = df_all_[df_all_['trip_duration'].isnull()]['trip_duration_log'].values
+	# scale data since DL model is sentive to feature order of magnitude
+	scaler = preprocessing.MinMaxScaler()
+	X_train_scaled = scaler.fit_transform(X_train)
+	X_test_scaled = scaler.transform(X_test)
 	# Model parameters
 	BATCH_SIZE = 256
 	EPOCHS = 2
@@ -452,10 +457,14 @@ if __name__ == '__main__':
 	# --------------------- DL MODEL --------------------- #
 	print (model.summary())
 	# --------------------- TRAIN --------------------- #
-	history = model.fit(x=X_train, y=y_train, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1,shuffle=True)
-
-
-
+	# train with original data 
+	#history = model.fit(x=X_train, y=y_train, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1,shuffle=True)
+	# train with scale data 
+	history = model.fit(x=X_train_scaled, y=y_train, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1,shuffle=True)
+	print ('='*70)
+	print ('TRAIN RESULT : ')
+	print (history.history)
+	print ('='*70)
 
 
 
