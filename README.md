@@ -41,7 +41,7 @@ Predicts the total ride duration of taxi trips in New York City. primary dataset
 ```Bash
 # demo of  submit_xgb_387.py
 cd NYC_Taxi_Trip_Duration
-export PYTHONPATH=/Users/youruserid/NYC_Taxi_Trip_Duration/
+export PYTHONPATH=/Users/$USER/NYC_Taxi_Trip_Duration/
 python run/submit_xgb_core_377_OSRM.py
 ....
 KFold(n_splits=10, random_state=None, shuffle=False)
@@ -125,7 +125,7 @@ id3564824     519.362488
 ```Bash
 # demo of submit_tpot.py 
 cd NYC_Taxi_Trip_Duration
-export PYTHONPATH=/Users/youruserid/NYC_Taxi_Trip_Duration/
+export PYTHONPATH=/Users/$USER/NYC_Taxi_Trip_Duration/
 python run/submit_tpot.py 
 
 # output 
