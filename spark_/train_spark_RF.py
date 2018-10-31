@@ -12,6 +12,10 @@ from pyspark.sql import SQLContext
 from pyspark.sql.functions import count, avg
 from pyspark.mllib.tree import RandomForest, RandomForestModel
 from pyspark.mllib.util import MLUtils
+from pyspark.ml import Pipeline
+from pyspark.ml.regression import RandomForestRegressor
+from pyspark.ml.feature import VectorIndexer
+from pyspark.ml.evaluation import RegressionEvaluator
 
 
 # ---------------------------------
@@ -358,7 +362,7 @@ def clean_data_(df):
 
 
 def load_data():
-    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv')
+    df_train = pd.read_csv('train_data_java.csv')
     df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
     # sample train data for fast job 
     #df_train = df_train.sample(n=100)
@@ -378,7 +382,7 @@ if __name__ == '__main__':
     df_all, df_train, df_test  = load_data()
     #get basic features 
     df_all_ = get_time_feature(df_all)
-    df_all_ = get_time_cyclic(df_all_)
+    #df_all_ = get_time_cyclic(df_all_)
     # get other features 
     df_all_ = get_geo_feature(df_all_)
     df_all_ = pca_lon_lat(df_all_)
@@ -390,11 +394,11 @@ if __name__ == '__main__':
     df_all_ = trip_cluser_count(df_all_)
     df_all_ = get_cluser_feature(df_all_)
     # get avg speed, duration
-    df_all_ = get_avg_travel_duration_speed(df_all_)
+    #df_all_ = get_avg_travel_duration_speed(df_all_)
     # label -> 0,1 
     df_all_ = label_2_binary(df_all_)
     # count trip over 60 min
-    df_all_ = trip_over_60min(df_all_)
+    #df_all_ = trip_over_60min(df_all_)
     # get log trip duration 
     df_all_['trip_duration_log'] = df_all_['trip_duration'].apply(np.log)
     # clean data 
@@ -419,12 +423,7 @@ if __name__ == '__main__':
                 'pickup_month',
                 'weekofyear', 
                 'pickup_weekday', 
-                'pickup_hour', 
-                'week_delta',
-                'week_delta_sin', 
-                'pickup_hour_sin',
-                'count_60min', 
-                'dropoff_cluster_count']
+                'pickup_hour']
 
 
     # split all data into train, test set 
@@ -435,9 +434,7 @@ if __name__ == '__main__':
     print (' ------------------------ TRAIN WITH SPARK MLIB  ------------------------ .')
     trainingData = X_train
     testData = X_test
-    model = RandomForest.trainClassifier(trainingData, numClasses=2, categoricalFeaturesInfo={},
-                                     numTrees=3, featureSubsetStrategy="auto",
-                                     impurity='gini', maxDepth=4, maxBins=32)
+    model = RandomForestRegressor.fit(trainingData)
     predictions = model.predict(testData.map(lambda x: x.features))
     labelsAndPredictions = testData.map(lambda lp: lp.label).zip(predictions)
     testMSE = labelsAndPredictions.map(lambda lp: (lp[0] - lp[1]) * (lp[0] - lp[1])).sum() /\
