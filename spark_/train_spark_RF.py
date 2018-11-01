@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# load basics library 
+# load basics library
+import csv 
 import os
 import pandas as pd, numpy as np
 import calendar
@@ -378,70 +379,19 @@ def load_data():
 
 
 if __name__ == '__main__':
+    #df_all, df_train, df_test  = load_data()
+    trainNYC = sc.textFile('train_data_java.csv')
+    trainHeader = trainNYC.first()
+    trainNYC = trainNYC.filter(lambda line: line != trainHeader).mapPartitions(lambda x: csv.reader(x))
+    print (' trainNYC.take(10) : ')
+    print ( trainNYC.take(10) )
+    trainNYC.first()
+    #featureIndexer =VectorIndexer(inputCol="features", outputCol="indexedFeatures", maxCategories=4).fit(trainNYC)
+    (trainingData, testData) = trainNYC.randomSplit([0.7, 0.3])
+    print (' trainingData.take(10) , testData.take(10) : ')
+    print ( trainingData.take(10) )
+    print ( testData.take(10) )
 
-    df_all, df_train, df_test  = load_data()
-    #get basic features 
-    df_all_ = get_time_feature(df_all)
-    #df_all_ = get_time_cyclic(df_all_)
-    # get other features 
-    df_all_ = get_geo_feature(df_all_)
-    df_all_ = pca_lon_lat(df_all_)
-    # get center of trip route 
-    df_all_ = gat_trip_center(df_all_)
-    # get lon & lat clustering 
-    df_all_ = get_clustering(df_all_)
-    # get avg ride count on dropoff cluster 
-    df_all_ = trip_cluser_count(df_all_)
-    df_all_ = get_cluser_feature(df_all_)
-    # get avg speed, duration
-    #df_all_ = get_avg_travel_duration_speed(df_all_)
-    # label -> 0,1 
-    df_all_ = label_2_binary(df_all_)
-    # count trip over 60 min
-    #df_all_ = trip_over_60min(df_all_)
-    # get log trip duration 
-    df_all_['trip_duration_log'] = df_all_['trip_duration'].apply(np.log)
-    # clean data 
-    #df_all_ = clean_data(df_all_)
-    print (df_all_.head())
-
-    # modeling 
-    features = [ 'vendor_id', 
-                'passenger_count',
-                'pickup_latitude', 
-                'pickup_longitude', 
-                'dropoff_latitude', 
-                'dropoff_longitude',
-                'pickup_pca0', 
-                'pickup_pca1', 
-                'dropoff_pca0', 
-                'dropoff_pca1',
-                'distance_haversine',
-                'direction',
-                'pca_manhattan',
-                'pickup_time_delta',
-                'pickup_month',
-                'weekofyear', 
-                'pickup_weekday', 
-                'pickup_hour']
-
-
-    # split all data into train, test set 
-    X_train = df_all_[df_all_['trip_duration'].notnull()][features].values
-    y_train = df_all_[df_all_['trip_duration'].notnull()]['trip_duration_log'].values
-    X_test  = df_all_[df_all_['trip_duration'].isnull()][features].values
-    #  ------------------------ TRAIN WITH SPARK MLIB  ------------------------ #
-    print (' ------------------------ TRAIN WITH SPARK MLIB  ------------------------ .')
-    trainingData = X_train
-    testData = X_test
-    model = RandomForestRegressor.fit(trainingData)
-    predictions = model.predict(testData.map(lambda x: x.features))
-    labelsAndPredictions = testData.map(lambda lp: lp.label).zip(predictions)
-    testMSE = labelsAndPredictions.map(lambda lp: (lp[0] - lp[1]) * (lp[0] - lp[1])).sum() /\
-    float(testData.count())
-    print('Test Mean Squared Error = ' + str(testMSE))
-    print('Learned regression forest model:')
-    print(model.toDebugString())
 
 
 
