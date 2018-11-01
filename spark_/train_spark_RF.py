@@ -1,5 +1,23 @@
 # -*- coding: utf-8 -*-
 
+
+
+"""
+spark ref 
+
+
+https://creativedata.atlassian.net/wiki/spaces/SAP/pages/83237142/Pyspark+-+Tutorial+based+on+Titanic+Dataset
+https://weiminwang.blog/2016/06/09/pyspark-tutorial-building-a-random-forest-binary-classifier-on-unbalanced-dataset/
+https://github.com/notthatbreezy/nyc-taxi-spark-ml/blob/master/python/generate-model.py
+
+
+"""
+
+
+
+
+
+
 # load basics library
 import csv 
 import os
@@ -17,6 +35,7 @@ from pyspark.ml import Pipeline
 from pyspark.ml.regression import RandomForestRegressor
 from pyspark.ml.feature import VectorIndexer
 from pyspark.ml.evaluation import RegressionEvaluator
+from pyspark.mllib.regression import LabeledPoint
 
 
 # ---------------------------------
@@ -380,18 +399,22 @@ def load_data():
 
 if __name__ == '__main__':
     #df_all, df_train, df_test  = load_data()
-    trainNYC = sc.textFile('train_data_java.csv')
-    trainHeader = trainNYC.first()
-    trainNYC = trainNYC.filter(lambda line: line != trainHeader).mapPartitions(lambda x: csv.reader(x))
-    print (' trainNYC.take(10) : ')
-    print ( trainNYC.take(10) )
-    trainNYC.first()
-    #featureIndexer =VectorIndexer(inputCol="features", outputCol="indexedFeatures", maxCategories=4).fit(trainNYC)
-    (trainingData, testData) = trainNYC.randomSplit([0.7, 0.3])
-    print (' trainingData.take(10) , testData.take(10) : ')
-    print ( trainingData.take(10) )
-    print ( testData.take(10) )
+    trainNYC = sc.textFile('train_data_java.csv').map(lambda line: line.split(","))
+    trainNYC_df = trainNYC.toDF(["vendor_id", "passenger_count","trip_duration"])
 
+    trainHeader = trainNYC.first()
+    #trainNYC = trainNYC.filter(lambda line: line != trainHeader).mapPartitions(lambda x: csv.reader(x))
+    #trainNYC=trainNYC.map(lambda line: LabeledPoint(line[7],[line[2:5]]))
+    from pyspark.ml.feature import VectorAssembler
+    # https://stackoverflow.com/questions/32556178/create-labeledpoints-from-spark-dataframe-in-python
+    assembler = VectorAssembler(inputCols=["vendor_id", "passenger_count","trip_duration"],outputCol="trip_duration")
+    transformed = assembler.transform(trainNYC_df)
+    print (' -------------------  transformed  -------------------   ')
+    print (transformed)
+
+
+    from pyspark.mllib.regression import LabeledPoint
+    from pyspark.sql.functions import col
 
 
 
