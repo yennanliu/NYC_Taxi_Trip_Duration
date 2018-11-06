@@ -29,14 +29,10 @@ from sklearn.model_selection import train_test_split
 # spark 
 from pyspark import SparkConf, SparkContext
 from pyspark.sql import SQLContext
-from pyspark.sql.functions import count, avg
-from pyspark.mllib.tree import RandomForest, RandomForestModel
-from pyspark.mllib.util import MLUtils
-from pyspark.ml import Pipeline
-from pyspark.ml.regression import RandomForestRegressor
-from pyspark.ml.feature import VectorIndexer
-from pyspark.ml.evaluation import RegressionEvaluator
-from pyspark.mllib.regression import LabeledPoint
+from pyspark.sql.types import IntegerType
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.clustering import KMeans
+
 
 
 # ---------------------------------
@@ -72,7 +68,6 @@ if __name__ == '__main__':
     trainNYC = sc.textFile('train_data_java.csv').map(lambda line: line.split(","))
     headers = trainNYC.first()
     trainNYCdata = trainNYC.filter(lambda row: row != headers)
-    from pyspark.sql import SQLContext
     sqlContext = SQLContext(sc)
     dataFrame = sqlContext.createDataFrame(trainNYCdata, ['id', 'vendor_id', 'passenger_count', 'pickup_longitude',
        'pickup_latitude', 'dropoff_longitude', 'dropoff_latitude',
@@ -80,10 +75,8 @@ if __name__ == '__main__':
     dataFrame.take(2)
     # convert string to float in  PYSPARK
     # https://stackoverflow.com/questions/46956026/how-to-convert-column-with-string-type-to-int-form-in-pyspark-data-frame
-    from pyspark.sql.types import IntegerType
     dataFrame = dataFrame.withColumn("dropoff_longitude", dataFrame["dropoff_longitude"].cast("float"))
     dataFrame = dataFrame.withColumn("dropoff_latitude", dataFrame["dropoff_latitude"].cast("float"))
-    from pyspark.ml.feature import VectorAssembler
     inputFeatures = ["dropoff_longitude", "dropoff_latitude"]
     assembler = VectorAssembler(inputCols=inputFeatures, outputCol="features")
     output = assembler.transform(dataFrame)
@@ -91,7 +84,6 @@ if __name__ == '__main__':
     print (output.take(2))
     print (' ------- assembler.transform(dataFrame)------- '  )
     # pyspark KNN model 
-    from pyspark.ml.clustering import KMeans
     #Build a k-Means Clustering model
     kmeans = KMeans().setK(7).setFeaturesCol("features").setPredictionCol("prediction").setMaxIter(100).setSeed(1)
     # Fit the model to training dataset
