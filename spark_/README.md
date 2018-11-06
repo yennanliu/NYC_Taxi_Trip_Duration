@@ -1508,3 +1508,17 @@ accuracy: 4845.3933640859
 ...
 
 ```
+
+
+
+```bash
+
+# run KNN via pyspark 
+# https://github.com/yennanliu/utility_shell/blob/master/spark/launch_pyspark.sh
+$ source activate pyspark_ # launch ur pyspark dev env 
+$ export SPARK_HOME=/Users/$USER/spark
+$ export PATH=$SPARK_HOME/bin:$PATH
+$ spark-submit  train_spark_KNN.py
+
+
+```
