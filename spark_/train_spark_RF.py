@@ -4,6 +4,11 @@
 
 
 """
+
+* spark Mlib RandomForestRegressor 
+
+    https://stackoverflow.com/questions/33173094/random-forest-with-spark-get-predicted-values-and-r%C2%B2
+
 * modify from 
 
     https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/3178385260751176/1843063490960550/8430723048049957/latest.html
@@ -83,23 +88,27 @@ if __name__ == '__main__':
     # https://stackoverflow.com/questions/46956026/how-to-convert-column-with-string-type-to-int-form-in-pyspark-data-frame
     dataFrame = dataFrame.withColumn("dropoff_longitude", dataFrame["dropoff_longitude"].cast("float"))
     dataFrame = dataFrame.withColumn("dropoff_latitude", dataFrame["dropoff_latitude"].cast("float"))
+    dataFrame = dataFrame.withColumn("trip_duration", dataFrame["trip_duration"].cast("float"))
     inputFeatures = ["dropoff_longitude", "dropoff_latitude"]
-    assembler = VectorAssembler(inputCols=inputFeatures, outputCol="features")
+    #assembler = VectorAssembler(inputCols=inputFeatures, outputCol="features")
+    assembler = VectorAssembler(inputCols=inputFeatures, outputCol="features") #.select("dropoff_longitude", "dropoff_latitude","trip_duration")
+    
+    #  ------------ add labelIndexer ------------ 
+    #labelIndexer = StringIndexer(inputCol='binary_response', outputCol="label")
+    
     output = assembler.transform(dataFrame)
     print (' ------- assembler.transform(dataFrame)------- '  )
     print (output.take(2))
     print (' ------- assembler.transform(dataFrame)------- '  )
     # pyspark RF model 
-    model = RandomForest.trainRegressor(output, categoricalFeaturesInfo={},
-                                    numTrees=50, featureSubsetStrategy="auto",
-                                    impurity='variance', maxDepth=3, maxBins=32)
+    #model = RandomForest.trainRegressor(output, categoricalFeaturesInfo={},
+    #                                numTrees=50, featureSubsetStrategy="auto",
+    #                                impurity='variance', maxDepth=3, maxBins=32)
+
+    #sparse_vectors = (VectorAssembler(inputCols=input_cols, outputCol="features").transform(data).select("pid", "features"))
+    model = RandomForest.trainRegressor(assembler, {}, 2, seed=42)
     predictions = model.predict(test_data_points.map(lambda x: x.features))
     predicted_row_col = test_data_points.map(labeled_point_to_row_col_period).zip(predictions)
-
-   #predicted_rasters = (trips_to_raster(predicted_row_col, 'predicted')
-   #                  .map( lambda (period, (label, raster)): (period, raster)) )
-   # observed_test_rasters = test_data.filter(lambda (x, d): 'observed' in d).mapValues(lambda d: d['observed'])
-   # two_hour_avg = test_data.filter(lambda (x, d): 'two_hour' in d).mapValues(lambda d: d['two_hour']/2)
 
 
 
