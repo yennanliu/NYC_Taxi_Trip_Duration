@@ -90,24 +90,23 @@ if __name__ == '__main__':
     dataFrame = dataFrame.withColumn("dropoff_latitude", dataFrame["dropoff_latitude"].cast("float"))
     dataFrame = dataFrame.withColumn("trip_duration", dataFrame["trip_duration"].cast("float"))
 
-    ############################## FIXED SOULTION !!!! ##########################################################################################
+    ############################## FIXED SOLUTION !!!! ##########################################################################################
     #
     #
     # https://stackoverflow.com/questions/46710934/pyspark-sql-utils-illegalargumentexception-ufield-features-does-not-exist
     # 
     # 
-    ############################## FIXED SOULTION !!!! ##########################################################################################
+    ############################## FIXED SOLUTION !!!! ##########################################################################################
 
-    dataFrame.registerTempTable("numeric")
-    XX=sqlContext.sql("""SELECT 
+    dataFrame.registerTempTable("temp_sql_table")
+    spark_sql_output=sqlContext.sql("""SELECT 
                         pickup_latitude,
                         dropoff_longitude,
                         trip_duration
-                        FROM numeric """)
-    XX.take(10)
+                        FROM temp_sql_table """)
+    spark_sql_output.take(10)
 
-
-    trainingData=XX.rdd.map(lambda x:(Vectors.dense(x[0:-1]), x[-1])).toDF(["features", "label"])
+    trainingData=spark_sql_output.rdd.map(lambda x:(Vectors.dense(x[0:-1]), x[-1])).toDF(["features", "label"])
     trainingData.show()
     featureIndexer =\
     VectorIndexer(inputCol="features", outputCol="indexedFeatures", maxCategories=4).fit(trainingData)
@@ -132,12 +131,12 @@ if __name__ == '__main__':
     evaluator = RegressionEvaluator(
     labelCol="label", predictionCol="prediction", metricName="rmse")
     print ('='*100)
-    print ('OUTCOME :')
+    print ('*** OUTCOME :')
     rmse = evaluator.evaluate(predictions)
-    print("Root Mean Squared Error (RMSE) on test data = %g" % rmse)
+    print(" *** Root Mean Squared Error (RMSE) on test data = %g" % rmse)
 
     rfModel = model.stages[1]
-    print(rfModel)  # summary only
+    print(' *** : RF MODEL SUMMARY : ', rfModel)  # summary only
     print ('='*100)
 
 
