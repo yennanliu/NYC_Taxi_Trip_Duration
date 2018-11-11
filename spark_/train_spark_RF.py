@@ -28,22 +28,19 @@
 import csv 
 import os
 import pandas as pd, numpy as np
-import calendar
-from sklearn.cluster import MiniBatchKMeans
 from sklearn.model_selection import train_test_split
 # spark 
 from pyspark import SparkConf, SparkContext
 from pyspark.sql import SQLContext
-from pyspark.sql.functions import count, avg
 from pyspark.mllib.tree import RandomForest, RandomForestModel
-from pyspark.mllib.util import MLUtils
 from pyspark.ml import Pipeline
 from pyspark.ml.regression import RandomForestRegressor
-from pyspark.ml.feature import VectorIndexer
 from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.mllib.regression import LabeledPoint
 from pyspark.sql.types import IntegerType
-from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.feature import VectorAssembler, StringIndexer, VectorIndexer
+from pyspark.sql import Row
+from pyspark.ml.linalg import Vectors
 
 
 # ---------------------------------
@@ -74,41 +71,66 @@ print ("==================")
 ### ================================================ ###
 
 
+
 if __name__ == '__main__':
     # load data with spark way
     trainNYC = sc.textFile('train_data_java.csv').map(lambda line: line.split(","))
     headers = trainNYC.first()
     trainNYCdata = trainNYC.filter(lambda row: row != headers)
     sqlContext = SQLContext(sc)
-    dataFrame = sqlContext.createDataFrame(trainNYCdata, ['id', 'vendor_id', 'passenger_count', 'pickup_longitude',
-       'pickup_latitude', 'dropoff_longitude', 'dropoff_latitude',
-       'trip_duration'])
+    dataFrame = sqlContext.createDataFrame(trainNYCdata, ['passenger_count', 'pickup_longitude',
+    'pickup_latitude', 'dropoff_longitude', 'dropoff_latitude',
+    'trip_duration'])
     dataFrame.take(2)
     # convert string to float in  PYSPARK
     # https://stackoverflow.com/questions/46956026/how-to-convert-column-with-string-type-to-int-form-in-pyspark-data-frame
     dataFrame = dataFrame.withColumn("dropoff_longitude", dataFrame["dropoff_longitude"].cast("float"))
     dataFrame = dataFrame.withColumn("dropoff_latitude", dataFrame["dropoff_latitude"].cast("float"))
     dataFrame = dataFrame.withColumn("trip_duration", dataFrame["trip_duration"].cast("float"))
-    inputFeatures = ["dropoff_longitude", "dropoff_latitude"]
-    #assembler = VectorAssembler(inputCols=inputFeatures, outputCol="features")
-    assembler = VectorAssembler(inputCols=inputFeatures, outputCol="features") #.select("dropoff_longitude", "dropoff_latitude","trip_duration")
-    
-    #  ------------ add labelIndexer ------------ 
-    #labelIndexer = StringIndexer(inputCol='binary_response', outputCol="label")
-    
-    output = assembler.transform(dataFrame)
-    print (' ------- assembler.transform(dataFrame)------- '  )
-    print (output.take(2))
-    print (' ------- assembler.transform(dataFrame)------- '  )
-    # pyspark RF model 
-    #model = RandomForest.trainRegressor(output, categoricalFeaturesInfo={},
-    #                                numTrees=50, featureSubsetStrategy="auto",
-    #                                impurity='variance', maxDepth=3, maxBins=32)
 
-    #sparse_vectors = (VectorAssembler(inputCols=input_cols, outputCol="features").transform(data).select("pid", "features"))
-    model = RandomForest.trainRegressor(assembler, {}, 2, seed=42)
-    predictions = model.predict(test_data_points.map(lambda x: x.features))
-    predicted_row_col = test_data_points.map(labeled_point_to_row_col_period).zip(predictions)
+    ############################## FIXED SOULTION !!!! ##########################################################################################
+    #
+    #
+    # https://stackoverflow.com/questions/46710934/pyspark-sql-utils-illegalargumentexception-ufield-features-does-not-exist
+    # 
+    # 
+    ############################## FIXED SOULTION !!!! ##########################################################################################
+
+    dataFrame.registerTempTable("numeric")
+    XX=sqlContext.sql("""SELECT 
+                        pickup_latitude,
+                        dropoff_longitude,
+                        trip_duration
+                        FROM numeric """)
+    XX.take(10)
+
+
+    trainingData=XX.rdd.map(lambda x:(Vectors.dense(x[0:-1]), x[-1])).toDF(["features", "label"])
+    trainingData.show()
+    (trainingData, testData) = trainingData.randomSplit([0.7, 0.3])
+    # Train a RandomForest model.
+    rf = RandomForestRegressor(featuresCol="indexedFeatures")
+
+    # Chain indexer and forest in a Pipeline
+    pipeline = Pipeline(stages=[featureIndexer, rf])
+
+    # Train model.  This also runs the indexer.
+    model = pipeline.fit(trainingData)
+
+    # Make predictions.
+    predictions = model.transform(testData)
+
+    # Select example rows to display.
+    predictions.select("prediction", "label", "features").show(5)
+
+    # Select (prediction, true label) and compute test error
+    evaluator = RegressionEvaluator(
+    labelCol="label", predictionCol="prediction", metricName="rmse")
+    rmse = evaluator.evaluate(predictions)
+    print("Root Mean Squared Error (RMSE) on test data = %g" % rmse)
+
+    rfModel = model.stages[1]
+    print(rfModel)  # summary only
 
 
 
