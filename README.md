@@ -17,6 +17,7 @@ Predicts the total ride duration of taxi trips in New York City. primary dataset
 ## FILE STRUCTURE
 
 ```
+
 ├── README.md
 ├── data     : directory of train/test data 
 ├── documents: main reference 
@@ -26,9 +27,8 @@ Predicts the total ride duration of taxi trips in New York City. primary dataset
 ├── reference: other reference 
 ├── run      : fire the train/predict process 
 ├── script   : utility script for data preprocess / feature extract / train /predict  
-├── spark_   : (dev)
-└── start.sh : launch env
-
+├── spark_   : Re-run the modeling with SPARK Mlib framework : JAVA / PYTHON / SCALA
+└── start.sh : launch training env
 
 
 ```
