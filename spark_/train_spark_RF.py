@@ -3,24 +3,26 @@
 
 
 
-"""
-
-* spark Mlib RandomForestRegressor 
-
-    https://stackoverflow.com/questions/33173094/random-forest-with-spark-get-predicted-values-and-r%C2%B2
-
-* modify from 
-
-    https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/3178385260751176/1843063490960550/8430723048049957/latest.html
-
-* spark ref 
-
-    https://creativedata.atlassian.net/wiki/spaces/SAP/pages/83237142/Pyspark+-+Tutorial+based+on+Titanic+Dataset
-    https://weiminwang.blog/2016/06/09/pyspark-tutorial-building-a-random-forest-binary-classifier-on-unbalanced-dataset/
-    https://github.com/notthatbreezy/nyc-taxi-spark-ml/blob/master/python/generate-model.py
-
-
-"""
+######################################################################################################################################################
+#  INTRO 
+#
+# * spark Mlib RandomForestRegressor 
+#
+#       https://stackoverflow.com/questions/33173094/random-forest-with-spark-get-predicted-values-and-r%C2%B2
+#
+# * modify from 
+#
+#       https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/3178385260751176/1843063490960550/8430723048049957/latest.html
+#
+# * spark ref 
+#
+#       https://creativedata.atlassian.net/wiki/spaces/SAP/pages/83237142/Pyspark+-+Tutorial+based+on+Titanic+Dataset
+#       https://weiminwang.blog/2016/06/09/pyspark-tutorial-building-a-random-forest-binary-classifier-on-unbalanced-dataset/
+#       https://github.com/notthatbreezy/nyc-taxi-spark-ml/blob/master/python/generate-model.py
+#
+#
+#
+######################################################################################################################################################
 
 
 
@@ -107,6 +109,9 @@ if __name__ == '__main__':
 
     trainingData=XX.rdd.map(lambda x:(Vectors.dense(x[0:-1]), x[-1])).toDF(["features", "label"])
     trainingData.show()
+    featureIndexer =\
+    VectorIndexer(inputCol="features", outputCol="indexedFeatures", maxCategories=4).fit(trainingData)
+
     (trainingData, testData) = trainingData.randomSplit([0.7, 0.3])
     # Train a RandomForest model.
     rf = RandomForestRegressor(featuresCol="indexedFeatures")
@@ -126,11 +131,14 @@ if __name__ == '__main__':
     # Select (prediction, true label) and compute test error
     evaluator = RegressionEvaluator(
     labelCol="label", predictionCol="prediction", metricName="rmse")
+    print ('='*100)
+    print ('OUTCOME :')
     rmse = evaluator.evaluate(predictions)
     print("Root Mean Squared Error (RMSE) on test data = %g" % rmse)
 
     rfModel = model.stages[1]
     print(rfModel)  # summary only
+    print ('='*100)
 
 
 
