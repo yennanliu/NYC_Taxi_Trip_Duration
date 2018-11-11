@@ -30,18 +30,14 @@
 import csv 
 import os
 import pandas as pd, numpy as np
-from sklearn.model_selection import train_test_split
 # spark 
 from pyspark import SparkConf, SparkContext
 from pyspark.sql import SQLContext
-from pyspark.mllib.tree import RandomForest, RandomForestModel
+from pyspark.mllib.tree import RandomForest
 from pyspark.ml import Pipeline
 from pyspark.ml.regression import RandomForestRegressor
 from pyspark.ml.evaluation import RegressionEvaluator
-from pyspark.mllib.regression import LabeledPoint
-from pyspark.sql.types import IntegerType
-from pyspark.ml.feature import VectorAssembler, StringIndexer, VectorIndexer
-from pyspark.sql import Row
+from pyspark.ml.feature import  VectorIndexer
 from pyspark.ml.linalg import Vectors
 
 
@@ -59,17 +55,12 @@ print ("==================")
 
 
 
-
-
-
 ### ================================================ ###
-
+#
 # feature engineering 
-
-
 # HELP FUNC 
-
-
+# dev 
+#
 ### ================================================ ###
 
 
@@ -126,7 +117,7 @@ if __name__ == '__main__':
     predictions = model.transform(testData)
 
     # Select example rows to display.
-    predictions.select("prediction", "label", "features").show(5)
+    predictions.select("prediction", "label", "features").show(30)
 
     # Select (prediction, true label) and compute test error
     evaluator = RegressionEvaluator(
