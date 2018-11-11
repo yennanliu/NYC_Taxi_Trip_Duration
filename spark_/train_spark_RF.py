@@ -80,15 +80,16 @@ if __name__ == '__main__':
     headers = trainNYC.first()
     trainNYCdata = trainNYC.filter(lambda row: row != headers)
     sqlContext = SQLContext(sc)
-    dataFrame = sqlContext.createDataFrame(trainNYCdata, ['passenger_count', 'pickup_longitude',
-    'pickup_latitude', 'dropoff_longitude', 'dropoff_latitude',
-    'trip_duration'])
+    dataFrame = sqlContext.createDataFrame(trainNYCdata, ['id', 'vendor_id', 'passenger_count', 'pickup_longitude',
+           'pickup_latitude', 'dropoff_longitude', 'dropoff_latitude',
+           'trip_duration'])
     dataFrame.take(2)
     # convert string to float in  PYSPARK
+
     # https://stackoverflow.com/questions/46956026/how-to-convert-column-with-string-type-to-int-form-in-pyspark-data-frame
-    dataFrame = dataFrame.withColumn("dropoff_longitude", dataFrame["dropoff_longitude"].cast("float"))
-    dataFrame = dataFrame.withColumn("dropoff_latitude", dataFrame["dropoff_latitude"].cast("float"))
-    dataFrame = dataFrame.withColumn("trip_duration", dataFrame["trip_duration"].cast("float"))
+    dataFrame = dataFrame.withColumn("dropoff_longitude_", dataFrame["dropoff_longitude"].cast("float"))
+    dataFrame = dataFrame.withColumn("dropoff_latitude_", dataFrame["dropoff_latitude"].cast("float"))
+    dataFrame = dataFrame.withColumn("trip_duration_", dataFrame["trip_duration"].cast("float"))
 
     ############################## FIXED SOLUTION !!!! ##########################################################################################
     #
@@ -100,11 +101,11 @@ if __name__ == '__main__':
 
     dataFrame.registerTempTable("temp_sql_table")
     spark_sql_output=sqlContext.sql("""SELECT 
-                        pickup_latitude,
-                        dropoff_longitude,
-                        trip_duration
+                        dropoff_longitude_,
+                        dropoff_latitude_,
+                        trip_duration_
                         FROM temp_sql_table """)
-    spark_sql_output.take(10)
+    print (spark_sql_output.take(10))
 
     trainingData=spark_sql_output.rdd.map(lambda x:(Vectors.dense(x[0:-1]), x[-1])).toDF(["features", "label"])
     trainingData.show()
@@ -138,22 +139,5 @@ if __name__ == '__main__':
     rfModel = model.stages[1]
     print(' *** : RF MODEL SUMMARY : ', rfModel)  # summary only
     print ('='*100)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
-   
 
 
