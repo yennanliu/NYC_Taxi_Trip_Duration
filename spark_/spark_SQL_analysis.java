@@ -10,7 +10,7 @@ public class spark_SQL_analysis {
 
     private static final String PICKUP_LATITUDE = "pickup_latitude";
     private static final String PASSENGER_COUNT = "passenger_count";
-    private static final String DROPOFF_LATITUDE_BUCKET = "dropoff_latitude_bucket";
+    private static final String PICKUP_LATITUDE_BUCKET = "pickup_latitude_bucket";
 
     public static void main(String[] args) throws Exception {
 
@@ -38,7 +38,7 @@ public class spark_SQL_analysis {
         groupedDataset.count().show();
 
         System.out.println("=== Cast the PICKUP_LATITUDE and PASSENGER_COUNT  to integer ===");
-        Dataset<Row> castedResponse = responses.withColumn(PICKUP_LATITUDE, col("pickup_longitude").cast("integer"))
+        Dataset<Row> castedResponse = responses.withColumn(PICKUP_LATITUDE, col("pickup_longitude").cast("float"))
                                                .withColumn(PASSENGER_COUNT, col("passenger_count").cast("integer"));
 
         System.out.println("=== Print out casted schema ===");
@@ -50,16 +50,16 @@ public class spark_SQL_analysis {
         System.out.println("=== Print the result by pickup_latitude in descending order ===");
         castedResponse.orderBy(col("pickup_latitude").desc()).show();
 
-        System.out.println("=== Group by country and aggregate by average salary middle point and max age middle point ===");
+        System.out.println("=== Group by country and aggregate by average  vendor_id and pickup_latitude  ===");
         RelationalGroupedDataset datasetGroupByCountry = castedResponse.groupBy("vendor_id");
         datasetGroupByCountry.agg(avg("pickup_latitude"), max("pickup_latitude")).show();
 
 
-        //Dataset<Row> responseWithSalaryBucket = castedResponse.withColumn(
-        //        SALARY_MIDPOINT_BUCKET, col(DROPOFF_LATITUDE_BUCKET).divide(2).cast("integer").multiply(2));
+        Dataset<Row> responseWithSalaryBucket = castedResponse.withColumn(
+                PICKUP_LATITUDE_BUCKET, col(PICKUP_LATITUDE).divide(2).cast("integer").multiply(3));
 
-        //System.out.println("=== With salary bucket column ===");
-        //responseWithSalaryBucket.select(col(PICKUP_LATITUDE_MIDPOINT), col(SALARY_MIDPOINT_BUCKET)).show();
+        System.out.println("=== With salary bucket column ===");
+        responseWithSalaryBucket.select(col(PICKUP_LATITUDE), col(PICKUP_LATITUDE_BUCKET)).show();
 
         //System.out.println("=== Group by salary bucket ===");
         //responseWithSalaryBucket.groupBy(SALARY_MIDPOINT_BUCKET).count().orderBy(col(SALARY_MIDPOINT_BUCKET)).show();
