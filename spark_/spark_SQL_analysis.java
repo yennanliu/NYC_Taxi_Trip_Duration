@@ -56,13 +56,13 @@ public class spark_SQL_analysis {
 
 
         Dataset<Row> responseWithSalaryBucket = castedResponse.withColumn(
-                PICKUP_LATITUDE_BUCKET, col(PICKUP_LATITUDE).divide(2).cast("integer").multiply(3));
+                PICKUP_LATITUDE_BUCKET, col(PICKUP_LATITUDE).divide(0.2).cast("integer").multiply(0.2));
 
-        System.out.println("=== With salary bucket column ===");
+        System.out.println("=== With PICKUP_LATITUDE_BUCKET column ===");
         responseWithSalaryBucket.select(col(PICKUP_LATITUDE), col(PICKUP_LATITUDE_BUCKET)).show();
 
-        //System.out.println("=== Group by salary bucket ===");
-        //responseWithSalaryBucket.groupBy(SALARY_MIDPOINT_BUCKET).count().orderBy(col(SALARY_MIDPOINT_BUCKET)).show();
+        System.out.println("=== Group by PICKUP_LATITUDE_BUCKET ===");
+        responseWithSalaryBucket.groupBy(PICKUP_LATITUDE_BUCKET).count().orderBy(col(PICKUP_LATITUDE_BUCKET)).show();
 
         session.stop();
     }
