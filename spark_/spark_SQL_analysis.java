@@ -37,17 +37,17 @@ public class spark_SQL_analysis {
         RelationalGroupedDataset groupedDataset = responses.groupBy(col("passenger_count"));
         groupedDataset.count().show();
 
-        System.out.println("=== Cast the PICKUP_LATITUDE_MIDPOINT and PASSENGER_COUNT_MIDPOINT to integer ===");
+        System.out.println("=== Cast the PICKUP_LATITUDE and PASSENGER_COUNT  to integer ===");
         Dataset<Row> castedResponse = responses.withColumn(PICKUP_LATITUDE, col("pickup_longitude").cast("integer"))
                                                .withColumn(PASSENGER_COUNT, col("passenger_count").cast("integer"));
 
         System.out.println("=== Print out casted schema ===");
         castedResponse.printSchema();
 
-        System.out.println("=== Print records with PASSENGER_COUNT_MIDPOINT  less than 3 ===");
-        castedResponse.filter(col(PICKUP_LATITUDE).$less(3)).show();
+        System.out.println("=== Print records with PASSENGER_COUNT  less than 3 ===");
+        castedResponse.filter(col(PASSENGER_COUNT).$less(3)).show();
 
-        System.out.println("=== Print the result by salary middle point in descending order ===");
+        System.out.println("=== Print the result by pickup_latitude in descending order ===");
         castedResponse.orderBy(col("pickup_latitude").desc()).show();
 
         System.out.println("=== Group by country and aggregate by average salary middle point and max age middle point ===");
