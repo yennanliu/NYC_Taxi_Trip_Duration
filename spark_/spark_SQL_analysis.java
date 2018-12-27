@@ -8,8 +8,8 @@ import static org.apache.spark.sql.functions.max;
 
 public class spark_SQL_analysis {
 
-    private static final String PICKUP_LATITUDE_MIDPOINT = "pickup_latitude_midpoint";
-    private static final String PASSENGER_COUNT_MIDPOINT = "passenger_count_midpoint";
+    private static final String PICKUP_LATITUDE = "pickup_latitude";
+    private static final String PASSENGER_COUNT = "passenger_count";
     private static final String DROPOFF_LATITUDE_BUCKET = "dropoff_latitude_bucket";
 
     public static void main(String[] args) throws Exception {
@@ -38,14 +38,14 @@ public class spark_SQL_analysis {
         groupedDataset.count().show();
 
         System.out.println("=== Cast the PICKUP_LATITUDE_MIDPOINT and PASSENGER_COUNT_MIDPOINT to integer ===");
-        Dataset<Row> castedResponse = responses.withColumn(PICKUP_LATITUDE_MIDPOINT, col("pickup_longitude").cast("integer"))
-                                               .withColumn(PASSENGER_COUNT_MIDPOINT, col("passenger_count").cast("integer"));
+        Dataset<Row> castedResponse = responses.withColumn(PICKUP_LATITUDE, col("pickup_longitude").cast("integer"))
+                                               .withColumn(PASSENGER_COUNT, col("passenger_count").cast("integer"));
 
         System.out.println("=== Print out casted schema ===");
         castedResponse.printSchema();
 
         System.out.println("=== Print records with PASSENGER_COUNT_MIDPOINT  less than 3 ===");
-        castedResponse.filter(col(PICKUP_LATITUDE_MIDPOINT).$less(3)).show();
+        castedResponse.filter(col(PICKUP_LATITUDE).$less(3)).show();
 
         System.out.println("=== Print the result by salary middle point in descending order ===");
         castedResponse.orderBy(col("pickup_latitude").desc()).show();
