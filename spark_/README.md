@@ -1,8 +1,8 @@
-# Run the model again with Spark Mlib via Java/Scala/Python 
+## Run the model again with Spark Mlib via Java/Scala/Python 
 
 
 
-## Demo 
+## Demo (Run via Spark Java)
 
 ```bash 
 
@@ -11,8 +11,6 @@
 $ javac -classpath  ".:/Users/$USER/spark/jars/*" train_spark_RF.java
 # run the java spark ML model 
 $ java -classpath  ".:/Users/$USER/spark/jars/*"  train_spark_RF
-
-
 
 
 
@@ -1510,6 +1508,8 @@ accuracy: 4845.3933640859
 ```
 
 
+## Demo (Run via Spark Python)
+
 
 ```bash
 
@@ -1593,3 +1593,4 @@ only showing top 30 rows
 
 
 ```
+
