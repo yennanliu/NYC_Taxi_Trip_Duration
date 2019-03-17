@@ -14,11 +14,8 @@ from keras.layers import BatchNormalization
 
 """
 # using keras DL framework re-run travel time regrsiion 
-
 ref 
-
 https://www.kaggle.com/dimitreoliveira/taxi-fare-prediction-with-keras-deep-learning
-
 """
 
 ### ================================================ ###

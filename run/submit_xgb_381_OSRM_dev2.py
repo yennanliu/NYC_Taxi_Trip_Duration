@@ -121,6 +121,7 @@ def get_clustering(df):
     df_.loc[:, 'dropoff_cluster'] = kmeans.predict(df_[['dropoff_latitude', 'dropoff_longitude']])
     return df_
 
+
 def trip_cluser_count(df):
     df_ = df.copy()
     df_.pickup_datetime = pd.to_datetime(df_.pickup_datetime)
@@ -139,7 +140,8 @@ def trip_cluser_count(df):
     df_['dropoff_cluster_count'] = \
             df_[['pickup_datetime_group', 'dropoff_cluster']]\
             .merge(df_dropoff_counts,on=['pickup_datetime_group', 'dropoff_cluster'], how='left')\
-            ['dropoff_cluster_count'].fillna(0)          
+            ['dropoff_cluster_count'].fillna(0)
+            
     return df_
 
 def avg_cluster_speed_(df):
@@ -174,10 +176,11 @@ def get_cluser_feature(df):
     avg_cluser_duration = df_.groupby(['pickup_cluster','dropoff_cluster']).mean()['trip_duration'].reset_index()
     avg_cluser_duration.columns = ['pickup_cluster','dropoff_cluster','avg_cluster_duration']
     # merge 
-    df_ = pd.merge(df_,avg_cluser_duration, how = 'left', on = ['pickup_cluster','dropoff_cluster'])  
+    df_ = pd.merge(df_,avg_cluser_duration, how = 'left', on = ['pickup_cluster','dropoff_cluster'])
+    
     return df_
 
-def get_avg_travel_duration_speed(df):
+def get_avg_feature(df):
     df_ = df.copy()
     ################################################################
     # using following tricks we can get average duration, speed as #
@@ -191,10 +194,30 @@ def get_avg_travel_duration_speed(df):
     # avg speed 
     avg_speed = df_.groupby(['pickup_weekday','pickup_hour']).mean()['avg_speed_h'].reset_index()
     avg_speed.columns = ['pickup_weekday','pickup_hour','avg_trip_speed_h']
-    print (avg_speed)
+    # avg month
+    month_avg = df_.groupby('pickup_month').trip_duration.mean().reset_index()
+    month_avg.columns = ['pickup_month', 'month_avg']
+    # avg weekofyear
+    week_year_avg = df_.groupby('weekofyear').trip_duration.mean().reset_index()
+    week_year_avg.columns = ['weekofyear', 'week_of_year_avg']
+    # avg day of month
+    day_month_avg = df_.groupby('pickup_date').trip_duration.mean().reset_index()
+    day_month_avg.columns = ['pickup_date', 'day_of_month_avg']
+    # avg hour
+    hour_avg = df_.groupby('pickup_hour').trip_duration.mean().reset_index()
+    hour_avg.columns = ['pickup_hour', 'hour_avg']
+    # avg pickup weekday
+    day_week_avg = df_.groupby('pickup_weekday').trip_duration.mean().reset_index()
+    day_week_avg.columns = ['pickup_weekday', 'day_week_avg']
     # merge 
     df_ = pd.merge(df_,avg_duration, how = 'left', on = ['pickup_weekday','pickup_hour'])
     df_ = pd.merge(df_,avg_speed, how = 'left', on = ['pickup_weekday','pickup_hour'])
+    df_ = pd.merge(df_,month_avg,how='left',on='pickup_month')
+    df_ = pd.merge(df_, week_year_avg,how='left',on='weekofyear')
+    df_ = pd.merge(df_, day_month_avg,how='left' ,on='pickup_date')
+    df_ = pd.merge(df_, hour_avg, how='left' ,on='pickup_hour')
+    df_ = pd.merge(df_, day_week_avg,how='left',on='pickup_weekday') 
+    
     return df_
 
 def label_2_binary(df):
@@ -241,6 +264,18 @@ def get_geo_feature(df):
     
     return df_
 
+def get_label_feature(df):
+    df_ = df.copy()
+    # weekday or weekend 
+    df_['weekend'] = df_.pickup_weekday.map(lambda x : 1 if x== 5 or x==6 else 0 )
+    # pickup hour 6-9  
+    df_['hr_6_9'] = df_.pickup_hour.map(lambda x : 1 if  6 <=x <= 9 else 0 )
+    # pickup hour 10-20  
+    df_['hr_10_20'] = df_.pickup_hour.map(lambda x : 1 if  10 <=x <= 20 else 0  )
+    # pickup hour 21-5    
+    df_['hr_21_5'] = df_.pickup_hour.map(lambda x : 1 if  21 <=x <= 23 or 0 <= x <=5  else 0 )
+    return df_
+    
 # data cleaning
 def clean_data(df):
     df_ = df.copy()
@@ -292,7 +327,8 @@ def clean_data_(df):
     # maybe quality is not good 
     #df_ = df_[(df_.pickup_date != '2016-01-23') & (df_.dropoff_date != '2016-01-23')]
     # potential passenger_count outlier 
-    df_ = df_[(df_['passenger_count']  <= 6) & (df_['passenger_count'] > 0)]  
+    df_ = df_[(df_['passenger_count']  <= 6) & (df_['passenger_count'] > 0)]
+    
     return df_
 
 def load_data():
@@ -314,6 +350,14 @@ def load_OSRM_data():
     test_fastest = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/fastest_routes_test.csv')
     # merge 
     frame_fastest = pd.concat([train_fastest_1, train_fastest_2, test_fastest], axis = 0)
+    # extract feature 
+    right_turn = []
+    left_turn = []
+    right_turn+= list(map(lambda x:x.count('right')-x.count('slight right'),frame_fastest.step_direction))
+    left_turn += list(map(lambda x:x.count('left')-x.count('slight left'),frame_fastest.step_direction))
+    frame_fastest['right_turn'] = right_turn
+    frame_fastest['left_turn'] = left_turn
+    
     return frame_fastest
 
 
@@ -334,12 +378,14 @@ if __name__ == '__main__':
     # get avg ride count on dropoff cluster 
     df_all_ = trip_cluser_count(df_all_)
     df_all_ = get_cluser_feature(df_all_)
-    # get avg speed, duration
-    df_all_ = get_avg_travel_duration_speed(df_all_)
+    # get avg feature value 
+    df_all_ = get_avg_feature(df_all_)
     # label -> 0,1 
     df_all_ = label_2_binary(df_all_)
     # count trip over 60 min
     df_all_ = trip_over_60min(df_all_)
+    # get other useful label feature 
+    df_all_ = get_label_feature(df_all_)
     # get log trip duration 
     df_all_['trip_duration_log'] = df_all_['trip_duration'].apply(np.log)
 
@@ -348,9 +394,9 @@ if __name__ == '__main__':
     #print (frame_fastest.head())
     df_all_ = pd.merge(left=df_all_,
                   right=frame_fastest[['id', 'total_distance', 
-                                       'total_travel_time', 'number_of_steps']],
+                                       'total_travel_time', 'number_of_steps',
+                                       'right_turn','left_turn']],
                                        on='id', how='left')
-
     # clean data 
     #df_all_ = clean_data(df_all_)
     print (df_all_.head())
@@ -381,23 +427,31 @@ if __name__ == '__main__':
                 'dropoff_cluster_count',
                 'total_travel_time',
                 'total_distance',
-                'number_of_steps']
+                'number_of_steps',
+                'month_avg',
+                'week_of_year_avg',
+                'day_of_month_avg',
+                'hour_avg',
+                'day_week_avg',
+                'right_turn',
+                'left_turn',
+                'weekend',
+                'hr_6_9',
+                'hr_10_20',
+                'hr_21_5']
 
 
     # split all data into train, test set 
     X_train = df_all_[df_all_['trip_duration'].notnull()][features].values
     y_train = df_all_[df_all_['trip_duration'].notnull()]['trip_duration_log'].values
     X_test  = df_all_[df_all_['trip_duration'].isnull()][features].values
-
-
-### ================================================ ###
     
     from sklearn.model_selection import train_test_split
     from sklearn.model_selection import KFold
     from xgboost import XGBRegressor
 
     # train xgb  
-    xgb = XGBRegressor(n_estimators=1000, max_depth=12, min_child_weight=150, 
+    xgb = XGBRegressor(n_estimators=3000, max_depth=15, min_child_weight=150, 
                    subsample=0.7, colsample_bytree=0.3)
     y_test = np.zeros(len(X_test))
 
@@ -409,7 +463,7 @@ if __name__ == '__main__':
         
         xgb.fit(X_train[train_ind], y_train[train_ind],
                 eval_set=[(X_train[val_ind], y_train[val_ind])],
-                early_stopping_rounds=10, verbose=25)
+                early_stopping_rounds=30, verbose=25)
         
         y_test += xgb.predict(X_test, ntree_limit=xgb.best_ntree_limit)
     y_test /= 2
@@ -421,43 +475,4 @@ if __name__ == '__main__':
              'trip_duration': np.exp(y_test)}).set_index('id')
 
     print (df_sub)
-    df_sub.to_csv('~/NYC_Taxi_Trip_Duration/output/0831_xgb_382_OSRM.csv')
-
-
-"""
-# add outside OSRM data 
-
-    features = [ 'vendor_id', 
-                'passenger_count',
-                'pickup_latitude', 
-                'pickup_longitude', 
-                'dropoff_latitude', 
-                'dropoff_longitude',
-                'pickup_pca0', 
-                'pickup_pca1', 
-                'dropoff_pca0', 
-                'dropoff_pca1',
-                'distance_haversine',
-                'direction',
-                'pca_manhattan',
-                'pickup_time_delta',
-                'pickup_month',
-                'weekofyear', 
-                'pickup_weekday', 
-                'pickup_hour', 
-                'week_delta',
-                'week_delta_sin', 
-                'pickup_hour_sin',
-                'count_60min', 
-                'dropoff_cluster_count',
-                'total_travel_time',
-                'total_distance',
-                'number_of_steps']
-
-# xgb = XGBRegressor(n_estimators=1000, max_depth=12, min_child_weight=150, 
-#                 subsample=0.7, colsample_bytree=0.3)
-
-
-# 0.38229
-
-"""
+    df_sub.to_csv('~/NYC_Taxi_Trip_Duration/output/0901_xgb_0.381_ORSM_dev2.csv')

@@ -8,14 +8,7 @@ from tpot import TPOTRegressor
 from sklearn.model_selection import train_test_split
 import xgboost as xgb
 
-
-
-
-### ================================================ ###
-
 # feature engineering 
-
-
 def get_time_feature(df):
     df_= df.copy()
     # pickup
@@ -50,7 +43,6 @@ def get_time_feature(df):
         pass 
     return df_
 
-
 # make weekday and hour cyclic, since we want to let machine understand 
 # these features are in fact periodically 
 def get_time_cyclic(df):
@@ -61,7 +53,6 @@ def get_time_cyclic(df):
     df_['pickup_hour_sin'] = np.sin((df_['pickup_hour'] / 24) * np.pi)**2
     df_['pickup_hour_cos'] = np.cos((df_['pickup_hour'] / 24) * np.pi)**2
     return df_
-
 
 # Haversine distance
 def get_haversine_distance(lat1, lng1, lat2, lng2):
@@ -82,7 +73,6 @@ def get_manhattan_distance(lat1, lng1, lat2, lng2):
     b = get_haversine_distance(lat1, lng1, lat2, lng1)
     return a + b
 
-
 # get direction (arc tangent angle)
 def get_direction(lat1, lng1, lat2, lng2):
     # theta
@@ -93,14 +83,11 @@ def get_direction(lat1, lng1, lat2, lng2):
     x = np.cos(lat1) * np.sin(lat2) - np.sin(lat1) * np.cos(lat2) * np.cos(lng_delta_rad)
     return np.degrees(np.arctan2(y, x))
 
-
 def gat_trip_center(df):
     df_ = df.copy()
     df_.loc[:, 'center_latitude'] = (df_['pickup_latitude'].values + df_['dropoff_latitude'].values) / 2
     df_.loc[:, 'center_longitude'] = (df_['pickup_longitude'].values + df_['dropoff_longitude'].values) / 2
     return df_
-
-
 
 # PCA to transform longitude and latitude
 # to improve decision tree performance 
@@ -123,7 +110,6 @@ def pca_lon_lat(df):
     df_.loc[:, 'pca_manhattan'] = np.abs(df_['dropoff_pca1'] - df_['pickup_pca1']) + np.abs(df_['dropoff_pca0'] - df_['pickup_pca0'])
     return df_ 
 
-
 # get lon & lat clustering for following avg location speed calculation
 def get_clustering(df):
     df_ = df.copy()
@@ -135,7 +121,6 @@ def get_clustering(df):
     df_.loc[:, 'pickup_cluster'] = kmeans.predict(df_[['pickup_latitude', 'pickup_longitude']])
     df_.loc[:, 'dropoff_cluster'] = kmeans.predict(df_[['dropoff_latitude', 'dropoff_longitude']])
     return df_
-
 
 def trip_cluser_count(df):
     df_ = df.copy()
@@ -155,8 +140,7 @@ def trip_cluser_count(df):
     df_['dropoff_cluster_count'] = \
             df_[['pickup_datetime_group', 'dropoff_cluster']]\
             .merge(df_dropoff_counts,on=['pickup_datetime_group', 'dropoff_cluster'], how='left')\
-            ['dropoff_cluster_count'].fillna(0)
-            
+            ['dropoff_cluster_count'].fillna(0)          
     return df_
 
 def avg_cluster_speed_(df):
@@ -177,7 +161,6 @@ def avg_cluster_speed_(df):
         df_ = pd.merge(df_, coord_stats, how='left', on=gby_cols)
     return df_
 
-
 def get_cluser_feature(df):
     df_ = df.copy()
     # avg cluster speed  
@@ -195,8 +178,6 @@ def get_cluser_feature(df):
     df_ = pd.merge(df_,avg_cluser_duration, how = 'left', on = ['pickup_cluster','dropoff_cluster'])
     
     return df_
-
-
 
 def get_avg_feature(df):
     df_ = df.copy()
@@ -234,16 +215,13 @@ def get_avg_feature(df):
     df_ = pd.merge(df_, week_year_avg,how='left',on='weekofyear')
     df_ = pd.merge(df_, day_month_avg,how='left' ,on='pickup_date')
     df_ = pd.merge(df_, hour_avg, how='left' ,on='pickup_hour')
-    df_ = pd.merge(df_, day_week_avg,how='left',on='pickup_weekday') 
-    
+    df_ = pd.merge(df_, day_week_avg,how='left',on='pickup_weekday')   
     return df_
-
 
 def label_2_binary(df):
     df_ = df.copy()
     df_['store_and_fwd_flag_'] = df_['store_and_fwd_flag'].map(lambda x: 0 if x =='N' else 1)
     return df_
-
 
 def trip_over_60min(df):
     df_ = df.copy()
@@ -251,9 +229,6 @@ def trip_over_60min(df):
     df_counts['count_60min'] = df_counts.isnull().rolling('60min').count()['id']
     df_ = df_.merge(df_counts, on='id', how='left')
     return df_ 
-
-
-### ======================== ###
 
 def get_geo_feature(df):
     # km 
@@ -287,12 +262,7 @@ def get_geo_feature(df):
     
     return df_
 
-
-
-### ================================================ ###
-
 # data cleaning
-
 def clean_data(df):
     df_ = df.copy()
     # remove potential distance outlier 
@@ -326,7 +296,6 @@ def clean_data(df):
     
     return df_
 
-
 def clean_data_(df):
     df_ = df.copy()
     # remove potential lon & lat  outlier 
@@ -347,15 +316,6 @@ def clean_data_(df):
     df_ = df_[(df_['passenger_count']  <= 6) & (df_['passenger_count'] > 0)]
     
     return df_
-
-
-
-
-
-### ================================================ ###
-
-
-
 
 def load_data():
     df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv')
@@ -385,11 +345,6 @@ def load_OSRM_data():
     frame_fastest['left_turn'] = left_turn
     
     return frame_fastest
-
-
-
-### ================================================ ###
-
 
 if __name__ == '__main__':
 
@@ -424,7 +379,6 @@ if __name__ == '__main__':
                                        'total_travel_time', 'number_of_steps',
                                        'right_turn','left_turn']],
                                        on='id', how='left')
-
     # clean data 
     #df_all_ = clean_data(df_all_)
     print (df_all_.head())
@@ -513,14 +467,6 @@ if __name__ == '__main__':
     print (df_sub)
     df_sub.to_csv('~/NYC_Taxi_Trip_Duration/output/0902_xgb_377_core.csv')
 
-
-
-
-### ================================================ ###
-
-
-
-
 """
 
    features = [ 'vendor_id', 
@@ -570,15 +516,7 @@ if __name__ == '__main__':
                   maximize=False, verbose_eval=15)
 
 
-
-
 # 0.37797
 
 
 """
-
-
-
-
-       
-   
