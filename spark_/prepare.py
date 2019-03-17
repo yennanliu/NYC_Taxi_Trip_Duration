@@ -1,12 +1,8 @@
 # python 2.7 
-
-
 import os
-
 from pyspark import SparkConf, SparkContext
 from pyspark.sql import SQLContext
 from pyspark.sql.functions import count, avg
-
 
 sc =SparkContext()
 SparkContext.getOrCreate()
@@ -16,9 +12,6 @@ sqlCtx = SQLContext(sc)
 print ("==================")
 print (sc)
 print ("==================")
-
-
-
 
 def run():
 	df_train = sqlCtx.read.format('com.databricks.spark.csv')\
@@ -72,15 +65,7 @@ def filter_column():
                 order by 2 desc 
                 limit 10""").show()
 
-
-
-
-
 if __name__ == '__main__':
 	#run()
 	#test()
 	filter_column()
-
-
-
-

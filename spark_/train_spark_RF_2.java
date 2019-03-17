@@ -1,4 +1,3 @@
-
 import org.apache.spark.ml.evaluation.RegressionEvaluator;
 import org.apache.spark.ml.feature.VectorIndexer;
 import org.apache.spark.ml.feature.VectorIndexerModel;
@@ -8,10 +7,8 @@ import org.apache.spark.ml.evaluation.RegressionEvaluator;
 import org.apache.spark.ml.feature.VectorAssembler;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
-
 import static org.apache.spark.sql.functions.col;
 import static org.apache.spark.sql.functions.when;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -29,7 +26,6 @@ import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 import org.apache.spark.sql.AnalysisException;
 import static org.apache.spark.sql.functions.col;
-
 
 /*
 

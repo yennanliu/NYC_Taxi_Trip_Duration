@@ -1,8 +1,6 @@
 # python 3 
 # -*- coding: utf-8 -*-
 
-
-
 """
 * modify from 
 
@@ -14,10 +12,7 @@
     https://weiminwang.blog/2016/06/09/pyspark-tutorial-building-a-random-forest-binary-classifier-on-unbalanced-dataset/
     https://github.com/notthatbreezy/nyc-taxi-spark-ml/blob/master/python/generate-model.py
 
-
 """
-
-
 
 # load basics library
 import csv 
@@ -33,8 +28,6 @@ from pyspark.sql.types import IntegerType
 from pyspark.ml.feature import VectorAssembler
 from pyspark.ml.clustering import KMeans
 
-
-
 # ---------------------------------
 # config 
 sc =SparkContext()
@@ -47,20 +40,6 @@ print (sc)
 print ("==================")
 # ---------------------------------
 
-
-
-
-
-
-### ================================================ ###
-
-# feature engineering 
-
-
-# HELP FUNC 
-
-
-### ================================================ ###
 
 
 if __name__ == '__main__':
@@ -93,19 +72,3 @@ if __name__ == '__main__':
     print (output_data.take(30))
     #print (output_data.toDF().head(30))
     print (' ------- KNN model output ------- '  )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
-   

@@ -1,32 +1,20 @@
-
 import java.io.*;
 import java.sql.*;
-
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
-
 import static org.apache.spark.sql.functions.col;
 import static org.apache.spark.sql.functions.when;
 import static org.apache.spark.sql.functions.avg;
 import static org.apache.spark.sql.functions.col;
 import static org.apache.spark.sql.functions.max;
-
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
-
-
 /*
-
 Credit 
-
 1) https://github.com/jleetutorial/sparkTutorial/blob/master/src/main/java/com/sparkTutorial/sparkSql/HousePriceSolution.java
-
-
 */
-
-
 
 public class data_preprocess {
 
@@ -38,11 +26,7 @@ public class data_preprocess {
   // step 2 : read csv via spark 
   //String args = "some arg";
   read_csv("test");
-
 }
-
-
-
   public static void read_csv (String csvFile)
 
   {
@@ -69,11 +53,9 @@ public class data_preprocess {
                       .agg(avg("pickup_longitude"), max("pickup_latitude"))
                       .show();
 
-
     transformedDataSet.groupBy("passenger_count")
                       .agg(avg("trip_duration"), max("pickup_latitude"),max("pickup_longitude"))
                       .show();
-
     // PART 3  : filter trip_duration < 500 data 
     System.out.println(" ---------------- PART 3 ----------------");
     transformedDataSet.filter(col("trip_duration").$less(500)).show();
@@ -83,11 +65,6 @@ public class data_preprocess {
     Dataset<Row> transformedDataSet_ = transformedDataSet.withColumn(
                 "trip_duration_", col("trip_duration").divide(10).cast("double"));
     transformedDataSet_.select( col("trip_duration_"),col("trip_duration")).show();
-
-
   }
 
 }
-
-
-

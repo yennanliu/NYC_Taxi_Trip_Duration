@@ -1,5 +1,4 @@
 // package nl.craftsmen.spark.iris;
-
 import org.apache.spark.ml.evaluation.RegressionEvaluator;
 import org.apache.spark.ml.feature.VectorIndexer;
 import org.apache.spark.ml.feature.VectorIndexerModel;
@@ -10,10 +9,8 @@ import org.apache.spark.ml.feature.VectorAssembler;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
-
 import static org.apache.spark.sql.functions.col;
 import static org.apache.spark.sql.functions.when;
-
 import java.util.Arrays;
 import org.apache.spark.ml.Pipeline;
 import org.apache.spark.ml.PipelineStage;
@@ -22,8 +19,6 @@ import org.apache.spark.ml.param.ParamMap;
 import org.apache.spark.ml.tuning.CrossValidator;
 import org.apache.spark.ml.tuning.CrossValidatorModel;
 import org.apache.spark.ml.tuning.ParamGridBuilder;
-
-
 
 /****
 
@@ -45,7 +40,6 @@ https://spark.apache.org/docs/latest/ml-classification-regression.html
  *
 
  **/
-
 
 public class train_spark_RF_3 {
 
@@ -94,14 +88,20 @@ public class train_spark_RF_3 {
         // --------------------------- TUNE RF MODEL ------------------------------
 
         // hash make data fit pipeline form 
-        HashingTF hashingTF = new HashingTF()
+        /* HashingTF hashingTF = new HashingTF()
                                 .setNumFeatures(1000)
-                                .setInputCol(trainingSet)
+                                .setInputCol(trainingSet.getOutputCol())
                                 .setOutputCol("features");
-
+        */
 
         // set up pipepline 
-        Pipeline pipeline = new Pipeline().setStages(new PipelineStage[] {trainingSet,hashingTF ,rf});
+        //Pipeline pipeline = new Pipeline().setStages(new PipelineStage[] {trainingSet,rf});
+        RegressionEvaluator evaluator = new RegressionEvaluator()
+                                        .setLabelCol("trip_duration")
+                                        .setPredictionCol("prediction")
+                                        .setMetricName("rmse");
+
+
 
         // grid search 
         ParamMap[] paramGrid = new ParamGridBuilder()
@@ -110,7 +110,7 @@ public class train_spark_RF_3 {
 
 
         CrossValidator cv = new CrossValidator()
-                                    .setEstimator(pipeline)
+                                    .setEstimator(evaluator)
                                     .setEvaluator(new RegressionEvaluator())
                                     .setEstimatorParamMaps(paramGrid).setNumFolds(2);  // Use 3+ in practice
 
@@ -127,10 +127,7 @@ public class train_spark_RF_3 {
                                
         //RandomForestRegressionModel rfModel = rf.fit(trainingSet);
         //Dataset<Row> predictions = rfModel.transform(testSet);
-        RegressionEvaluator evaluator = new RegressionEvaluator()
-                                        .setLabelCol("trip_duration")
-                                        .setPredictionCol("prediction")
-                                        .setMetricName("rmse");
+
         double rmse = evaluator.evaluate(predictions);
         
 

@@ -16,7 +16,6 @@
  */
 //package org.apache.spark.examples.sql;
 
-
 /*
 credit 
 https://github.com/apache/spark/blob/master/examples/src/main/java/org/apache/spark/examples/sql/JavaSparkSQLExample.java
@@ -169,9 +168,6 @@ public class spark_SQL {
     Dataset<Row> sqlDF2 = spark.sql("SELECT id, pickup_datetime, date(pickup_datetime) as date,month(pickup_datetime) as month,  date_format(pickup_datetime, 'EEEE')  as dow FROM df limit 10 ");
     sqlDF2.show();
 
-
-
-
     // $example on:global_temp_view$
     // Register the DataFrame as a global temporary view
     df.createGlobalTempView("df");
@@ -199,6 +195,5 @@ public class spark_SQL {
 
     
   }
-
   
 }
