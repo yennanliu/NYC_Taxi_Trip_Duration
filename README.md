@@ -1,18 +1,17 @@
 # NYC Taxi Trip Duration
 
-* [Kaggle Page](https://www.kaggle.com/c/nyc-taxi-trip-duration)
-* [Analysis nb](https://nbviewer.jupyter.org/github/yennanliu/NYC_Taxi_Trip_Duration/blob/master/notebook/NYC_Taxi_EDA_V1_Yen.ipynb) - EDA ipython notebook 
-* [ML nb](https://nbviewer.jupyter.org/github/yennanliu/NYC_Taxi_Trip_Duration/blob/master/notebook/NYC_Taxi_ML_V1_Yen.ipynb) - ML ipython notebook 
-* [Main code](https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run) - Final ML code in python 
-
 ![image](https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/nyc_taxi.jpg)
 
 ![image](https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/submit_log.png)
 
-
 ## INTRO
 
 Predicts the total ride duration of taxi trips in New York City. primary dataset is one released by the NYC Taxi and Limousine Commission, which includes pickup time, geo-coordinates, number of passengers, and several other variables.
+
+* [Kaggle Page](https://www.kaggle.com/c/nyc-taxi-trip-duration)
+* [Analysis nb](https://nbviewer.jupyter.org/github/yennanliu/NYC_Taxi_Trip_Duration/blob/master/notebook/NYC_Taxi_EDA_V1_Yen.ipynb) - EDA ipython notebook 
+* [ML nb](https://nbviewer.jupyter.org/github/yennanliu/NYC_Taxi_Trip_Duration/blob/master/notebook/NYC_Taxi_ML_V1_Yen.ipynb) - ML ipython notebook 
+* [Main code](https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run) - Final ML code in python 
 
 ## FILE STRUCTURE
 
@@ -149,11 +148,6 @@ Imputing missing values in feature set
 
 ```
 
-
-### Tech
-- Python 3.4.5, Sklearn, Pandas 0.20.3 , Numpy, Xgboost, tpot
-
-
 ---
 ## PROCESS
 
@@ -164,31 +158,31 @@ EDA -> Data Preprocess -> Model select -> Feature engineering -> Model tune -> P
 ```
 
 ```
+
+# PROJECT WORKFLOW 
+
 #### 1. DATA EXPLORATION (EDA)
 
-[Analysis](/notebook)
+Analysis : /notebook  
 
 #### 2. FEATURE EXTRACTION 
 
-[Script](/script)<br>
-[Modeling](/run)
+2-1. **Feature dependency**
+2-2. **Encode & Standardization** 
+2-3. **Feature transformation** 
+2-4. **Dimension reduction** ( via PCA) 
 
-2-1. **Feature dependency**<br>
-[variable](/reference/variable.md) <br>
-2-2. **Encode & Standardization** <br>
-2-3. **Feature transformation** <br>
-2-4. **Dimension reduction**
-   * Use PCA
+Script : /script 
+Modeling : /run 
 
 #### 3. PRE-TEST
 3-1. **Input all standardized features to all models** <br>
 3-2. **Regression**
 
 #### 4. OPTIMIZATION
-4-1. **Feature optimization**<br>
-4-2. **Super-parameters tuning** <br>
-4-3. **Aggregation**<br>
-
+4-1. **Feature optimization** 
+4-2. **Super-parameters tuning** 
+4-3. **Aggregation**
 
 #### 5. RESULTS  
 ```
