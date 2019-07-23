@@ -6,7 +6,12 @@
 
 ## INTRO
 
+>
 Predicts the total ride duration of taxi trips in New York City. primary dataset is one released by the NYC Taxi and Limousine Commission, which includes pickup time, geo-coordinates, number of passengers, and several other variables.
+
+Please download the train data via : https://www.kaggle.com/c/nyc-taxi-trip-duration/data, and save at `data/train.csv`. Then 
+you should be able to run the ML demo code (scripts under `run/`)
+
 
 * [Kaggle Page](https://www.kaggle.com/c/nyc-taxi-trip-duration)
 * [Analysis nb](https://nbviewer.jupyter.org/github/yennanliu/NYC_Taxi_Trip_Duration/blob/master/notebook/NYC_Taxi_EDA_V1_Yen.ipynb) - EDA ipython notebook 
@@ -199,14 +204,15 @@ $ pytest -v tests/
 # cachedir: .pytest_cache
 # rootdir: /Users/jerryliu/NYC_Taxi_Trip_Duration
 # plugins: cov-2.7.1
-# collected 3 items                                                               
+# collected 5 items                                                               
 
-# tests/test_udf.py::test_get_haversine_distance PASSED                     [ 33%]
-# tests/test_udf.py::test_get_manhattan_distance PASSED                     [ 66%]
+# tests/test_data_exist.py::test_training_data_exist PASSED                 [ 20%]
+# tests/test_data_exist.py::test_validate_data_exist PASSED                 [ 40%]
+# tests/test_udf.py::test_get_haversine_distance PASSED                     [ 60%]
+# tests/test_udf.py::test_get_manhattan_distance PASSED                     [ 80%]
 # tests/test_udf.py::test_get_direction PASSED                              [100%]
 
-# =========================== 3 passed in 0.96 seconds ============================
-
+# =========================== 5 passed in 2.68 seconds ===========================
 ```
 ## REFERENCE
 
