@@ -6,12 +6,10 @@
 
 ## INTRO
 
->
-Predicts the total ride duration of taxi trips in New York City. primary dataset is one released by the NYC Taxi and Limousine Commission, which includes pickup time, geo-coordinates, number of passengers, and several other variables.
+>Predict the total ride duration of taxi trips in New York City. primary dataset is one released by the NYC Taxi and Limousine Commission, which includes pickup time, geo-coordinates, number of passengers, and several other variables.
 
 Please download the train data via : https://www.kaggle.com/c/nyc-taxi-trip-duration/data, and save at `data/train.csv`. Then 
 you should be able to run the ML demo code (scripts under `run/`)
-
 
 * [Kaggle Page](https://www.kaggle.com/c/nyc-taxi-trip-duration)
 * [Analysis nb](https://nbviewer.jupyter.org/github/yennanliu/NYC_Taxi_Trip_Duration/blob/master/notebook/NYC_Taxi_EDA_V1_Yen.ipynb) - EDA ipython notebook 
@@ -224,6 +222,3 @@ $ pytest -v tests/
 
 - LightGBM
   - https://github.com/Microsoft/LightGBM/wiki/Installation-Guide
-
-
-
