@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
-
 # script for model training 
-
 # basic library 
 import pandas as pd, numpy as np
 import calendar
-
 #  model  score 
 from sklearn.model_selection import cross_val_score, train_test_split,ShuffleSplit
 from sklearn.metrics import mean_squared_error, r2_score, explained_variance_score, mean_absolute_error
@@ -48,8 +45,6 @@ def rmsle(predicted,real):
         sum = sum + (p - r)**2
     return (sum/len(predicted))**0.5
 
-
-
 # models 
 class XgbWrapper(object):
     def __init__(self, seed=2017, params=None):
@@ -66,16 +61,3 @@ class XgbWrapper(object):
 
     def predict(self, x):
         return self.gbdt.predict(xgb.DMatrix(x))
-
-### ================================================ ###
-
-
-
-
-
-
-
-
-
-
-

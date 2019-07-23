@@ -1,6 +1,4 @@
-
-
-# feature 1 
+"""list of features for taining model """
 features = [ 'vendor_id', 
             'passenger_count',
             'pickup_latitude', 
@@ -34,5 +32,3 @@ features = [ 'vendor_id',
             'day_week_avg',
             'right_turn',
             'left_turn']
-
-

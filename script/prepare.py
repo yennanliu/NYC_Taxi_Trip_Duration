@@ -6,12 +6,7 @@
 import pandas as pd, numpy as np
 import calendar
 
-
-
-
-### ================================================ ###
 # refactor  all feature collect functions to class method (doing)
-
 class feature_datetime:
 
     def __init__( self, df, column ):
@@ -482,10 +477,3 @@ def load_OSRM_data():
     # merge 
     frame_fastest = pd.concat([train_fastest_1, train_fastest_2, test_fastest], axis = 0)
     return frame_fastest
-
-
-
-### ================================================ ###
-
-
-

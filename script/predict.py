@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import pandas as pd, numpy as np
 import calendar
 from sklearn.cluster import MiniBatchKMeans
@@ -9,8 +8,6 @@ from sklearn.grid_search import RandomizedSearchCV
 from xgboost import XGBRegressor
 import xgboost as xgb
 import scipy.stats as st
-
-
 
 def tune_model_1(X,y):
     params = {  "min_child_weight": st.randint(8, 10),
@@ -53,8 +50,6 @@ def xgb_model_1(X_train,y_train,X_test,params=None):
 
     return y_test
 
-
-
 def xgb_model_2(X_train,y_train,X_test,y_test,params=None):
     # train with xgboost core library
     # transform data to DMatrix form for fasting fitting process 
@@ -72,12 +67,3 @@ def xgb_model_2(X_train,y_train,X_test,y_test,params=None):
                   maximize=False, verbose_eval=15)
     ytest = model.predict(dtest)
     return ytest
-
-
-
-
-
-
-
-
-
