@@ -188,6 +188,26 @@ Modeling : /run
 ```
 
 ---
+
+## Development 
+```bash 
+# unit test 
+$ export PYTHONPATH=/Users/$USER/NYC_Taxi_Trip_Duration/
+$ pytest -v tests/
+# ============================== test session starts ==============================
+# platform darwin -- Python 3.6.4, pytest-5.0.1, py-1.5.2, pluggy-0.12.0 -- /Users/jerryliu/anaconda3/envs/yen_dev/bin/python
+# cachedir: .pytest_cache
+# rootdir: /Users/jerryliu/NYC_Taxi_Trip_Duration
+# plugins: cov-2.7.1
+# collected 3 items                                                               
+
+# tests/test_udf.py::test_get_haversine_distance PASSED                     [ 33%]
+# tests/test_udf.py::test_get_manhattan_distance PASSED                     [ 66%]
+# tests/test_udf.py::test_get_direction PASSED                              [100%]
+
+# =========================== 3 passed in 0.96 seconds ============================
+
+```
 ## REFERENCE
 
 - XGBoost
