@@ -1,0 +1,6 @@
+pytest 
+pandas 
+numpy 
+sklearn
+tpot 
+# xgboost
