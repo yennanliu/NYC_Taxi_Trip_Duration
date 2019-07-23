@@ -1,11 +1,9 @@
 #!/bin/sh
 
-
 function lauch_env () {
 
 source activate ds_dash  &&  export PYTHONPATH=/Users/yennanliu/NYC_Taxi_Trip_Duration/
 }
-
 
 function help_ () {
 	echo
@@ -28,7 +26,6 @@ chmod +x start.sh
  """
 }
 
-
 function install_ () {
 echo "install library via pip"
 pip install pandas numpy sklearn 
@@ -48,22 +45,13 @@ make -j4
 
 }
 
-
-
 if [ -z "$1" ] || [[ "$1" != "-l"  && "$1" != "-h"  &&  "$1" != "-i" ]]
 	then 
 	echo "command not found, please use './start.sh -h' for more help "
 fi 
-
 
 case "$1"  in
 	-l) lauch_env;; 
 	-h) help_ ;;
 	-i) install_;;
 esac 
-
-
-
-
-
-
