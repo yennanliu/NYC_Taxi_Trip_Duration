@@ -161,7 +161,6 @@ EDA -> Data Preprocess -> Model select -> Feature engineering -> Model tune -> P
 ```
 
 ```
-
 # PROJECT WORKFLOW 
 
 #### 1. DATA EXPLORATION (EDA)
@@ -179,15 +178,19 @@ Script : /script
 Modeling : /run 
 
 #### 3. PRE-TEST
+
 3-1. **Input all standardized features to all models** <br>
 3-2. **Regression**
 
 #### 4. OPTIMIZATION
+
 4-1. **Feature optimization** 
 4-2. **Super-parameters tuning** 
 4-3. **Aggregation**
 
-#### 5. RESULTS  
+#### 5. RESULTS 
+
+-> check the output csv, log  
 ```
 
 ---
