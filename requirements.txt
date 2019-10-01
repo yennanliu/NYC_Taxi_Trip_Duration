@@ -4,3 +4,4 @@ numpy
 sklearn
 tpot 
 #xgboost
+coveralls
