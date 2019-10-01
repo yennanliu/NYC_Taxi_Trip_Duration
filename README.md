@@ -8,7 +8,7 @@
 <!--- travis -->
 <a href="https://travis-ci.org/yennanliu/NYC_Taxi_Trip_Duration"><img src="https://travis-ci.org/yennanliu/NYC_Taxi_Trip_Duration.svg?branch=master"></a>
 <!--- coverage status -->
-<a href="https://coveralls.io/github/yennanliu/NYC_Taxi_Trip_Duration"><img src="https://coveralls.io/repos/github/yennanliu/NYC_Taxi_Trip_Duration/badge.svg"></a>
+<a href='https://coveralls.io/github/yennanliu/NYC_Taxi_Trip_Duration?branch=master'><img src='https://coveralls.io/repos/github/yennanliu/NYC_Taxi_Trip_Duration/badge.svg?branch=master' alt='Coverage Status' /></a>
 <!--- PR -->
 <a href="https://github.com/yennanliu/NYC_Taxi_Trip_Duration/pulls"><img src="https://img.shields.io/badge/PRs-welcome-6574cd.svg"></a>
 <!--- notebooks mybinder -->
