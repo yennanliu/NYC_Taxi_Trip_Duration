@@ -5,4 +5,4 @@ sklearn
 tpot 
 #xgboost
 coveralls
-yaml
+PyYAML
