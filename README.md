@@ -1,9 +1,17 @@
-<p align="center"><img src ="https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/nyc_taxi.jpg" width="800" height="400"></p>
+<p align="center"><img src ="https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/nyc_taxi.jpg"></p>
 
-<p align="center"><img src ="https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/submit_log.png" width="800" height="400"></p>
+<p align="center"><img src ="https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/submit_log.png" ></p>
 
 <h1 align="center">NYC Taxi Trip Duration</h1>
 
+<p align="center">
+<!--- travis -->
+<a href="https://travis-ci.org/yennanliu/NYC_Taxi_Trip_Duration"><img src="https://travis-ci.org/yennanliu/NYC_Taxi_Trip_Duration.svg?branch=master"></a>
+<!--- PR -->
+<a href="https://github.com/yennanliu/NYC_Taxi_Trip_Duration/pulls"><img src="https://img.shields.io/badge/PRs-welcome-6574cd.svg"></a>
+<!--- notebooks mybinder -->
+<a href="https://mybinder.org/v2/gh/yennanliu/NYC_Taxi_Trip_Duration/master"><img src="https://img.shields.io/badge/launch-Jupyter-5eba00.svg"></a>
+</p>
 
 ## INTRO
 
