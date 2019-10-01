@@ -16,6 +16,8 @@ you should be able to run the ML demo code (scripts under `run/`)
 * [ML nb](https://nbviewer.jupyter.org/github/yennanliu/NYC_Taxi_Trip_Duration/blob/master/notebook/NYC_Taxi_ML_V1_Yen.ipynb) - ML ipython notebook 
 * [Main code](https://github.com/yennanliu/NYC_Taxi_Trip_Duration/tree/master/run) - Final ML code in python 
 
+> Please also check [NYC_Taxi_Pipeline](https://github.com/yennanliu/NYC_Taxi_Pipeline) in case you are interested in the data engineering projects with similar taxi dataset. 
+
 ## FILE STRUCTURE
 
 ```
