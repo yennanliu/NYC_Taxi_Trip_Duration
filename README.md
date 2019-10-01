@@ -1,8 +1,9 @@
-# NYC Taxi Trip Duration
+<p align="center"><img src ="https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/nyc_taxi.jpg" width="800" height="400"></p>
 
-![image](https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/nyc_taxi.jpg)
+<p align="center"><img src ="https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/submit_log.png" width="800" height="400"></p>
 
-![image](https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/submit_log.png)
+<h1 align="center">NYC Taxi Trip Duration</h1>
+
 
 ## INTRO
 
