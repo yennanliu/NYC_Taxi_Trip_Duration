@@ -1,6 +1,8 @@
 # test module 
 import pytest, unittest
 # import to-test udf (user defined function) 
+import sys
+sys.path.append(".")
 from run.train import get_haversine_distance, get_manhattan_distance,\
                       get_direction
 
