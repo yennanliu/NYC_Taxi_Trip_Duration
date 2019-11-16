@@ -37,9 +37,9 @@ def xgb_model_1(X_train,y_train,X_test,params=None):
     y_test = np.zeros(len(X_test))
     for i, (train_ind, val_ind) in enumerate(KFold(n_splits=2, shuffle=True, 
                                             random_state=1989).split(X_train)):
-        print('----------------------')
-        print('Training model #%d' % i)
-        print('----------------------')
+        print("----------------------")
+        print("Training model #%d" % i)
+        print("----------------------")
         # XGBRegressor.fit 
         xgb.fit(X_train[train_ind], y_train[train_ind],
                 eval_set=[(X_train[val_ind], y_train[val_ind])],
@@ -56,12 +56,12 @@ def xgb_model_2(X_train,y_train,X_test,y_test,params=None):
     dtrain = xgb.DMatrix(X_train, label=y_train)
     dvalid = xgb.DMatrix(X_test, label=y_test)
     dtest = xgb.DMatrix(X_test)
-    watchlist = [(dtrain, 'train'), (dvalid, 'valid')]
-	xgb_pars = {'min_child_weight': 10, 'eta': 0.04,
-				'colsample_bytree': 0.8, 'max_depth': 15,
-                'subsample': 0.75, 'lambda': 2, 'nthread': -1,
-                'booster' : 'gbtree', 'silent': 1, 'gamma' : 0,
-                'eval_metric': 'rmse', 'objective': 'reg:linear'}    
+    watchlist = [(dtrain, "train"), (dvalid, "valid")]
+    xgb_pars = {"min_child_weight": 10, "eta": 0.04,
+                "colsample_bytree": 0.8, "max_depth": 15,
+                "subsample": 0.75, "lambda": 2, "nthread": -1,
+                "booster" : "gbtree", "silent": 1, "gamma" : 0,
+                "eval_metric": "rmse", "objective": "reg:linear"}    
     # xgb.train   	
     model = xgb.train(xgb_pars, dtrain, 500, watchlist, early_stopping_rounds=250,
                   maximize=False, verbose_eval=15)

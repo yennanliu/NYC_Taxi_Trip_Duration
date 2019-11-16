@@ -22,12 +22,12 @@ def save_model(model):
 
 # load model 
 def load_model():
-	try:       
-		#with open('../model/model_0730.pkl', 'rb') as fid:  
-		with open('model/model_{}.pkl'.format(today_), 'rb') as fid:      
-			loaded_model = pickle.load(fid)     
-			return loaded_model
-	except:
-		print ('model load fail')
+    try:       
+        #with open('../model/model_0730.pkl', 'rb') as fid:  
+        with open('model/model_{}.pkl'.format(today_), 'rb') as fid:      
+            loaded_model = pickle.load(fid)     
+            return loaded_model
+    except:
+        print ('model load fail')
 
 

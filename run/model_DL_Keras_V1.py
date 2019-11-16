@@ -322,95 +322,95 @@ def load_data():
 
 
 if __name__ == '__main__':
-	# LOAD DATA, PREPROCESS, FEATURE ENGINEERING, AND SPLIT AS TRAIN & TEST SET 
-	df_all, df_train, df_test  = load_data()
-	#get basic features 
-	df_all_ = get_time_feature(df_all)
-	df_all_ = get_time_cyclic(df_all_)
-	# get other features 
-	df_all_ = get_geo_feature(df_all_)
-	df_all_ = pca_lon_lat(df_all_)
-	# get center of trip route 
-	df_all_ = gat_trip_center(df_all_)
-	# get lon & lat clustering 
-	df_all_ = get_clustering(df_all_)
-	# get avg ride count on dropoff cluster 
-	df_all_ = trip_cluser_count(df_all_)
-	df_all_ = get_cluser_feature(df_all_)
-	# get avg speed, duration
-	df_all_ = get_avg_travel_duration_speed(df_all_)
-	# label -> 0,1 
-	df_all_ = label_2_binary(df_all_)
-	# count trip over 60 min
-	df_all_ = trip_over_60min(df_all_)
-	# get log trip duration 
-	df_all_['trip_duration_log'] = df_all_['trip_duration'].apply(np.log)
-	# clean data 
-	#df_all_ = clean_data(df_all_)
-	print (df_all_.head())
+    # LOAD DATA, PREPROCESS, FEATURE ENGINEERING, AND SPLIT AS TRAIN & TEST SET 
+    df_all, df_train, df_test  = load_data()
+    #get basic features 
+    df_all_ = get_time_feature(df_all)
+    df_all_ = get_time_cyclic(df_all_)
+    # get other features 
+    df_all_ = get_geo_feature(df_all_)
+    df_all_ = pca_lon_lat(df_all_)
+    # get center of trip route 
+    df_all_ = gat_trip_center(df_all_)
+    # get lon & lat clustering 
+    df_all_ = get_clustering(df_all_)
+    # get avg ride count on dropoff cluster 
+    df_all_ = trip_cluser_count(df_all_)
+    df_all_ = get_cluser_feature(df_all_)
+    # get avg speed, duration
+    df_all_ = get_avg_travel_duration_speed(df_all_)
+    # label -> 0,1 
+    df_all_ = label_2_binary(df_all_)
+    # count trip over 60 min
+    df_all_ = trip_over_60min(df_all_)
+    # get log trip duration 
+    df_all_['trip_duration_log'] = df_all_['trip_duration'].apply(np.log)
+    # clean data 
+    #df_all_ = clean_data(df_all_)
+    print (df_all_.head())
 
-	# modeling 
-	features = [ 'vendor_id', 
-	            'passenger_count',
-	            'pickup_latitude', 
-	            'pickup_longitude', 
-	            'dropoff_latitude', 
-	            'dropoff_longitude',
-	            'pickup_pca0', 
-	            'pickup_pca1', 
-	            'dropoff_pca0', 
-	            'dropoff_pca1',
-	            'distance_haversine',
-	            'direction',
-	            'pca_manhattan',
-	            'pickup_time_delta',
-	            'pickup_month',
-	            'weekofyear', 
-	            'pickup_weekday', 
-	            'pickup_hour', 
-	            'week_delta',
-	            'week_delta_sin', 
-	            'pickup_hour_sin',
-	            'count_60min', 
-	            'dropoff_cluster_count']
+    # modeling 
+    features = [ 'vendor_id', 
+                'passenger_count',
+                'pickup_latitude', 
+                'pickup_longitude', 
+                'dropoff_latitude', 
+                'dropoff_longitude',
+                'pickup_pca0', 
+                'pickup_pca1', 
+                'dropoff_pca0', 
+                'dropoff_pca1',
+                'distance_haversine',
+                'direction',
+                'pca_manhattan',
+                'pickup_time_delta',
+                'pickup_month',
+                'weekofyear', 
+                'pickup_weekday', 
+                'pickup_hour', 
+                'week_delta',
+                'week_delta_sin', 
+                'pickup_hour_sin',
+                'count_60min', 
+                'dropoff_cluster_count']
 
-	# split all data into train, test set 
-	X_train = df_all_[df_all_['trip_duration'].notnull()][features].values
-	y_train = df_all_[df_all_['trip_duration'].notnull()]['trip_duration_log'].values
-	X_test  = df_all_[df_all_['trip_duration'].isnull()][features].values
-	y_test = df_all_[df_all_['trip_duration'].isnull()]['trip_duration_log'].values
-	# scale data since DL model is sentive to feature order of magnitude
-	scaler = preprocessing.MinMaxScaler()
-	X_train_scaled = scaler.fit_transform(X_train)
-	X_test_scaled = scaler.transform(X_test)
-	# Model parameters
-	BATCH_SIZE = 256
-	EPOCHS = 2
-	LEARNING_RATE = 0.001
-	DATASET_SIZE = 600
-	# --------------------- DL MODEL --------------------- #
-	model = Sequential()
-	model.add(Dense(256, activation='relu', input_dim=X_train.shape[1], activity_regularizer=regularizers.l1(0.01)))
-	model.add(BatchNormalization())
-	model.add(Dense(128, activation='relu'))
-	model.add(BatchNormalization())
-	model.add(Dense(64, activation='relu'))
-	model.add(BatchNormalization())
-	model.add(Dense(32, activation='relu'))
-	model.add(BatchNormalization())
-	model.add(Dense(8, activation='relu'))
-	model.add(BatchNormalization())
-	model.add(Dense(1))
-	adam = optimizers.adam(lr=LEARNING_RATE)
-	model.compile(loss='mse', optimizer=adam, metrics=['mae'])
-	# --------------------- DL MODEL --------------------- #
-	print (model.summary())
-	# --------------------- TRAIN --------------------- #
-	# train with original data 
-	#history = model.fit(x=X_train, y=y_train, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1,shuffle=True)
-	# train with scale data 
-	history = model.fit(x=X_train_scaled, y=y_train, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1,shuffle=True)
-	print ('='*70)
-	print ('TRAIN RESULT : ')
-	print (history.history)
-	print ('='*70)
+    # split all data into train, test set 
+    X_train = df_all_[df_all_['trip_duration'].notnull()][features].values
+    y_train = df_all_[df_all_['trip_duration'].notnull()]['trip_duration_log'].values
+    X_test  = df_all_[df_all_['trip_duration'].isnull()][features].values
+    y_test = df_all_[df_all_['trip_duration'].isnull()]['trip_duration_log'].values
+    # scale data since DL model is sentive to feature order of magnitude
+    scaler = preprocessing.MinMaxScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
+    # Model parameters
+    BATCH_SIZE = 256
+    EPOCHS = 2
+    LEARNING_RATE = 0.001
+    DATASET_SIZE = 600
+    # --------------------- DL MODEL --------------------- #
+    model = Sequential()
+    model.add(Dense(256, activation='relu', input_dim=X_train.shape[1], activity_regularizer=regularizers.l1(0.01)))
+    model.add(BatchNormalization())
+    model.add(Dense(128, activation='relu'))
+    model.add(BatchNormalization())
+    model.add(Dense(64, activation='relu'))
+    model.add(BatchNormalization())
+    model.add(Dense(32, activation='relu'))
+    model.add(BatchNormalization())
+    model.add(Dense(8, activation='relu'))
+    model.add(BatchNormalization())
+    model.add(Dense(1))
+    adam = optimizers.adam(lr=LEARNING_RATE)
+    model.compile(loss='mse', optimizer=adam, metrics=['mae'])
+    # --------------------- DL MODEL --------------------- #
+    print (model.summary())
+    # --------------------- TRAIN --------------------- #
+    # train with original data 
+    #history = model.fit(x=X_train, y=y_train, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1,shuffle=True)
+    # train with scale data 
+    history = model.fit(x=X_train_scaled, y=y_train, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1,shuffle=True)
+    print ('='*70)
+    print ('TRAIN RESULT : ')
+    print (history.history)
+    print ('='*70)

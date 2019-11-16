@@ -451,10 +451,10 @@ def clean_data_(df):
 # load data
 
 def load_data():
-	df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv')
-	df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
-	sampleSubmission = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/sample_submission.csv')
-	return df_train, df_test, sampleSubmission
+    df_train = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/train.csv')
+    df_test = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/test.csv')
+    sampleSubmission = pd.read_csv('~/NYC_Taxi_Trip_Duration/data/sample_submission.csv')
+    return df_train, df_test, sampleSubmission
 
 
 
