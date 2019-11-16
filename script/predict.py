@@ -10,16 +10,16 @@ import xgboost as xgb
 import scipy.stats as st
 
 def tune_model_1(X,y):
-    params = {  "min_child_weight": st.randint(8, 10),
-                "eta": st.randint(0.02, 0.05),
-                "n_estimators": st.randint(1000, 1010),
-                "max_depth": st.randint(10, 13),
-                "subsample" : st.randint(0.5, 0.75),
-                "learning_rate": st.uniform(0.05, 0.4),
-                'booster' : 'gbtree',
-                'eval_metric': 'rmse', 
-                'objective': 'reg:linear',
-                'nthread': -1}
+    params = { "min_child_weight": st.randint(8, 10),
+               "eta": st.randint(0.02, 0.05),
+               "n_estimators": st.randint(1000, 1010),
+               "max_depth": st.randint(10, 13),
+               "subsample" : st.randint(0.5, 0.75),
+               "learning_rate": st.uniform(0.05, 0.4),
+               "booster" : "gbtree",
+               "eval_metric": "rmse", 
+               "objective": "reg:linear",
+               "nthread": -1}
     xgbreg = XGBRegressor(nthreads=-1) 
     # random search 
     gs = RandomizedSearchCV(xgbreg, params, n_jobs=1,n_iter=10)  
@@ -35,7 +35,7 @@ def xgb_model_1(X_train,y_train,X_test,params=None):
     xgb = XGBRegressor(n_estimators=1000, max_depth=13, min_child_weight=150, 
                    subsample=0.7, colsample_bytree=0.3)
     y_test = np.zeros(len(X_test))
-	for i, (train_ind, val_ind) in enumerate(KFold(n_splits=2, shuffle=True, 
+    for i, (train_ind, val_ind) in enumerate(KFold(n_splits=2, shuffle=True, 
                                             random_state=1989).split(X_train)):
         print('----------------------')
         print('Training model #%d' % i)
