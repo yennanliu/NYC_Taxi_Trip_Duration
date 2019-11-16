@@ -5,6 +5,7 @@
 # basic library 
 import pandas as pd, numpy as np
 import calendar
+from sklearn.cluster import MiniBatchKMeans
 
 # refactor  all feature collect functions to class method (doing)
 class feature_datetime:

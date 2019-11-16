@@ -18,7 +18,7 @@ def tune_model_1(X,y):
                 "learning_rate": st.uniform(0.05, 0.4),
                 'booster' : 'gbtree',
                 'eval_metric': 'rmse', 
-                'objective': 'reg:linear'
+                'objective': 'reg:linear',
                 'nthread': -1}
     xgbreg = XGBRegressor(nthreads=-1) 
     # random search 
