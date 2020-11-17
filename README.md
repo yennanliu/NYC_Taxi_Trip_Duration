@@ -32,7 +32,6 @@ you should be able to run the ML demo code (scripts under `run/`)
 ## FILE STRUCTURE
 
 ```
-
 ├── README.md
 ├── data     : directory of train/test data 
 ├── documents: main reference 
@@ -44,14 +43,10 @@ you should be able to run the ML demo code (scripts under `run/`)
 ├── script   : utility script for data preprocess / feature extract / train /predict  
 ├── spark_   : Re-run the modeling with SPARK Mlib framework : JAVA / PYTHON / SCALA
 └── start.sh : launch training env
-
-
 ```
 
 
 ## QUICK START
-
-
 
 ```Bash
 # demo of  submit_xgb_387.py
@@ -74,7 +69,6 @@ TRAIN: [      0       1       2 ... 1210749 1210750 1210751] TEST: [1210752 1210
 # Multiple eval metrics have been passed: 'valid-rmse' will be used # for early stopping.
 
 # Will train until valid-rmse hasn't improved in 250 rounds.
-
 
 [15]	train-rmse:3.12115	valid-rmse:3.12236
 [30]	train-rmse:1.7254	valid-rmse:1.72854
@@ -168,9 +162,7 @@ Imputing missing values in feature set
 ## PROCESS
 
 ```
-
 EDA -> Data Preprocess -> Model select -> Feature engineering -> Model tune -> Prediction ensemble
-
 ```
 
 ```
