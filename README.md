@@ -2,8 +2,6 @@
 
 <p align="center"><img src ="https://github.com/yennanliu/NYC_Taxi_Trip_Duration/blob/master/data/submit_log.png" ></p>
 
-[![Star History Chart](https://api.star-history.com/svg?repos=yennanliu/NYC_Taxi_Trip_Duration&type=Date)](https://star-history.com/#yennanliu/NYC_Taxi_Trip_Duration&Date)
-
 <h1 align="center"><a href="https://www.kaggle.com/c/nyc-taxi-trip-duration">NYC Taxi Trip Duration</a></h1>
 
 <p align="center">
@@ -221,6 +219,9 @@ $ pytest -v tests/
 
 # =========================== 5 passed in 2.68 seconds ===========================
 ```
+
+[![Star History Chart](https://api.star-history.com/svg?repos=yennanliu/NYC_Taxi_Trip_Duration&type=Date)](https://star-history.com/#yennanliu/NYC_Taxi_Trip_Duration&Date)
+
 ## REFERENCE
 
 - XGBoost
